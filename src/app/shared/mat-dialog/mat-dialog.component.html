@@ -1,0 +1,11 @@
+<h1 style="font-size: 14px;" mat-dialog-title>Do you want to initiate the process for {{data.nameToSubmitFor}} ?</h1>
+<div mat-dialog-content>
+  <!-- <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button  [mat-dialog-close]="data.wantToSubmit" (click)="OkClicked()" cdkFocusInitial>Ok</button>
+</div>

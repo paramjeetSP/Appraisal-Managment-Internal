@@ -1,0 +1,64 @@
+<main role="main-wrapper">
+  <div class="text-center mt-5">
+    <a class="logo" href=""><img src="assets/images/sps-logo.png" alt=""></a>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="mid--box p-0 row no-gutters">
+          <div class="col-md-12 py-5 px-4 signUp">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-flex to--decHolder">
+                  <div class="to--dec text-center">
+                    <h2>Sign In</h2>
+                    <p>
+                      Appraisal Management System
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form  [formGroup]="form" class="text-center" (ngSubmit)="SubmitLoginDetails()">
+            <div class="row">
+              <!-- <div>
+                <pre>
+
+                  {{userName | json}}
+                  {{password | json}}
+                </pre>
+              </div> -->
+              <div class="col-md-12 form-group">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="uName" placeholder="Username" type="text"
+                    [errorStateMatcher]="matcher">
+
+                  <mat-error *ngIf="(userName.touched && userName.value === '') || submitClicked">
+                    Required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12 form-group">
+                <mat-form-field>
+
+                  <input matInput [errorStateMatcher]="matcher"  formControlName="pass"
+                    placeholder="Password" type="password">
+                  <mat-error *ngIf="(password.touched && password.value === '') || submitClicked">
+                    Required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 form-group" style="margin: 0 auto;">
+                <button *ngIf="!showSpinner"  mat-button class="btn btn-block mt-0">SUBMIT</button>
+                <div style="max-width: 50px;">
+                  <mat-spinner [diameter]="40" *ngIf="showSpinner" ></mat-spinner>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

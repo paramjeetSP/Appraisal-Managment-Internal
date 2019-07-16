@@ -1,0 +1,19 @@
+/* .table_wrapper .table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+.table_wrapper td.sub-table {
+    padding: 0;
+    border-right: transparent;
+}
+.table_wrapper .sub-table td {
+    height: 100px;
+}
+.table_wrapper .sub-table table {
+    width: 100%;
+}
+.table_wrapper .left-bg td:first-child {
+    background: #e6ff94;
+} */
