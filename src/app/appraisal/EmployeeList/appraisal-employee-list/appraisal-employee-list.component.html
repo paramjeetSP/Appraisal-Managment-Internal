@@ -97,7 +97,8 @@
                   <td mat-cell *matCellDef="let element">
                       <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 0">May to October</p>
                       <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 1">November to April</p>
-                    
+                      <p class="in-progress-color text-center" *ngIf="element.appraisalStatus ===2">November to April</p>
+                      <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 3">November to April</p>
                      </td>
                 </ng-container> 
                 <ng-container matColumnDef="ViewForm">

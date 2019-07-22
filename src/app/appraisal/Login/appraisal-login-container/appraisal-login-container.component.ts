@@ -82,6 +82,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
           return;
         }
         this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);// Go to your appraisal form
+        localStorage.setItem(this._global.login_by, "employee");
       },
         (error: any) => {
           this._errorService.LogError(error);

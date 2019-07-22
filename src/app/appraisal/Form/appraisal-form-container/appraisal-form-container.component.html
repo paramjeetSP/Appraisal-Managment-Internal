@@ -14,7 +14,7 @@
 </div>
 </section> --> 
 
-<app-menu></app-menu>
+<app-menu ></app-menu>
 
 <section class="table-wrapper">
         <div class="container">
@@ -97,7 +97,8 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goalone" [(ngModel)]='goalone'  placeholder="Goal 1" cols="30"></textarea> 
+  
+                                            <textarea formControlName="goalone"   [(ngModel)]='goalone'  placeholder="Goal 1" cols="30"></textarea> 
                                                          
                                         </td>
                                       </tr>
@@ -134,21 +135,21 @@
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input1 formControlName="ratingone" [(ngModel)]='ratingone' type="number" > -->
-                                            <input disabled Input1  type="number" >
+                                            <input minlength="1" maxlength="5" formControlName="ratingone" [(ngModel)]='ratingone' Input1  type="number" >
                                          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input2 formControlName="ratingtwo" [(ngModel)]='ratingtwo' type="number" > -->
-                                            <input disabled Input2  type="number" >
+                                            <input formControlName="ratingtwo" [(ngModel)]='ratingtwo' Input2  type="number" >
                                           
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input3 formControlName="ratingthree" [(ngModel)]='ratingthree' type="number" > -->
-                                            <input disabled Input3  type="number" > 
+                                            <input formControlName="ratingthree" [(ngModel)]='ratingthree' Input3  type="number" > 
                                          
                                         </td>
                                       </tr>
@@ -159,21 +160,21 @@
                                         <td>
                                        
                                             <!-- <textarea disabled Input7 formControlName="Commentone" [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea> -->
-                                            <textarea disabled Input7  placeholder="Leave a comment"></textarea>
+                                            <textarea  Input7 formControlName="Commentone" [(ngModel)]='Commentone'  placeholder="Leave a comment"></textarea>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
                                             <!-- <textarea disabled Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo' placeholder="Leave a comment"></textarea> -->
-                                            <textarea disabled Input8  placeholder="Leave a comment"></textarea>
+                                            <textarea  Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo'  placeholder="Leave a comment"></textarea>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                           
                                             <!-- <textarea disabled Input9 formControlName="Commentthree" [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea> -->
-                                            <textarea disabled Input9  placeholder="Leave a comment"></textarea>
+                                            <textarea formControlName="Commentthree" [(ngModel)]='Commentthree' Input9  placeholder="Leave a comment"></textarea>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -181,21 +182,21 @@
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input10 formControlName="managerratingone" [(ngModel)]='managerratingone' type="number"> -->
-                                            <input disabled Input10  type="number">
+                                            <input  Input10 formControlName="managerratingone" [(ngModel)]='managerratingone'  type="number">
                                          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input11 formControlName="managerratingtwo" [(ngModel)]='managerratingtwo' type="number"> -->
-                                            <input disabled Input11  type="number">
+                                            <input  Input11 formControlName="managerratingtwo" [(ngModel)]='managerratingtwo'  type="number">
                                         
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input12 formControlName="managerratingthree" [(ngModel)]='managerratingthree' type="number"> -->
-                                            <input disabled Input12  type="number">
+                                            <input  Input12  formControlName="managerratingthree" [(ngModel)]='managerratingthree' type="number">
                                         </td>
                                       </tr>
                                     </table></td>
@@ -203,21 +204,21 @@
                                       <tr>
                                         <td>
                                           
-                                            <textarea disabled matInput13 placeholder="Leave a comment"></textarea>
+                                            <textarea  matInput13 formControlName="managerCommentone" [(ngModel)]='managerCommentone' placeholder="Leave a comment"></textarea>
                                          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <textarea disabled Input14 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input14 formControlName="managerCommenttwo" [(ngModel)]='managerCommenttwo' placeholder="Leave a comment"></textarea>
                                         
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                           
-                                            <textarea disabled Input15 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input15 formControlName="managerCommentthree" [(ngModel)]='managerCommentthree' placeholder="Leave a comment"></textarea>
                                          
                                         </td>
                                       </tr>
@@ -264,20 +265,20 @@
                                           <td>
                                               <!-- <input disabled Input16 formControlName="ratingfour" [(ngModel)]='ratingfour' type="number" > -->
                                              
-                                              <input disabled Input16  type="number" >
+                                              <input formControlName="ratingfour" [(ngModel)]='ratingfour' Input16  type="number" >
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input17 formControlName="ratingfive" [(ngModel)]='ratingfive' type="number" > -->
                                               
-                                              <input disabled Input17 type="number" >
+                                              <input formControlName="ratingfive" [(ngModel)]='ratingfive' Input17 type="number" >
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input18 formControlName="ratingsix" [(ngModel)]='ratingsix' type="number" > -->
-                                              <input disabled Input18  type="number" >
+                                              <input formControlName="ratingsix" [(ngModel)]='ratingsix' Input18  type="number" >
                                           
                                           </td>
                                         </tr>
@@ -311,21 +312,21 @@
                                         <tr>
                                           <td>
                                           
-                                              <textarea disabled Input22 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input22 formControlName="Commentfour" [(ngModel)]='Commentfour' placeholder="Leave a comment"></textarea>
                                            
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                           
-                                              <textarea disabled Input23 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input23 formControlName="Commentfive" [(ngModel)]='Commentfive' placeholder="Leave a comment"></textarea>
                                             
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                           
-                                              <textarea disabled Input24 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input24 formControlName="Commentsix" [(ngModel)]='Commentsix' placeholder="Leave a comment"></textarea>
                                            
                                           </td>
                                         </tr>
@@ -334,21 +335,21 @@
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input25 formControlName="managerratingfour" [(ngModel)]='managerratingfour' type="number"> -->
-                                              <input disabled Input25  type="number">
+                                              <input  Input25 formControlName="managerratingfour" [(ngModel)]='managerratingfour'  type="number">
                                             
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input26 formControlName="managerratingfive" [(ngModel)]='managerratingfive' type="number"> -->
-                                              <input disabled Input26  type="number">
+                                              <input  Input26 formControlName="managerratingfive" [(ngModel)]='managerratingfive'  type="number">
                                           
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input27 formControlName="managerratingsix" [(ngModel)]='managerratingsix' type="number"> -->
-                                              <input disabled Input27  type="number">
+                                              <input  Input27 formControlName="managerratingsix" [(ngModel)]='managerratingsix'  type="number">
                                       
                                           </td>
                                         </tr>
@@ -357,21 +358,21 @@
                                         <tr>
                                           <td>
                                             
-                                              <textarea disabled Input28 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input28   formControlName="managerCommentfour" [(ngModel)]='managerCommentfour' placeholder="Leave a comment"></textarea>
                                           
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                            
-                                              <textarea disabled Input29 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input29 formControlName="managerCommentfive" [(ngModel)]='managerCommentfive' placeholder="Leave a comment"></textarea>
                                           
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                           
-                                              <textarea disabled Input30 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input30 formControlName="managerCommentsix" [(ngModel)]='managerCommentsix' placeholder="Leave a comment"></textarea>
                                            
                                           </td>
                                         </tr>
@@ -417,14 +418,14 @@
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input31 formControlName="ratingseven" [(ngModel)]='ratingseven' type="number" > -->
-                                              <input disabled Input31  type="number" >
+                                              <input formControlName="ratingseven" [(ngModel)]='ratingseven' Input31  type="number" >
                                         
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input32 formControlName="ratingeight" [(ngModel)]='ratingeight' type="number" > -->
-                                              <input disabled Input32  type="number" >
+                                              <input formControlName="ratingeight" [(ngModel)]='ratingeight' Input32  type="number" >
                                            
                                           </td>
                                         </tr>
@@ -432,7 +433,7 @@
                                           <td>
                                               <!-- <input disabled Input33 formControlName="ratingnine" [(ngModel)]='ratingnine' type="number" > -->
                                             
-                                              <input disabled Input33  type="number" >
+                                              <input formControlName="ratingnine" [(ngModel)]='ratingnine' Input33  type="number" >
                                           </td>
                                         </tr>
                                       </table></td>
@@ -459,21 +460,21 @@
                                         <tr>
                                           <td>
                                           
-                                              <textarea disabled Input37 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input37  formControlName="Commentseven" [(ngModel)]='Commentseven' placeholder="Leave a comment"></textarea>
                                          
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                            
-                                              <textarea disabled Input38 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input38 formControlName="Commenteight" [(ngModel)]='Commenteight' placeholder="Leave a comment"></textarea>
                                             
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                             
-                                              <textarea disabled Input39 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input39 formControlName="Commentnine" [(ngModel)]='Commentnine' placeholder="Leave a comment"></textarea>
                                          
                                           </td>
                                         </tr>
@@ -482,21 +483,21 @@
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input40 formControlName="managerratingseven" [(ngModel)]='managerratingseven' type="number"> -->
-                                              <input disabled Input47  type="number" >
+                                              <input  Input47 formControlName="managerratingseven" [(ngModel)]='managerratingseven'  type="number" >
                                           
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input41 formControlName="managerratingeight" [(ngModel)]='managerratingeight' type="number"> -->
-                                              <input disabled Input41  type="number">
+                                              <input  Input41 formControlName="managerratingeight" [(ngModel)]='managerratingeight'  type="number">
                                          
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                               <!-- <input disabled Input42 formControlName="managerratingnine" [(ngModel)]='managerratingnine' type="number"> -->
-                                              <input disabled Input42  type="number">
+                                              <input  Input42 formControlName="managerratingnine" [(ngModel)]='managerratingnine' type="number">
                                          
                                           </td>
                                         </tr>
@@ -505,21 +506,21 @@
                                         <tr>
                                           <td>
                                            
-                                              <textarea disabled Input43 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input43 formControlName="managerCommentseven" [(ngModel)]='managerCommentseven' placeholder="Leave a comment"></textarea>
                                          
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                            
-                                              <textarea disabled Input44 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input44 formControlName="managerCommenteight" [(ngModel)]='managerCommenteight' placeholder="Leave a comment"></textarea>
                                            
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
                                            
-                                              <textarea disabled Input45 placeholder="Leave a comment"></textarea>
+                                              <textarea  Input45 formControlName="managerCommentnine" [(ngModel)]='managerCommentnine' placeholder="Leave a comment"></textarea>
                                             
                                           </td>
                                         </tr>
@@ -568,21 +569,21 @@
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input46 formControlName="ratingten" [(ngModel)]='ratingten' type="number" > -->
-                                            <input disabled Input47  type="number" > 
+                                            <input formControlName="ratingten" [(ngModel)]='ratingten' Input47  type="number" > 
                                          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input disabled Input47 formControlName="ratingeleven" [(ngModel)]='ratingeleven' type="number" > -->
-                                            <input disabled Input47  type="number" >
+                                            <input formControlName="ratingeleven" [(ngModel)]='ratingeleven' Input47  type="number" >
                                          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input  disabled Input48 formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' type="number" > -->
-                                            <input  disabled Input48  type="number" > 
+                                            <input  formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' Input48  type="number" > 
                                          
                                         </td>
                                       </tr>
@@ -614,21 +615,21 @@
                                       <tr>
                                         <td>
                                        
-                                            <textarea disabled Input52 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input52 formControlName="Commentten"  [(ngModel)]='Commentten' placeholder="Leave a comment"></textarea>
                                        
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <textarea disabled Input53 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input53 formControlName="Commenteleven"  [(ngModel)]='Commenteleven' placeholder="Leave a comment"></textarea>
                                       
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <textarea disabled Input54 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input54 formControlName="Commenttwelve"  [(ngModel)]='Commenttwelve' placeholder="Leave a comment"></textarea>
                                          
                                         </td>
                                       </tr>
@@ -637,21 +638,21 @@
                                       <tr>
                                         <td>
                                             <!-- <input  disabled Input55 formControlName="managerratingten" [(ngModel)]='managerratingten' type="number"> -->
-                                            <input  disabled Input55  type="number">
+                                            <input   Input55  formControlName="managerratingten" [(ngModel)]='managerratingten' type="number">
                                        
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                             <!-- <input  disabled Input56 formControlName="managerratingeleven" [(ngModel)]='managerratingeleven' type="number"> -->
-                                            <input  disabled Input56  type="number">
+                                            <input   Input56 formControlName="managerratingeleven" [(ngModel)]='managerratingeleven' type="number">
                                      
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>      
                                             <!-- <input disabled Input57 formControlName="managerratingtwelve" [(ngModel)]='managerratingtwelve' type="number">         -->
-                                            <input  disabled Input56  type="number">
+                                            <input   Input56 formControlName="managerratingtwelve" [(ngModel)]='managerratingtwelve' type="number">
                                         </td>
                                       </tr>
                                     </table></td>
@@ -659,14 +660,14 @@
                                       <tr>
                                         <td>
                           
-                                            <textarea disabled Input58 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input58 formControlName="managerCommentten" [(ngModel)]='managerCommentten' placeholder="Leave a comment"></textarea>
                                        
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <textarea disabled Input59 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input59 formControlName="managerCommenteleven" [(ngModel)]='managerCommenteleven' placeholder="Leave a comment"></textarea>
                                          
                                         </td>
                                       </tr>
@@ -674,7 +675,7 @@
                                         <td>
                                          
                                              
-                                            <textarea disabled Input60 placeholder="Leave a comment"></textarea>
+                                            <textarea  Input60 formControlName="managerCommenttwelve" [(ngModel)]='managerCommenttwelve' placeholder="Leave a comment"></textarea>
                                         
                                         </td>
                                       </tr>
