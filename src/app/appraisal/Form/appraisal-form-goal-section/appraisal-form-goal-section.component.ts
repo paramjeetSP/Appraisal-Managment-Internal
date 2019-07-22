@@ -11,5 +11,5 @@ export class AppraisalFormGoalSectionComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

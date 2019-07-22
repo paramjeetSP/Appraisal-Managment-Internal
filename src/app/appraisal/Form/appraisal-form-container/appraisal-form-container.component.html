@@ -1,15 +1,933 @@
 
-<app-menu></app-menu>
+<!-- <app-menu></app-menu>
 <section class="table-wrapper">
         <div class="container">
             <div class="row text-center goal_setting_block">
 <app-appraisal-form-personal-data></app-appraisal-form-personal-data>
 <app-appraisal-form-goal-section></app-appraisal-form-goal-section>
-<app-appraisal-form-behavioural-goal-section></app-appraisal-form-behavioural-goal-section>
+<app-appraisal-form-behavioural-goal-section ></app-appraisal-form-behavioural-goal-section>
 <app-appraisal-form-ambition-expect-section></app-appraisal-form-ambition-expect-section>
 <app-appraisal-form-summary></app-appraisal-form-summary>
 <app-appraisal-form-closure></app-appraisal-form-closure>
 
+</div>
+</div>
+</section> --> 
+
+<app-menu></app-menu>
+
+<section class="table-wrapper">
+        <div class="container">
+            <div class="row text-center goal_setting_block">
+          
+                     <div class="col-md-12">
+                            <div class="content-wrapper">
+                                <p>The SDP aims to set direction and develop individual, team and organizational capabilities in order to deliver business results.</p>
+                                <h2>Goal Setting and Evaluation Form</h2>
+                              </div>
+                        </div>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">Personal Data</th>                            
+                                <th scope="col">&nbsp;</th>
+            
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">
+                                    Employee Name:   <input  disabled   [(ngModel)]='FullName' type="label" >
+                                  
+                                </td>
+                                <td>Current Designation:  <input  disabled   [(ngModel)]='designation' type="label" ></td>
+                                <td>Cycle – November 2018 to April 2019</td>
+            
+                              </tr>
+                              <tr>
+                                <td scope="row">Team: <input  disabled   [(ngModel)]='department' type="label" ></td>
+                                <td>Date of Goal Setting: </td>
+                                <td>Date of Evaluation :</td>
+            
+                              </tr>
+                              <tr>
+                                <td scope="row">Reporting to: <input  disabled   [(ngModel)]='reportingTo' type="label" ></td>
+                                <td>Date of Joining:<input  disabled   [(ngModel)]='doj' type="label" ></td>
+                                <td>Grade :<input  disabled   [(ngModel)]='grade' type="label" > </td>
+            
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td scope="row">PerformanceRating Scale</td>
+                                <td>(1) Significantly below expectations</td>
+                                <td>(2) Below expectations</td>
+                                <td>(3) Meets most expectations</td>
+                                <td>(4) Meets all expectations</td>
+                                <td>(5) Way above Expectations</td>
+                              </tr>
+                            </tbody>
+                          </table> 
+                        <!-- <form [formGroup]="goalForm" (ngSubmit)="onSubmit()"> -->
+                          <form [formGroup]="goalForm" (ngSubmit)="onSubmit()">
+         <!-- apparaisal-personal-data start -->
+                        
+                           <!-- apparaisal-personal-data end -->
+                   <!-- apparaisal-form-goal-section start -->
+                          <table class="table">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Goal Category</th>
+                                    <th scope="col">Goals</th>
+                                    <th scope="col">Target</th>
+                                    <th scope="col">Rating(Self)</th>
+                                    <!-- <th scope="col">Personal Data</th> -->
+                                    <th scope="col">Comments (Self-Evaluation)</th>
+                                    <th scope="col">Rating(Manager)</th>
+                                    <th scope="col">Comments(Manager Evaluation)</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td scope="row">Project/ Work Related Goals </td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goalone" [(ngModel)]='goalone'  placeholder="Goal 1" cols="30"></textarea> 
+                                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goaltwo" [(ngModel)]='goaltwo'  placeholder="Goal 2" cols="30"></textarea> 
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goalthree" [(ngModel)]='goalthree'  placeholder="Goal 3" cols="30"></textarea> 
+                                        
+                                          </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                          100%
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          100%
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          100%
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input1 formControlName="ratingone" [(ngModel)]='ratingone' type="number" > -->
+                                            <input disabled Input1  type="number" >
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input2 formControlName="ratingtwo" [(ngModel)]='ratingtwo' type="number" > -->
+                                            <input disabled Input2  type="number" >
+                                          
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input3 formControlName="ratingthree" [(ngModel)]='ratingthree' type="number" > -->
+                                            <input disabled Input3  type="number" > 
+                                         
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                   
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                       
+                                            <!-- <textarea disabled Input7 formControlName="Commentone" [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea> -->
+                                            <textarea disabled Input7  placeholder="Leave a comment"></textarea>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <!-- <textarea disabled Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo' placeholder="Leave a comment"></textarea> -->
+                                            <textarea disabled Input8  placeholder="Leave a comment"></textarea>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          
+                                            <!-- <textarea disabled Input9 formControlName="Commentthree" [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea> -->
+                                            <textarea disabled Input9  placeholder="Leave a comment"></textarea>
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input10 formControlName="managerratingone" [(ngModel)]='managerratingone' type="number"> -->
+                                            <input disabled Input10  type="number">
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input11 formControlName="managerratingtwo" [(ngModel)]='managerratingtwo' type="number"> -->
+                                            <input disabled Input11  type="number">
+                                        
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input12 formControlName="managerratingthree" [(ngModel)]='managerratingthree' type="number"> -->
+                                            <input disabled Input12  type="number">
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                          
+                                            <textarea disabled matInput13 placeholder="Leave a comment"></textarea>
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <textarea disabled Input14 placeholder="Leave a comment"></textarea>
+                                        
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          
+                                            <textarea disabled Input15 placeholder="Leave a comment"></textarea>
+                                         
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row">Customer Orientation Goals</td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <textarea formControlName="goalFour" [(ngModel)]='goalFour'  placeholder="Goal 4" cols="30"></textarea> 
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <textarea formControlName="goalFive" [(ngModel)]='goalFive' placeholder="Goal 5" cols="30"></textarea> 
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <textarea formControlName="goalSix" [(ngModel)]='goalSix'  placeholder="Goal 6" cols="30"></textarea>
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                            100%
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            100%
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            100%
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input16 formControlName="ratingfour" [(ngModel)]='ratingfour' type="number" > -->
+                                             
+                                              <input disabled Input16  type="number" >
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input17 formControlName="ratingfive" [(ngModel)]='ratingfive' type="number" > -->
+                                              
+                                              <input disabled Input17 type="number" >
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input18 formControlName="ratingsix" [(ngModel)]='ratingsix' type="number" > -->
+                                              <input disabled Input18  type="number" >
+                                          
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <!-- <td class="sub-table">
+                                        <table >
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea Input19 placeholder="Leave a comment"></textarea>
+                                           
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea Input20 placeholder="Leave a comment"></textarea>
+                                          
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            
+                                              <textarea Input21 placeholder="Leave a comment"></textarea>
+                                          
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td> -->
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea disabled Input22 placeholder="Leave a comment"></textarea>
+                                           
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea disabled Input23 placeholder="Leave a comment"></textarea>
+                                            
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea disabled Input24 placeholder="Leave a comment"></textarea>
+                                           
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input25 formControlName="managerratingfour" [(ngModel)]='managerratingfour' type="number"> -->
+                                              <input disabled Input25  type="number">
+                                            
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input26 formControlName="managerratingfive" [(ngModel)]='managerratingfive' type="number"> -->
+                                              <input disabled Input26  type="number">
+                                          
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input27 formControlName="managerratingsix" [(ngModel)]='managerratingsix' type="number"> -->
+                                              <input disabled Input27  type="number">
+                                      
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                            
+                                              <textarea disabled Input28 placeholder="Leave a comment"></textarea>
+                                          
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea disabled Input29 placeholder="Leave a comment"></textarea>
+                                          
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea disabled Input30 placeholder="Leave a comment"></textarea>
+                                           
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row">Internal Processes</td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <textarea  formControlName="goalseven" [(ngModel)]='goalseven' name="goal7" rows="3" placeholder="Goal 7" cols="30"></textarea>                   
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <textarea  formControlName="goaleight" [(ngModel)]='goaleight' name="goal8" rows="3" placeholder="Goal 8" cols="30"></textarea>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <textarea  formControlName="goalnine" [(ngModel)]='goalnine' name="goal9" rows="3" placeholder="Goal 9" cols="30"></textarea>  
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                            100%
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            3
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            100%
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input31 formControlName="ratingseven" [(ngModel)]='ratingseven' type="number" > -->
+                                              <input disabled Input31  type="number" >
+                                        
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input32 formControlName="ratingeight" [(ngModel)]='ratingeight' type="number" > -->
+                                              <input disabled Input32  type="number" >
+                                           
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input33 formControlName="ratingnine" [(ngModel)]='ratingnine' type="number" > -->
+                                            
+                                              <input disabled Input33  type="number" >
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <!-- <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                         
+                                              <textarea Input34 placeholder="Leave a comment"></textarea>
+                                         
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>                   
+                                              <textarea Input35 placeholder="Leave a comment"></textarea>                   
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>                  
+                                              <textarea Input36 placeholder="Leave a comment"></textarea>
+                                          </td>
+                                        </tr>
+                                      </table></td> -->
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                          
+                                              <textarea disabled Input37 placeholder="Leave a comment"></textarea>
+                                         
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea disabled Input38 placeholder="Leave a comment"></textarea>
+                                            
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            
+                                              <textarea disabled Input39 placeholder="Leave a comment"></textarea>
+                                         
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input40 formControlName="managerratingseven" [(ngModel)]='managerratingseven' type="number"> -->
+                                              <input disabled Input47  type="number" >
+                                          
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input41 formControlName="managerratingeight" [(ngModel)]='managerratingeight' type="number"> -->
+                                              <input disabled Input41  type="number">
+                                         
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                              <!-- <input disabled Input42 formControlName="managerratingnine" [(ngModel)]='managerratingnine' type="number"> -->
+                                              <input disabled Input42  type="number">
+                                         
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                      <td class="sub-table"><table >
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea disabled Input43 placeholder="Leave a comment"></textarea>
+                                         
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea disabled Input44 placeholder="Leave a comment"></textarea>
+                                           
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                           
+                                              <textarea disabled Input45 placeholder="Leave a comment"></textarea>
+                                            
+                                          </td>
+                                        </tr>
+                                      </table></td>
+                                  </tr>
+                                  <tr>
+                                    <td scope="row">Learning and Development</td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goalten" [(ngModel)]='goalten' name="goal10" rows="3" placeholder="Goal 10" cols="30"></textarea> 
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goaleleven" [(ngModel)]='goaleleven' name="goal11" rows="3" placeholder="Goal 11" cols="30"></textarea>
+                                       
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <textarea formControlName="goaltwelve" [(ngModel)]='goaltwelve' name="goal12" rows="3" placeholder="Goal 12" cols="30"></textarea>
+                                     
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                          1
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          100%
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          1
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input46 formControlName="ratingten" [(ngModel)]='ratingten' type="number" > -->
+                                            <input disabled Input47  type="number" > 
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input disabled Input47 formControlName="ratingeleven" [(ngModel)]='ratingeleven' type="number" > -->
+                                            <input disabled Input47  type="number" >
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input  disabled Input48 formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' type="number" > -->
+                                            <input  disabled Input48  type="number" > 
+                                         
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <!-- <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                       
+                                            <textarea Input49 placeholder="Leave a comment"></textarea>
+                                       
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <textarea Input50 placeholder="Leave a comment"></textarea>
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          
+                                            <textarea Input51 placeholder="Leave a comment"></textarea>
+                                        
+                                        </td>
+                                      </tr>
+                                    </table></td> -->
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                       
+                                            <textarea disabled Input52 placeholder="Leave a comment"></textarea>
+                                       
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <textarea disabled Input53 placeholder="Leave a comment"></textarea>
+                                      
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <textarea disabled Input54 placeholder="Leave a comment"></textarea>
+                                         
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                                            <!-- <input  disabled Input55 formControlName="managerratingten" [(ngModel)]='managerratingten' type="number"> -->
+                                            <input  disabled Input55  type="number">
+                                       
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <!-- <input  disabled Input56 formControlName="managerratingeleven" [(ngModel)]='managerratingeleven' type="number"> -->
+                                            <input  disabled Input56  type="number">
+                                     
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>      
+                                            <!-- <input disabled Input57 formControlName="managerratingtwelve" [(ngModel)]='managerratingtwelve' type="number">         -->
+                                            <input  disabled Input56  type="number">
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                    <td class="sub-table"><table >
+                                      <tr>
+                                        <td>
+                          
+                                            <textarea disabled Input58 placeholder="Leave a comment"></textarea>
+                                       
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                            <textarea disabled Input59 placeholder="Leave a comment"></textarea>
+                                         
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                         
+                                             
+                                            <textarea disabled Input60 placeholder="Leave a comment"></textarea>
+                                        
+                                        </td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                    
+                                </tbody>
+                              </table>
+                               <!-- apparaisal-form-goal-section end -->
+
+                               <!-- app-appraisal-form-behavioural-goal-section start -->
+                               <table class="table">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">Behavioural goals</th>
+                                        <th scope="col">Rating
+                                          (Manager evaluation)
+                                          </th>
+                                        <th scope="col">Comments
+                                          (Manager evaluation)
+                                          </th>
+                    
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td scope="row">
+                                          Goal 1: Fulfilment of SP Values and Code of Conduct
+                                        </td>
+                                        <td>
+                                          
+                                            <textarea Input61 placeholder="Leave a comment"></textarea>
+                                       
+                                        </td>
+                                        <td>
+                                        
+                                            <textarea Input62 placeholder="Leave a comment"></textarea>
+                                          
+                                        </td>
+                    
+                                      </tr>
+                                      <tr>
+                                        <td scope="row">Goal 2: Willingness to Learn new things</td>
+                                        <td>
+                                          
+                                            <textarea Input63 placeholder="Leave a comment"></textarea>
+                                        
+                                        </td>
+                                        <td>
+                                           
+                                                <textarea Input64 placeholder="Leave a comment"></textarea>
+                                          
+                                             </td>
+                    
+                                      </tr>
+                                      <tr>
+                                        <td scope="row">Goal 3: Communication Skills(Oral and Written) </td>
+                                        <td>
+                                          
+                                                <textarea Input65 placeholder="Leave a comment"></textarea>
+                                             
+                                        </td>
+                                        <td>
+                                           
+                                                <textarea Input66 placeholder="Leave a comment"></textarea>
+                                            
+                                        </td>
+                    
+                                      </tr>
+                                      <tr>
+                                        <td scope="row">Goal 4: Ability to Work in Teams(Team Bonding) </td>
+                                        <td>
+                                          
+                                                <textarea Input67 placeholder="Leave a comment"></textarea>
+                                             
+                                        </td>
+                                        <td>
+                                           
+                                                <textarea Input68 placeholder="Leave a comment"></textarea>
+                                             
+                                        </td>
+                    
+                                      </tr>
+                                      <tr>
+                                        <td scope="row">Goal 5: Initiative and Pro-Activeness</td>
+                                        <td>
+                                           
+                                                <textarea Input69 placeholder="Leave a comment"></textarea>
+                                             
+                                        </td>
+                                        <td>
+                                           
+                                                <textarea Input70 placeholder="Leave a comment"></textarea>
+                                           
+                                        </td>
+                    
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                    
+                                  <table class="table">
+                                    <tbody>
+                                      <tr>
+                                        <td scope="row">PerformanceRating Scale</td>
+                                        <td>(1) Significantly below expectations</td>
+                                        <td>(2) Below expectations</td>
+                                        <td>(3) Meets most expectations</td>
+                                        <td>(4) Meets all expectations</td>
+                                        <td>(5) Way above Expectations</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                <!-- app-appraisal-form-behavioural-goal-section end -->
+
+                                <!-- app-appraisal-form-ambition-expect-section starts -->
+                                <h3 class="text-left">Ambitions and job expectations</h3>
+                                <table class="table">
+                                  
+                                  <tbody class="left-bg">
+                                    <tr>
+                                      <td scope="row">What are my ambitions/job expectations and goals in a 1-3 year perspective</td>
+                                      <td style="width: 650px;">
+                                       
+                                          <textarea Input71 placeholder="Leave a comment"></textarea>
+                                       
+                                      </td>
+                                    </tr>
+                                  
+                                  </tbody>
+                                </table>
+                                <!-- app-appraisal-form-ambition-expect-section end -->
+
+                                <!-- app-appraisal-form-summary starts -->
+
+                                <h3 class="text-left">Summary</h3>
+                                <table class="table">
+                                  <thead class="thead-dark">
+                                    <tr>
+                                      <th scope="col">&nbsp;</th>
+                                      <th style="width: 460px;" scope="col">Self-Comments</th>
+                                      <th style="width: 460px;" scope="col">Managers Comments</th>
+                                
+                                    </tr>
+                                  </thead>
+                                  <tbody class="left-bg">
+                                    <tr>
+                                      <td scope="row">Summarize Overall Performance</td>
+                                      <td>
+                                          
+                                              <textarea Input72 placeholder="Leave a comment"></textarea>
+                                           
+                                      </td>
+                                      <td>
+                                         
+                                              <textarea Input73 placeholder="Leave a comment"></textarea>
+                                           
+                                      </td>
+                                
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Areas of Improvement</td>
+                                      <td>
+                                       
+                                              <textarea Input74 placeholder="Leave a comment"></textarea>
+                                           
+                                      </td>
+                                      <td>
+                                         
+                                              <textarea Input75 placeholder="Leave a comment"></textarea>
+                                           
+                                           </td>
+                                
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Action Plan for Improvement </td>
+                                      <td>
+                                       
+                                              <textarea Input76 placeholder="Leave a comment"></textarea>
+                                           
+                                      </td>
+                                      <td>
+                                        
+                                              <textarea Input77 placeholder="Leave a comment"></textarea>
+                                            
+                                      </td>
+                                
+                                    </tr>
+                                  
+                                  </tbody>
+                                </table>
+                                
+                                     <!-- app-appraisal-form-summary ends -->
+
+                                     <!-- app-appraisal-form-closure starts -->
+
+                                     <h3 class="text-left">Closure</h3>
+                                     <table class="table">
+                                       
+                                       <tbody class="left-bg">
+                                         <tr>
+                                           <td scope="row">Overall Rating(As per Performance Rating 
+                                             Scale)(To be filled by Manager)</td>
+                                           <td style="width: 350px;">
+                                            
+                                                   <textarea Input78 placeholder="Leave a comment"></textarea>
+                                               
+                                           </td>
+                                           <td style="width: 350px;">
+                                            
+                                                   <textarea Input79 placeholder="Leave a comment"></textarea>
+                                              
+                                           </td>
+                       
+                                         </tr>
+                                         <tr>
+                                           <td scope="row">HR Feedback</td>
+                                           <td>
+                                              
+                                                   <textarea Input80 placeholder="Leave a comment"></textarea>
+                                               
+                                           </td>
+                                           <td> 
+                                              
+                                                   <textarea Input81 placeholder="Leave a comment"></textarea>
+                                               
+                                           </td>
+                       
+                                         </tr>
+                                         <tr>
+                                           <td scope="row">Management Feedback</td>
+                                           <td>
+                                              
+                                                   <textarea Input82 placeholder="Leave a comment"></textarea>
+                                                
+                                           </td>
+                                           <td>
+                                              
+                                                   <textarea Input83 placeholder="Leave a comment"></textarea>
+                                                
+                                           </td>
+                       
+                                         </tr>
+                                       
+                                       </tbody>
+                                     </table>
+                 
+                                     
+                             
+                 
+                                         <!-- <button   (click)="goalformsubmit()">SUBMIT</button>  -->
+                                       <!-- app-appraisal-form-closure ends -->
+                                       <button  class="btn btn-primary full_width font_lato">Submit</button>
+                                      </form>
 </div>
 </div>
 </section>

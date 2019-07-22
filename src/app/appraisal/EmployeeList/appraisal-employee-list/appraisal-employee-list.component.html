@@ -1,6 +1,6 @@
 <app-menu></app-menu>
-<div class="main-table-wrapper">
-  <div class="container">
+<div class="main-table-wrapper hr_appraisal_list">
+  <div class="container-fluid">
     <mat-form-field>
       <input class="mr-2" matInput (keyup)="FullNameFilter($event.target.value)" placeholder="Full Name">
     </mat-form-field>
@@ -9,7 +9,8 @@
 
     </app-manager-department>
   </div>
-  <div class="container mat-elevation-z8">
+  <div class="container-fluid mat-elevation-z8">
+  <div class="table-responsive"> 
     <table mat-table [dataSource]="employeeList" class=" table table-sm table-wrapper">
       <!-- Full Name Column -->
       <ng-container matColumnDef="fullName">
@@ -40,12 +41,75 @@
           <button mat-raised-button *ngIf="element.appraisalStatus === 0" (click)="SubmitrequestToInitiateAppraisalProcess(element);"
             color="primary">Initiate
             Process</button>
-          <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 1">In Progress</p>
+          <p class="in-progress-color text-center blue-bg" *ngIf="element.appraisalStatus === 1" >In-Progress</p>
+          <p class="in-progress-color text-center blue-bg" (click)="SubmitReinitiate(element)" *ngIf="element.appraisalStatus === 2" >Re-Initiate</p>
+          <p class="in-progress-color text-center blue-bg" *ngIf="element.appraisalStatus === 3" >Form-In-Progress</p>
         </td>
       </ng-container>
+      <ng-container matColumnDef="HrinitiateFormStatus">
+          <th mat-header-cell *matHeaderCellDef> HrinitiateStatus </th>
+          <td mat-cell *matCellDef="let element">
+             <p class="in-progress-color text-center yello-bg" *ngIf="element.hrinitiateFormStatus === 1">Pending</p>
+             <p class="in-progress-color text-center blue-bg" *ngIf="element.hrinitiateFormStatus === 2">In Progress</p>
+             <p class="in-progress-color text-center green-bg" *ngIf="element.hrinitiateFormStatus === 3">Completed</p>
+             <p class="in-progress-color text-center" *ngIf="element.hrinitiateFormStatus === 4">Locked</p>
+             </td>
+        </ng-container> 
+ <ng-container matColumnDef="HrAssesmentStatus">
+          <th mat-header-cell *matHeaderCellDef> HrAssesmentStatus </th>
+          <td mat-cell *matCellDef="let element">
+              <p class="in-progress-color text-center yello-bg" *ngIf="element.hrAssesmentStatus === 1">Pending</p>
+              <p class="in-progress-color text-center blue-bg" *ngIf="element.hrAssesmentStatus === 2">In Progress</p>
+              <p class="in-progress-color text-center green-bg" *ngIf="element.hrAssesmentStatus === 3">Completed</p>
+              <p class="in-progress-color text-center" *ngIf="element.hrAssesmentStatus === 4">Locked</p>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="GoalsettingByLeadStatus">
+            <th mat-header-cell *matHeaderCellDef> GoalsettingbyLead </th>
+            <td mat-cell *matCellDef="let element"> 
+                <p class="in-progress-color text-center yello-bg" *ngIf="element.goalsettingByLeadStatus === 1">Pending</p>
+                <p class="in-progress-color text-center blue-bg" *ngIf="element.goalsettingByLeadStatus === 2">In Progress</p>
+                <p class="in-progress-color text-center green-bg" *ngIf="element.goalsettingByLeadStatus === 3">Completed</p>
+                <p class="in-progress-color text-center" *ngIf="element.goalsettingByLeadStatus === 4">Locked</p>
+               </td>
+          </ng-container> 
+          <ng-container matColumnDef="SelfAssesmentStatus">
+              <th mat-header-cell *matHeaderCellDef> SelfAssesmentStatus </th>
+              <td mat-cell *matCellDef="let element"> 
+                  <p class="in-progress-color text-center yello-bg" *ngIf="element.selfAssesmentStatus === 1">Pending</p>
+                  <p class="in-progress-color text-center  blue-bg" *ngIf="element.selfAssesmentStatus === 2">In Progress</p>
+                  <p class="in-progress-color text-center green-bg" *ngIf="element.selfAssesmentStatus === 3">Completed</p>
+                  <p class="in-progress-color text-center" *ngIf="element.selfAssesmentStatus === 4">Locked</p>
+                 </td>
+            </ng-container> 
+            <ng-container matColumnDef="LeadAssesmentStatus">
+                <th mat-header-cell *matHeaderCellDef> LeadAssesmentStatus </th>
+                <td mat-cell *matCellDef="let element">
+                    <p class="in-progress-color text-center yello-bg" *ngIf="element.leadAssesmentStatus === 1">Pending</p>
+                    <p class="in-progress-color text-center blue-bg" *ngIf="element.leadAssesmentStatus === 2">In Progress</p>
+                    <p class="in-progress-color text-center green-bg" *ngIf="element.leadAssesmentStatus === 3">Completed</p>
+                    <p class="in-progress-color text-center" *ngIf="element.selfAssesmentStatus === 4">Locked</p>
+                   </td>
+              </ng-container> 
+
+              <ng-container matColumnDef="Cyclestatus">
+                  <th mat-header-cell *matHeaderCellDef> Cyclestatus </th>
+                  <td mat-cell *matCellDef="let element">
+                      <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 0">May to October</p>
+                      <p class="in-progress-color text-center" *ngIf="element.appraisalStatus === 1">November to April</p>
+                    
+                     </td>
+                </ng-container> 
+                <ng-container matColumnDef="ViewForm">
+                    <th mat-header-cell *matHeaderCellDef>View</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button mat-raised-button (click)="ViewFormClicked(element)">View Form</button>
+                  </ng-container>
+        
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+  </div>   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 

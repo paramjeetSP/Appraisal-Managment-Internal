@@ -18,6 +18,7 @@ export class ManagerEmployeeListComponent implements OnInit {
   }
 
   ViewFormClicked(employee: AppraisalEmpRes){
+    debugger
     this.viewForm.emit(employee);
   }
 

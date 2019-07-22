@@ -67,6 +67,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
       }))
       .subscribe((data: AppraisalLoginResponse) => {
         debugger
+        // localStorage.setItem('deptID', data.deptID);
         this.showSpinner = false;
         this._sessionStorage.StoreLoggedInUserInfo(data);
         let roleHR = this.RoleHr(data);
@@ -74,6 +75,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
           this._router.navigate([this._global.ROUTE_APPRAISAL_LISTING]);
           return;
         }
+        debugger
         let roleManager = this.RoleManager(data);
         if (roleManager) { // If role is Manager then go to own department listing
           this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);

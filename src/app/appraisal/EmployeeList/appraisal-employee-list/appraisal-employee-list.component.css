@@ -43,3 +43,26 @@ td {
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
 }
+.hr_appraisal_list table td {
+  padding: 13px 13px;
+}
+.hr_appraisal_list tr th {
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 0 !important;
+  padding: 10px 15px !important;
+}
+.yello-bg {
+  background: #f3c624;
+  font-weight: 600;
+}
+.blue-bg {
+  background: #3f51b5;
+  font-weight: 600;
+  color: #fff;
+}
+.green-bg {
+  background: #10bf10;
+  color: #fff;
+  font-weight: 600;
+}

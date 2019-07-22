@@ -10,6 +10,7 @@ export class Global {
   /** TOASTER MESSAGE AND TITLES START */
   public TOAST_TITLE_Success = 'Success';
   public TOAST_Appraisal_Process_Initiated = 'Process initiated successfully';
+  public TOAST_Appraisal_Process_reInitiated = 'Process reinitiated successfully';
   /** TOASTER MESSAGE AND TITLES END */
 
   /** ROLES FOR MANAGER LEVEL START */
@@ -25,6 +26,8 @@ export class Global {
 
   /** SESSION STORAGE KEYS START */
   public SESSION_LOGGED_IN_USER_INFO = 'user-logged-in';
+  public SESSION_USER_INFO = 'user-info';
+  public SESSION_USER_details = 'user-details';
   /** SESSION STORAGE KEYS END */
 
   /** ROUTES START */

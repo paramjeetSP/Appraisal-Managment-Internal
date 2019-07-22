@@ -23,8 +23,9 @@ import { Router } from '@angular/router';
 })
 export class AppraisalEmployeeListComponent implements OnInit {
   employeeList = new MatTableDataSource<AppraisalEmpRes>();
-  employeeListOriginal: AppraisalEmpRes[];;
-  displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department'];
+  employeeListOriginal: AppraisalEmpRes[];
+ // displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrAssesmentStatus'];
+   displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrinitiateFormStatus','GoalsettingByLeadStatus','SelfAssesmentStatus','LeadAssesmentStatus','HrAssesmentStatus','Cyclestatus','ViewForm'];
   filterTypes: FilterTypes[] = []; // Type should match AppraisalEmpRes interface property names
   allDepartments: Department[];
 
@@ -59,10 +60,23 @@ export class AppraisalEmployeeListComponent implements OnInit {
       debugger
       if (result) {
         this.InitiateAppraisal(item);  
-     //     this._router.navigate(['Form']);
+   
       }
     });
   }
+  SubmitReinitiate(item: AppraisalEmpRes): void {
+    const dialogRef = this._dialogService.OpenDialogForConfirmInitiateProcess(
+      { wantToSubmit: true, nameToSubmitFor: item.fullName } as DialogDataForInitiateAppraisalProcess
+    );// By default setting the value to true so if the user cancels then the result will be undefined in the callback
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      debugger
+      if (result) {
+        this.ReInitiateAppraisal(item);  
+   
+      }
+    });
+  }
+
   openSnackBar() {
     this._snackBar.openFromComponent(SnackBarSuccessComponent, {
       duration: 5 * 1000,
@@ -101,8 +115,41 @@ export class AppraisalEmployeeListComponent implements OnInit {
         }
       )
   }
+ 
+  DepartmentSelected(value: any){
+    debugger
+    console.log(value);
+    this.DepartmentSelectedGetData(value);//.emit(value.value);
+  }
+
+  ReInitiateAppraisal(item: AppraisalEmpRes) {
+    debugger
+    // let con = confirm(`Are you sure you want to initiate the process for ${item.fullName}`)
+    this._spinner.show();
+    let subs = this._appraisalEmpListSer.ReInitiateApraisalProcess(item)
+      .pipe(catchError((x:HttpErrorResponse) => {
+        this._errorService.LogError(x);
+        this._toasterService.ErrorSnackBarRightBottom(x.message)
+        this._spinner.hide();
+        subs.unsubscribe();
+        return throwError(x);
+      }))
+      .subscribe((data: boolean) => {
+        if (data) this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Process_reInitiated} for ${item.fullName}`);
+         debugger    
+         this._spinner.hide();    
+        // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);     
+        this.GetEmployeeForAppraisal();
+        subs.unsubscribe();
+      }, (err) => {
+        this._errorService.LogError(err);
+        this._spinner.hide();
+        subs.unsubscribe();
+      })
+  }
 
   InitiateAppraisal(item: AppraisalEmpRes) {
+    debugger
     // let con = confirm(`Are you sure you want to initiate the process for ${item.fullName}`)
     this._spinner.show();
     let subs = this._appraisalEmpListSer.InitiateApraisalProcess(item)
@@ -115,9 +162,9 @@ export class AppraisalEmployeeListComponent implements OnInit {
       }))
       .subscribe((data: boolean) => {
         if (data) this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Process_Initiated} for ${item.fullName}`);
-         debugger        
-         this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
-        this._spinner.hide();
+         debugger    
+         this._spinner.hide();    
+        // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);     
         this.GetEmployeeForAppraisal();
         subs.unsubscribe();
       }, (err) => {
@@ -168,6 +215,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
    * the filter value will be included in the filter algo.
    */
   Filter() {
+    debugger
     this.employeeList.data = this.employeeList.data.filter(employee => {
       let filterThatShouldBeChecked = this.filterTypes.filter(x => { return x.shouldFilter });
       let counterToCheckTheNumberOfFiltersToPass = filterThatShouldBeChecked.length;
@@ -195,7 +243,17 @@ export class AppraisalEmployeeListComponent implements OnInit {
       this.DepartmentFilter('');
     }
   }
-
+  // ViewFormClicked(){
+  //   this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
+  // }
+  ViewFormClicked(item: AppraisalEmpRes){
+    debugger
+   // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
+   // this._sessionStorage.StoreUserdetailInfo(employee);
+  // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
+    this._router.navigate([this._global.ROUTE_APPRAISAL_FORM], { queryParams: { id: item.id } });     
+   // console.log(employee);
+  }
   GetAllDepartments() {
     let subs = this._commonTasksservice.GetAllDepartments()
       .pipe(catchError(x => {

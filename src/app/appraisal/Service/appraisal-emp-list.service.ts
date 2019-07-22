@@ -20,8 +20,13 @@ export class AppraisalEmpListService {
   }
 
   InitiateApraisalProcess(item: AppraisalEmpRes): Observable<boolean> {
-    debugger
     const url = `${this._global.API_FULL_URL}EmployeeGoalSetting`;
+    return this._http.post<boolean>(url, { id: item.id, empid: item.emp_Id }, this._global.HTTP_OPTIONS);
+  }
+
+  ReInitiateApraisalProcess(item: AppraisalEmpRes): Observable<boolean> {
+    debugger
+    const url = `${this._global.API_FULL_URL}ReinitiateEmployeeGoal`;
     return this._http.post<boolean>(url, { id: item.id, empid: item.emp_Id }, this._global.HTTP_OPTIONS);
   }
 }

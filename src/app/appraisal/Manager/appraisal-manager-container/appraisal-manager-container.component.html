@@ -2,12 +2,15 @@
 <!-- <h1 style="padding-top: 100px;">Manager Section</h1> -->
 <div class="wrapper">
     <div class="container">
-        <app-manager-department *ngIf="showUiControls.departmentSelect" [departments]="allDepartments"
+        <app-manager-department *ngIf="!showUiControls.departmentSelect" [departments]="allDepartments"
             (departmentSelectionChanged)="DepartmentSelectedGetData($event)"></app-manager-department>
         <app-manager-employee-list *ngIf="showUiControls.departmentEmployeeList"
             [employeesOfDepartment]="employeeByDepartment" (viewForm)="ViewFormOfEmployee($event)">
         </app-manager-employee-list>
-        <app-appraisal-form-container *ngIf="showUiControls.employeeForm"></app-appraisal-form-container>
-        <button mat-raised-button *ngIf="showUiControls.backButtonToSelect" (click)="BackButtonToSelect()">Back</button>
+        
+        <!-- <app-appraisal-form-container  *ngIf="showUiControls.employeeForm"></app-appraisal-form-container> -->
+        <!-- <button   (click)="goalformsubmit()">SUBMIT</button> -->
+        <!-- <button mat-raised-button *ngIf="showUiControls.backButtonToSelect" (click)="BackButtonToSelect()">Back</button> -->
+      
     </div>
 </div>

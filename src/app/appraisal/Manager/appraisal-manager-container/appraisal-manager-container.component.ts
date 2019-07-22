@@ -1,18 +1,25 @@
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { CommonTaskService } from '../../Service/common-task.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 import { ErrorService } from '../../Service/error.service';
 import { Department } from '../../Model/Response/department';
+import { Global } from '../../../global';
 import { AppraisalEmpRes } from '../../Model/Response/appraisal-employee-list-res';
+import { SessionStorageService } from '../../Service/session-storage.service';
+import { AppraisalFormContainerComponent } from '../../Form/appraisal-form-container/appraisal-form-container.component';
 
+declare var $: any;
 @Component({
   selector: 'app-appraisal-manager-container',
   templateUrl: './appraisal-manager-container.component.html',
   styleUrls: ['./appraisal-manager-container.component.css']
 })
 export class AppraisalManagerContainerComponent implements OnInit {
+  @ViewChild(AppraisalFormContainerComponent, { static: true }) appraisalFormContainerComponent: AppraisalFormContainerComponent;
+
   allDepartments: Department[] = [];
   employeeByDepartment: AppraisalEmpRes[];
   showUiControls = {
@@ -24,11 +31,20 @@ export class AppraisalManagerContainerComponent implements OnInit {
   constructor(
     private _commonTasksservice: CommonTaskService,
     private _errorService: ErrorService,
-    private _spinner: NgxSpinnerService
+    private _spinner: NgxSpinnerService,
+    private _sessionStorage: SessionStorageService,
+    private _router: Router,
+    private _global: Global,
+    
   ) { }
 
   ngOnInit() {
+    debugger
     this.GetAllDepartments();
+   var data= this._sessionStorage.GetLoggedInUserInfo();
+  const depid=data.deptID;
+  this.DepartmentSelectedGetData(depid);
+  
   }
   GetAllDepartments() {
     let subs = this._commonTasksservice.GetAllDepartments()
@@ -47,6 +63,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   DepartmentSelectedGetData(value: number){
+    debugger
     this.showUiControls.departmentEmployeeList = true;
     this._spinner.show();
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
@@ -66,10 +83,14 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   ViewFormOfEmployee(employee: AppraisalEmpRes){
+    debugger
+    localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
+    this._sessionStorage.StoreUserdetailInfo(employee);
     this.showUiControls.departmentEmployeeList = false;
     this.showUiControls.departmentSelect = false;
     this.showUiControls.employeeForm = true;
     this.showUiControls.backButtonToSelect = true;
+    this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);     
     console.log(employee);
   }
 
@@ -78,5 +99,6 @@ export class AppraisalManagerContainerComponent implements OnInit {
     this.showUiControls.employeeForm = false;
     this.showUiControls.backButtonToSelect = false;
   }
+ 
 
 }
