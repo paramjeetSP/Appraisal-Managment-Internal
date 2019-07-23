@@ -9,20 +9,24 @@ import { Global } from 'src/app/global';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  username:string;
   constructor(
-    private _sesstionStorageService: SessionStorageService,
+    private _sessionStorage: SessionStorageService,
     private _router: Router,
     private _global:Global
   ) { }
 
   ngOnInit() {
+    debugger
+    var data= this._sessionStorage.GetLoggedInUserInfo();
+  this.username = data.fullName;
   }
 
   Logout(){
-    this._sesstionStorageService.StoreLoggedInUserInfo(null);
+    this._sessionStorage.StoreLoggedInUserInfo(null);
     this._router.navigate(['']);
     localStorage.removeItem(this._global.login_by);
+    localStorage.clear();
   }
 
 }

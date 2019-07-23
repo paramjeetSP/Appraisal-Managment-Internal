@@ -12,6 +12,7 @@ export class Global {
   public TOAST_Appraisal_Process_Initiated = 'Process initiated successfully';
   public TOAST_Appraisal_Process_reInitiated = 'Process reinitiated successfully';
   public TOAST_Appraisal_goal_set = 'goal set successfully';
+  public TOAST_Appraisal_Update_goal_set = 'Employee rating and comments fill successfully';
   /** TOASTER MESSAGE AND TITLES END */
 
   /** ROLES FOR MANAGER LEVEL START */
@@ -30,6 +31,7 @@ export class Global {
   public SESSION_USER_INFO = 'user-info';
   public SESSION_USER_details = 'user-details';
   public login_by = 'user-details';
+  public User_goal_Update = 'User_goal_Update';
   /** SESSION STORAGE KEYS END */
 
   /** ROUTES START */

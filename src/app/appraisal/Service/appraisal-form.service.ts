@@ -28,6 +28,12 @@ export class AppraisalFormService {
     return this._http.post(url,employeegoal,httpOptions)
   }
 
+  UpdateEmployeegoalformData(Goaldataupdate:any) {
+    debugger
+    const url = `${this._global.API_FULL_URL}SaveEmployeeGoalFormRating`;
+    return this._http.post(url,Goaldataupdate,httpOptions)
+  }
+
   GetEmployeeGolaById(id: number): Observable<AppraisalEmpGoalRes[]> {
     debugger
     const url = `${this._global.API_FULL_URL}GetGoalByEmpId`;

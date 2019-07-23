@@ -4,6 +4,7 @@ export interface AppraisalLoginResponse {
   designationID: number;
   description: string;
   id: number;
+  fullName:string;
 }
 
 export interface Roles{
