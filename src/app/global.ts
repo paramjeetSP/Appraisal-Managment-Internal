@@ -12,7 +12,8 @@ export class Global {
   public TOAST_Appraisal_Process_Initiated = 'Process initiated successfully';
   public TOAST_Appraisal_Process_reInitiated = 'Process reinitiated successfully';
   public TOAST_Appraisal_goal_set = 'goal set successfully';
-  public TOAST_Appraisal_Update_goal_set = 'Employee rating and comments fill successfully';
+  public TOAST_Appraisal_Update_goal_set = 'Employee rating and comments save successfully';
+  public TOAST_Appraisal_Update_goal_edit = 'Goal save successfully';
   /** TOASTER MESSAGE AND TITLES END */
 
   /** ROLES FOR MANAGER LEVEL START */
@@ -37,6 +38,8 @@ export class Global {
   /** ROUTES START */
   public ROUTE_APPRAISAL_LISTING = 'Appraisal/Listing';
   public ROUTE_APPRAISAL_FORM = 'Appraisal/Form';
+  public ROUTE_APPRAISAL_Manager_FORM = 'Appraisal/ManagerForm';
+  public ROUTE_APPRAISAL_Hr_FORM = 'Appraisal/HrForm';
   public ROUTE_APPRAISAL_MANAGER_PAGE = 'Appraisal/Goal';
   /** ROUTES END */
 

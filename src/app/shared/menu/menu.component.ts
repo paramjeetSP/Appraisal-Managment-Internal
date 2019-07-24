@@ -17,7 +17,6 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
     var data= this._sessionStorage.GetLoggedInUserInfo();
   this.username = data.fullName;
   }

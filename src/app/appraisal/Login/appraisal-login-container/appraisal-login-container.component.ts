@@ -81,7 +81,9 @@ export class AppraisalLoginContainerComponent implements OnInit {
           this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
           return;
         }
-        this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);// Go to your appraisal form
+       this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);// Go to your appraisal form
+     //debugger
+    // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id } });
         localStorage.setItem(this._global.login_by, "employee");
       },
         (error: any) => {

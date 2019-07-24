@@ -23,6 +23,8 @@ import { ManagerDepartmentComponent } from './Manager/manager-department/manager
 import { ManagerEmployeeListComponent } from './Manager/manager-employee-list/manager-employee-list.component';
 import { Global } from '../global';
 import { DialogService } from './Service/dialog.service';
+import { AppraisalFormManagerComponent } from './Form/appraisal-form-manager/appraisal-form-manager.component';
+import { AppraisalFormHrComponent } from './Form/appraisal-form-hr/appraisal-form-hr.component';
 @NgModule({
   declarations: [
     AppraisalFormContainerComponent,
@@ -36,7 +38,9 @@ import { DialogService } from './Service/dialog.service';
     AppraisalEmployeeListComponent,
     AppraisalManagerContainerComponent,
     ManagerDepartmentComponent,
-    ManagerEmployeeListComponent
+    ManagerEmployeeListComponent,
+    AppraisalFormManagerComponent,
+    AppraisalFormHrComponent
   ],
   imports: [
     CommonModule,

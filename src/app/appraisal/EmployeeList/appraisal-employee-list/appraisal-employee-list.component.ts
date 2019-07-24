@@ -125,7 +125,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   ReInitiateAppraisal(item: AppraisalEmpRes) {
     debugger
     // let con = confirm(`Are you sure you want to initiate the process for ${item.fullName}`)
-    this._spinner.show();
+   // this._spinner.show();
     let subs = this._appraisalEmpListSer.ReInitiateApraisalProcess(item)
       .pipe(catchError((x:HttpErrorResponse) => {
         this._errorService.LogError(x);
@@ -251,7 +251,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
    // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
    // this._sessionStorage.StoreUserdetailInfo(employee);
   // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
-    this._router.navigate([this._global.ROUTE_APPRAISAL_FORM], { queryParams: { id: item.id } });     
+    this._router.navigate([this._global.ROUTE_APPRAISAL_Hr_FORM ], { queryParams: { id: item.id } });     
    // console.log(employee);
   }
   GetAllDepartments() {
