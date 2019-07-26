@@ -88,7 +88,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
  editemployeegoal: Array<{ description: string,id:number,departmentHead:string,pid:number}> = [];
- Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
+ Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string,isActive:boolean}> = [];
  EditGoaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  EditGoalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
   constructor(private _sessionStorage: SessionStorageService,
@@ -493,7 +493,7 @@ export class AppraisalFormContainerComponent implements OnInit {
     this.pid12=  localStorage.getItem('pid12');
     var isedit= localStorage.getItem('isedit');
   
-    if(isedit == 'false')
+    if( this.pid1 != null)
   {
 // employee Rating and comments saving Code
 
@@ -547,7 +547,7 @@ this.Goaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,Comment
 
 console.log('goal setting array',this.Goaldataupdate);
 
-this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
+this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo,isActive:true});
 
 
 const body_data = {
@@ -559,149 +559,239 @@ this.appraisalFormService.UpdateEmployeegoalformData(body_data).subscribe((Goald
 if (Goaldataupdate) {
 this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
 this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
-this.ButtonToogle=true;
+//this.ButtonToogle=true;
 }
 });
+
+
+
   }
-  else{
-    
- 
-      // Edit employee  Rating and comments saving Code
-      
-          var rating1 = this.goalForm.controls.ratingone.value;
-        var rating2 = this.goalForm.controls.ratingtwo.value;
-        var rating3 = this.goalForm.controls.ratingthree.value;
-        var rating4 = this.goalForm.controls.ratingfour.value;
-        var rating5 = this.goalForm.controls.ratingfive.value;
-        var rating6 = this.goalForm.controls.ratingsix.value;
-        var rating7 = this.goalForm.controls.ratingseven.value;
-        var rating8 = this.goalForm.controls.ratingeight.value;
-        var rating9 = this.goalForm.controls.ratingnine.value;
-        var rating10 = this.goalForm.controls.ratingten.value;
-        var rating11 = this.goalForm.controls.ratingeleven.value;
-        var rating12 = this.goalForm.controls.ratingtwelve.value;
-      
-        var comments1 = this.goalForm.controls.Commentone.value;
-        var comments2 = this.goalForm.controls.Commenttwo.value;
-        var comments3 = this.goalForm.controls.Commentthree.value;
-        var comments4 = this.goalForm.controls.Commentfour.value;
-        var comments5 = this.goalForm.controls.Commentfive.value;
-        var comments6 = this.goalForm.controls.Commentsix.value;
-        var comments7 = this.goalForm.controls.Commentseven.value;
-        var comments8 = this.goalForm.controls.Commenteight.value;
-        var comments9 = this.goalForm.controls.Commentnine.value;
-        var comments10 = this.goalForm.controls.Commentten.value;
-        var comments11 = this.goalForm.controls.Commenteleven.value;
-        var comments12 = this.goalForm.controls.Commenttwelve.value;
-      
-        var ambitions = this.goalForm.controls.ambitions.value;
-        var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
-        var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
-        var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
-      
-       // var data = this._sessionStorage.GetUserdetailInfo();
-        const empid= parseInt(localStorage.getItem('empid'));
-       // const empid =636;
-        this.EditGoaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
-        this.EditGoaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
-        this.EditGoaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
-        this.EditGoaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
-        this.EditGoaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
-        this.EditGoaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
-        this.EditGoaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
-        this.EditGoaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
-        this.EditGoaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
-        this.EditGoaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
-        this.EditGoaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
-        this.EditGoaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
-      
-        console.log('goal setting array',this.EditGoaldataupdate);
-      
-        this.EditGoalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
-      
-      
-      const body_data = {
-        'EditGoaldataupdate': this.EditGoaldataupdate,
-        'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary
-      };
-      // if(this.ButtonToogle == false)
-      //   {
-      this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((EditGoaldataupdate: any) => {
-        if (EditGoaldataupdate) {
-        this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
-        this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
-      }
-       });
-     }
+  }
+//   onSubmit() {
+//     debugger
+//     this.pid1= localStorage.getItem('pid1');
+//     this.pid2= localStorage.getItem('pid2');
+//     this.pid3=localStorage.getItem('pid3');
+//     this.pid4=localStorage.getItem('pid4');
+//     this.pid5= localStorage.getItem('pid5');
+//     this.pid6=localStorage.getItem('pid6');
+//     this.pid7=localStorage.getItem('pid7');
+//     this.pid8=localStorage.getItem('pid8');
+//     this.pid9= localStorage.getItem('pid9');
+//     this.pid10= localStorage.getItem('pid10');
+//     this.pid11=localStorage.getItem('pid11');
+//     this.pid12=  localStorage.getItem('pid12');
+//     var isedit= localStorage.getItem('isedit');
   
-// if(this.pid1!=null){
-
-    
-// }
-// else{
-
-  
-
-
-// }
-//}
-//else{
-  // first goal save by manager
-//   if(this.ButtonToogle == false)
+//     if(isedit == 'false')
 //   {
-//   var goal1 = this.goalForm.controls.goalone.value;
-//   var goal2 = this.goalForm.controls.goaltwo.value;
-//   var goal3 = this.goalForm.controls.goalthree.value;
-//   var goal4 = this.goalForm.controls.goalFour.value;
-//   var goal5 = this.goalForm.controls.goalFive.value;
-//   var goal6 = this.goalForm.controls.goalSix.value;
-//   var goal7 = this.goalForm.controls.goalseven.value;
-//   var goal8 = this.goalForm.controls.goaleight.value;
-//   var goal9 = this.goalForm.controls.goalnine.value;
-//   var goal10 = this.goalForm.controls.goalten.value;
-//   var goal11 = this.goalForm.controls.goaleleven.value;
-//   var goal12 = this.goalForm.controls.goaltwelve.value;
-  
+// // employee Rating and comments saving Code
 
-//   var data = this._sessionStorage.GetUserdetailInfo();
-//  const empid =data.id;
-//  var managerid =data.departmentHead;
-// var manageraating= this.goalForm.controls.managerratingone.value;
+// var rating1 = this.goalForm.controls.ratingone.value;
+// var rating2 = this.goalForm.controls.ratingtwo.value;
+// var rating3 = this.goalForm.controls.ratingthree.value;
+// var rating4 = this.goalForm.controls.ratingfour.value;
+// var rating5 = this.goalForm.controls.ratingfive.value;
+// var rating6 = this.goalForm.controls.ratingsix.value;
+// var rating7 = this.goalForm.controls.ratingseven.value;
+// var rating8 = this.goalForm.controls.ratingeight.value;
+// var rating9 = this.goalForm.controls.ratingnine.value;
+// var rating10 = this.goalForm.controls.ratingten.value;
+// var rating11 = this.goalForm.controls.ratingeleven.value;
+// var rating12 = this.goalForm.controls.ratingtwelve.value;
 
+// var comments1 = this.goalForm.controls.Commentone.value;
+// var comments2 = this.goalForm.controls.Commenttwo.value;
+// var comments3 = this.goalForm.controls.Commentthree.value;
+// var comments4 = this.goalForm.controls.Commentfour.value;
+// var comments5 = this.goalForm.controls.Commentfive.value;
+// var comments6 = this.goalForm.controls.Commentsix.value;
+// var comments7 = this.goalForm.controls.Commentseven.value;
+// var comments8 = this.goalForm.controls.Commenteight.value;
+// var comments9 = this.goalForm.controls.Commentnine.value;
+// var comments10 = this.goalForm.controls.Commentten.value;
+// var comments11 = this.goalForm.controls.Commenteleven.value;
+// var comments12 = this.goalForm.controls.Commenttwelve.value;
 
- 
-//   //my changes
-//     this.employeegoal.push({ description: goal1,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal2 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal3 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal4 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal5,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal6 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal7 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal8 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal9 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal10 ,id: empid,departmentHead:managerid});
-//   this.employeegoal.push({ description: goal11,id: empid,departmentHead:managerid });
-//   this.employeegoal.push({ description: goal12 ,id: empid,departmentHead:managerid});
-//   console.log('goal setting array',this.employeegoal);
+// var ambitions = this.goalForm.controls.ambitions.value;
+// var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
+// var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
+// var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
+
+// const empid= parseInt(localStorage.getItem('empid'));
+// // var data = this._sessionStorage.GetUserdetailInfo();
+// // const empid =data.id;
+
+// this.Goaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
+// this.Goaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
+// this.Goaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
+// this.Goaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
+// this.Goaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
+// this.Goaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
+// this.Goaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
+// this.Goaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
+// this.Goaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
+// this.Goaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
+// this.Goaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
+// this.Goaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
+
+// console.log('goal setting array',this.Goaldataupdate);
+
+// this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
 
 
 // const body_data = {
-//   'employeegoal': this.employeegoal
+// 'Goaldataupdate': this.Goaldataupdate,
+// 'Goalemployeeambitionsummary': this.Goalemployeeambitionsummary
 // };
-// // first time save api 
-//   this.appraisalFormService.PostgoalformData(body_data).subscribe((employeegoal: any) => {
-//     if (employeegoal) {
-//     this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
-//     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
-//   }
-   
-//   });
 
+// this.appraisalFormService.UpdateEmployeegoalformData(body_data).subscribe((Goaldataupdate: any) => {
+// if (Goaldataupdate) {
+// this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+// this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+// this.ButtonToogle=true;
 // }
-//  }
+// });
+//   }
+//   else{
+    
+ 
+//       // Edit employee  Rating and comments saving Code
+      
+//           var rating1 = this.goalForm.controls.ratingone.value;
+//         var rating2 = this.goalForm.controls.ratingtwo.value;
+//         var rating3 = this.goalForm.controls.ratingthree.value;
+//         var rating4 = this.goalForm.controls.ratingfour.value;
+//         var rating5 = this.goalForm.controls.ratingfive.value;
+//         var rating6 = this.goalForm.controls.ratingsix.value;
+//         var rating7 = this.goalForm.controls.ratingseven.value;
+//         var rating8 = this.goalForm.controls.ratingeight.value;
+//         var rating9 = this.goalForm.controls.ratingnine.value;
+//         var rating10 = this.goalForm.controls.ratingten.value;
+//         var rating11 = this.goalForm.controls.ratingeleven.value;
+//         var rating12 = this.goalForm.controls.ratingtwelve.value;
+      
+//         var comments1 = this.goalForm.controls.Commentone.value;
+//         var comments2 = this.goalForm.controls.Commenttwo.value;
+//         var comments3 = this.goalForm.controls.Commentthree.value;
+//         var comments4 = this.goalForm.controls.Commentfour.value;
+//         var comments5 = this.goalForm.controls.Commentfive.value;
+//         var comments6 = this.goalForm.controls.Commentsix.value;
+//         var comments7 = this.goalForm.controls.Commentseven.value;
+//         var comments8 = this.goalForm.controls.Commenteight.value;
+//         var comments9 = this.goalForm.controls.Commentnine.value;
+//         var comments10 = this.goalForm.controls.Commentten.value;
+//         var comments11 = this.goalForm.controls.Commenteleven.value;
+//         var comments12 = this.goalForm.controls.Commenttwelve.value;
+      
+//         var ambitions = this.goalForm.controls.ambitions.value;
+//         var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
+//         var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
+//         var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
+      
+//        // var data = this._sessionStorage.GetUserdetailInfo();
+//         const empid= parseInt(localStorage.getItem('empid'));
+//        // const empid =636;
+//         this.EditGoaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
+//         this.EditGoaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
+//         this.EditGoaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
+//         this.EditGoaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
+//         this.EditGoaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
+//         this.EditGoaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
+//         this.EditGoaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
+//         this.EditGoaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
+//         this.EditGoaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
+//         this.EditGoaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
+//         this.EditGoaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
+//         this.EditGoaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
+      
+//         console.log('goal setting array',this.EditGoaldataupdate);
+      
+//         this.EditGoalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
+      
+      
+//       const body_data = {
+//         'EditGoaldataupdate': this.EditGoaldataupdate,
+//         'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary
+//       };
+//       // if(this.ButtonToogle == false)
+//       //   {
+//       this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((EditGoaldataupdate: any) => {
+//         if (EditGoaldataupdate) {
+//         this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+//         this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+//       }
+//        });
+//      }
+  
+// // if(this.pid1!=null){
 
-  }
+    
+// // }
+// // else{
+
+  
+
+
+// // }
+// //}
+// //else{
+//   // first goal save by manager
+// //   if(this.ButtonToogle == false)
+// //   {
+// //   var goal1 = this.goalForm.controls.goalone.value;
+// //   var goal2 = this.goalForm.controls.goaltwo.value;
+// //   var goal3 = this.goalForm.controls.goalthree.value;
+// //   var goal4 = this.goalForm.controls.goalFour.value;
+// //   var goal5 = this.goalForm.controls.goalFive.value;
+// //   var goal6 = this.goalForm.controls.goalSix.value;
+// //   var goal7 = this.goalForm.controls.goalseven.value;
+// //   var goal8 = this.goalForm.controls.goaleight.value;
+// //   var goal9 = this.goalForm.controls.goalnine.value;
+// //   var goal10 = this.goalForm.controls.goalten.value;
+// //   var goal11 = this.goalForm.controls.goaleleven.value;
+// //   var goal12 = this.goalForm.controls.goaltwelve.value;
+  
+
+// //   var data = this._sessionStorage.GetUserdetailInfo();
+// //  const empid =data.id;
+// //  var managerid =data.departmentHead;
+// // var manageraating= this.goalForm.controls.managerratingone.value;
+
+
+ 
+// //   //my changes
+// //     this.employeegoal.push({ description: goal1,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal2 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal3 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal4 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal5,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal6 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal7 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal8 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal9 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal10 ,id: empid,departmentHead:managerid});
+// //   this.employeegoal.push({ description: goal11,id: empid,departmentHead:managerid });
+// //   this.employeegoal.push({ description: goal12 ,id: empid,departmentHead:managerid});
+// //   console.log('goal setting array',this.employeegoal);
+
+
+// // const body_data = {
+// //   'employeegoal': this.employeegoal
+// // };
+// // // first time save api 
+// //   this.appraisalFormService.PostgoalformData(body_data).subscribe((employeegoal: any) => {
+// //     if (employeegoal) {
+// //     this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
+// //     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
+// //   }
+   
+// //   });
+
+// // }
+// //  }
+
+//   }
 
   disablegoal(){
     this.goalForm.controls.goalone.disable();

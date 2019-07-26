@@ -19,11 +19,11 @@ export interface AppraisalEmpRes{
     lName: string;
     confirmationStatus: string;
     appraisalStatus: string;
-    HrAssesmentStatus: string;
-    GoalsettingByLeadStatus: string;
-    HrinitiateFormStatus: string;
-    SelfAssesmentStatus: string;
-    LeadAssesmentStatus: string;
+    hrAssesmentStatus: string;
+    goalsettingByLeadStatus: string;
+    hrinitiateFormStatus: string;
+    selfAssesmentStatus: string;
+    leadAssesmentStatus: string;
     managerName: string;
     departmentHead:string;
 }
@@ -70,6 +70,21 @@ export interface AppraisalEmpformdetailRes{
     areaImproveSelf:string,
     actionPlanImproveSelf:string,
     isActive: boolean;
-    // _EmployeeRatinglist:[];
-    // _EmployeeAmbitionlist:[];
+   
+}
+
+export interface AppraisalEmpGoalRatingComments{
+    id: number;
+    ratings: string;
+    comments :string;
+    isActive: boolean;
+}
+
+export interface AppraisalmanagerGoalRatingComments{
+    id: number;
+    ratings: string;
+    comments :string;
+    commentManager:string;
+    ratingManager:string;
+    isActive: boolean;
 }

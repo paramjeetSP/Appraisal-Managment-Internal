@@ -4,7 +4,7 @@ import { AppraisalLoginModel } from '../Model/appraisal-login-model';
 import { Global } from '../../global';
 import { Observable } from 'rxjs';
 import { AppraisalLoginResponse } from '../Model/Response/appraisal-login-response';
-import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes, AppraisalEmpformdetailRes } from '../Model/Response/appraisal-employee-list-res';
+import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes, AppraisalEmpformdetailRes, AppraisalEmpGoalRatingComments, AppraisalmanagerGoalRatingComments } from '../Model/Response/appraisal-employee-list-res';
 const httpOptions = {
   headers: new HttpHeaders({
      'Content-Type': 'application/json',
@@ -60,5 +60,23 @@ export class AppraisalFormService {
     debugger
     const url = `${this._global.API_FULL_URL}UpdateEmployeeRatingComment`;
     return this._http.post(url,EditGoaldataupdate,httpOptions)
+  }
+
+  GetEmployeeRCDetailsById(id: number): Observable<AppraisalEmpGoalRatingComments[]> {
+    debugger
+    const url = `${this._global.API_FULL_URL}GetEmployeeRcInfoById`;
+    return this._http.post<AppraisalEmpGoalRatingComments[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+  }
+
+  PostManagerFinalSubmitData(ManagerRatingComment:any) {
+    debugger
+    const url = `${this._global.API_FULL_URL}SaveManagerAllRatingComment`;
+    return this._http.post(url,ManagerRatingComment,httpOptions)
+  }
+
+  GetmanagerRCDetailsById(id: number): Observable<AppraisalmanagerGoalRatingComments[]> {
+    debugger
+    const url = `${this._global.API_FULL_URL}GetManagerRcInfoById`;
+    return this._http.post<AppraisalmanagerGoalRatingComments[]>(url, { id: id }, this._global.HTTP_OPTIONS);
   }
 }

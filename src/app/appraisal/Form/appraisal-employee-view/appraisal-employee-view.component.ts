@@ -22,6 +22,8 @@ export class AppraisalEmployeeViewComponent implements OnInit {
   officialEmail:string;
   department:string;
   selfAssesmentStatus:string;
+  Showemployeelistgrid :boolean;
+  Showemptygrid:boolean;
   isviewform:boolean;
   displayedColumns: string[] = ['fullName',  'department','ViewForm'];
   employeeviewList: import("e:/Appraisaltimelog/Appraisal-Managment-Internal/src/app/appraisal/Model/Response/appraisal-login-response").AppraisalLoginResponse;
@@ -37,22 +39,20 @@ export class AppraisalEmployeeViewComponent implements OnInit {
     private _sessionStorage: SessionStorageService,
   ) { }
 
-  ngOnInit() {
-    // var isedit= localStorage.getItem('isedit');
-    // debugger 
-    // if(isedit == "true"){
-    //   this.isviewform =true;
-    // }
-    // else{
-    //   this.isviewform =false;
-    // }
+  ngOnInit() {  
+ debugger  
    var  data = this._sessionStorage.GetLoggedInUserInfo();
-  
    this.fullName=data.fullName;
    this.department=data.deptName;
    this.selfAssesmentStatus=data.selfAssesmentStatus;
-   //  this.employeeviewList=data;
-     // this.employeeList = new MatTableDataSource<EmpDetail>(data);
+    if(this.selfAssesmentStatus=="2" ||this.selfAssesmentStatus=="3"){
+      this.Showemptygrid=false;
+      this.Showemployeelistgrid=true;
+    }
+   else{
+    this.Showemptygrid=true;
+    this.Showemployeelistgrid=false;
+   }
   }
   employeeview(){
     debugger
