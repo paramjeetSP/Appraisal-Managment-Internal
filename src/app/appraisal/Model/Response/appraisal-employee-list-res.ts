@@ -46,9 +46,30 @@ export interface EmpDetailRes{
     evaluationStartDate:string;
     evaluationEndDate:string;
 }
-
+export interface EmpDetail{
+    id: number;
+    emp_Id: string;
+    emp_Code: string;
+    fullName: string;
+    officialEmail: string;
+   
+}
 export interface AppraisalEmpGoalRes{
     id: number;
     description: string;
     isActive: boolean;
+}
+
+export interface AppraisalEmpformdetailRes{
+    id: number;
+    description: string;
+    ratings: string;
+    comments: string;
+    ambitions:string;
+    summarize: string,
+    areaImproveSelf:string,
+    actionPlanImproveSelf:string,
+    isActive: boolean;
+    // _EmployeeRatinglist:[];
+    // _EmployeeAmbitionlist:[];
 }

@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 <div class="main-table-wrapper hr_appraisal_list">
   <div class="container-fluid">
+   <div class="d-flex justify-content-center"> 
     <mat-form-field>
       <input class="mr-2" matInput (keyup)="FullNameFilter($event.target.value)" placeholder="Full Name">
     </mat-form-field>
@@ -9,7 +10,8 @@
 
     </app-manager-department>
   </div>
-  <div class="container-fluid mat-elevation-z8">
+  </div>
+  <div   *ngIf="Showemployeelistgrid" class="container-fluid mat-elevation-z8">
   <div class="table-responsive"> 
     <table mat-table [dataSource]="employeeList" class=" table table-sm table-wrapper">
       <!-- Full Name Column -->
@@ -113,6 +115,8 @@
   </div>   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
-
+<div class="text-center main-heading"  *ngIf="Showemptygrid">
+<h3>Select Department </h3>
+</div>
   <!-- <p>{{employeeList | json}}</p> -->
 </div>

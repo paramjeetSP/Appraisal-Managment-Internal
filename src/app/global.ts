@@ -38,6 +38,7 @@ export class Global {
   /** ROUTES START */
   public ROUTE_APPRAISAL_LISTING = 'Appraisal/Listing';
   public ROUTE_APPRAISAL_FORM = 'Appraisal/Form';
+  public ROUTE_APPRAISAL_EmployeeviewForm = 'Appraisal/EmployeeviewForm';
   public ROUTE_APPRAISAL_Manager_FORM = 'Appraisal/ManagerForm';
   public ROUTE_APPRAISAL_Hr_FORM = 'Appraisal/HrForm';
   public ROUTE_APPRAISAL_MANAGER_PAGE = 'Appraisal/Goal';

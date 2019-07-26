@@ -5,6 +5,11 @@ export interface AppraisalLoginResponse {
   description: string;
   id: number;
   fullName:string;
+  goalSettingByLeadStatus:string;
+hrAssesmentStatus: string;
+hrInitiateFormStatus: string;
+leadAssesmentStatus:  string;
+selfAssesmentStatus:  string;
 }
 
 export interface Roles{

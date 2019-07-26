@@ -17,7 +17,7 @@ export class SessionStorageService {
   }
 
   GetLoggedInUserInfo(): AppraisalLoginResponse{
-    debugger
+   //debugger
     return JSON.parse(sessionStorage.getItem(this._global.SESSION_LOGGED_IN_USER_INFO)) as AppraisalLoginResponse;
   }
 

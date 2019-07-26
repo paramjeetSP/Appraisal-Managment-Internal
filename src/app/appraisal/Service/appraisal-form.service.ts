@@ -4,7 +4,7 @@ import { AppraisalLoginModel } from '../Model/appraisal-login-model';
 import { Global } from '../../global';
 import { Observable } from 'rxjs';
 import { AppraisalLoginResponse } from '../Model/Response/appraisal-login-response';
-import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes } from '../Model/Response/appraisal-employee-list-res';
+import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes, AppraisalEmpformdetailRes } from '../Model/Response/appraisal-employee-list-res';
 const httpOptions = {
   headers: new HttpHeaders({
      'Content-Type': 'application/json',
@@ -29,13 +29,13 @@ export class AppraisalFormService {
   }
 
   UpdateEmployeegoalformData(Goaldataupdate:any) {
-    debugger
+  //  debugger
     const url = `${this._global.API_FULL_URL}SaveEmployeeGoalFormRating`;
     return this._http.post(url,Goaldataupdate,httpOptions)
   }
 
   GetEmployeeGolaById(id: number): Observable<AppraisalEmpGoalRes[]> {
-    debugger
+  //  debugger
     const url = `${this._global.API_FULL_URL}GetGoalByEmpId`;
     return this._http.post<AppraisalEmpGoalRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
   }
@@ -45,8 +45,20 @@ export class AppraisalFormService {
   }
 
   GetEmployeeDetailsById(id: number): Observable<EmpDetailRes[]> {
-    debugger
+   // debugger
     const url = `${this._global.API_FULL_URL}GetUserInfoById`;
     return this._http.post<EmpDetailRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+  }
+
+  GetEmployeeformDetailForEdit(id: number): Observable<AppraisalEmpformdetailRes[]> {
+   // debugger
+    const url = `${this._global.API_FULL_URL}GetEmployeeRcInfoById`;
+    return this._http.post<AppraisalEmpformdetailRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+  }
+
+  EditEmployeegoalformData(EditGoaldataupdate:any) {
+    debugger
+    const url = `${this._global.API_FULL_URL}UpdateEmployeeRatingComment`;
+    return this._http.post(url,EditGoaldataupdate,httpOptions)
   }
 }

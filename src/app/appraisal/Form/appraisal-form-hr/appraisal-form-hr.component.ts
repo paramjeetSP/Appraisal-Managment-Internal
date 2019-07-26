@@ -88,87 +88,87 @@ export class AppraisalFormHrComponent implements OnInit {
       goaleleven: ['', Validators.required],
       goaltwelve: ['', Validators.required],
       // ratingitself
-    //  ratingone: ['', Validators.required],
-    //   ratingtwo: ['', Validators.required],
-    //   ratingthree: ['', Validators.required],
-    //   ratingfour: ['', Validators.required],
-    //   ratingfive: ['', Validators.required],
-    //   ratingsix: ['', Validators.required],
-    //   ratingseven: ['', Validators.required],
-    //   ratingeight: ['', Validators.required],
-    //   ratingnine: ['', Validators.required],
-    //   ratingten: ['', Validators.required],
-    //   ratingeleven: ['', Validators.required],
-    //   ratingtwelve: ['', Validators.required],
+     ratingone: ['', Validators.required],
+      ratingtwo: ['', Validators.required],
+      ratingthree: ['', Validators.required],
+      ratingfour: ['', Validators.required],
+      ratingfive: ['', Validators.required],
+      ratingsix: ['', Validators.required],
+      ratingseven: ['', Validators.required],
+      ratingeight: ['', Validators.required],
+      ratingnine: ['', Validators.required],
+      ratingten: ['', Validators.required],
+      ratingeleven: ['', Validators.required],
+      ratingtwelve: ['', Validators.required],
         // comments
-        // Commentone: ['', Validators.required],
-        // Commenttwo: ['', Validators.required],
-        // Commentthree: ['', Validators.required],
-        // Commentfour: ['', Validators.required],
-        // Commentfive: ['', Validators.required],
-        // Commentsix: ['', Validators.required],
-        // Commentseven: ['', Validators.required],
-        // Commenteight: ['', Validators.required],
-        // Commentnine: ['', Validators.required],
-        // Commentten: ['', Validators.required],
-        // Commenteleven: ['', Validators.required],
-        // Commenttwelve: ['', Validators.required],
+        Commentone: ['', Validators.required],
+        Commenttwo: ['', Validators.required],
+        Commentthree: ['', Validators.required],
+        Commentfour: ['', Validators.required],
+        Commentfive: ['', Validators.required],
+        Commentsix: ['', Validators.required],
+        Commentseven: ['', Validators.required],
+        Commenteight: ['', Validators.required],
+        Commentnine: ['', Validators.required],
+        Commentten: ['', Validators.required],
+        Commenteleven: ['', Validators.required],
+        Commenttwelve: ['', Validators.required],
         // mangaer rating
-        // managerratingone: ['', Validators.required],
-        // managerratingtwo: ['', Validators.required],
-        // managerratingthree: ['', Validators.required],
-        // managerratingfour: ['', Validators.required],
-        // managerratingfive: ['', Validators.required],
-        // managerratingsix: ['', Validators.required],
-        // managerratingseven: ['', Validators.required],
-        // managerratingeight: ['', Validators.required],
-        // managerratingnine: ['', Validators.required],
-        // managerratingten: ['', Validators.required],
-        // managerratingeleven: ['', Validators.required],
-        // managerratingtwelve: ['', Validators.required],
+        managerratingone: ['', Validators.required],
+        managerratingtwo: ['', Validators.required],
+        managerratingthree: ['', Validators.required],
+        managerratingfour: ['', Validators.required],
+        managerratingfive: ['', Validators.required],
+        managerratingsix: ['', Validators.required],
+        managerratingseven: ['', Validators.required],
+        managerratingeight: ['', Validators.required],
+        managerratingnine: ['', Validators.required],
+        managerratingten: ['', Validators.required],
+        managerratingeleven: ['', Validators.required],
+        managerratingtwelve: ['', Validators.required],
         // manager comments
-        // managerCommentone: ['', Validators.required],
-        //  managerCommenttwo: ['', Validators.required],
-        //  managerCommentthree: ['', Validators.required],
-        //  managerCommentfour: ['', Validators.required],
-        //  managerCommentfive: ['', Validators.required],
-        //  managerCommentsix: ['', Validators.required],
-        //  managerCommentseven: ['', Validators.required],
-        //  managerCommenteight: ['', Validators.required],
-        //  managerCommentnine: ['', Validators.required],
-        //  managerCommentten: ['', Validators.required],
-        //  managerCommenteleven: ['', Validators.required],
-        //  managerCommenttwelve: ['', Validators.required],
+        managerCommentone: ['', Validators.required],
+         managerCommenttwo: ['', Validators.required],
+         managerCommentthree: ['', Validators.required],
+         managerCommentfour: ['', Validators.required],
+         managerCommentfive: ['', Validators.required],
+         managerCommentsix: ['', Validators.required],
+         managerCommentseven: ['', Validators.required],
+         managerCommenteight: ['', Validators.required],
+         managerCommentnine: ['', Validators.required],
+         managerCommentten: ['', Validators.required],
+         managerCommenteleven: ['', Validators.required],
+         managerCommenttwelve: ['', Validators.required],
          // behavior rating by manager
-        //  behaviourratingone: ['', Validators.required],
-        //  behaviourratingtwo: ['', Validators.required],
-        //  behaviourratingthree: ['', Validators.required],
-        //  behaviourratingfour: ['', Validators.required],
-        //  behaviourratingfive: ['', Validators.required],
+         behaviourratingone: ['', Validators.required],
+         behaviourratingtwo: ['', Validators.required],
+         behaviourratingthree: ['', Validators.required],
+         behaviourratingfour: ['', Validators.required],
+         behaviourratingfive: ['', Validators.required],
 
           // behavior comments by manager
-          // behaviourCommentone: ['', Validators.required],
-          // behaviourCommenttwo: ['', Validators.required],
-          // behaviourCommentthree: ['', Validators.required],
-          // behaviourCommentfour: ['', Validators.required],
-          // behaviourCommentfive: ['', Validators.required],
+          behaviourCommentone: ['', Validators.required],
+          behaviourCommenttwo: ['', Validators.required],
+          behaviourCommentthree: ['', Validators.required],
+          behaviourCommentfour: ['', Validators.required],
+          behaviourCommentfive: ['', Validators.required],
 
           //ambitions
-        //  ambitions: ['', Validators.required],
+         ambitions: ['', Validators.required],
           //summary
-          // summarizecommentone: ['', Validators.required],
-          // summarizecommenttwo: ['', Validators.required],
-          // summarizecommentthree: ['', Validators.required],
-          // summarizemanagercommentone: ['', Validators.required],
-          // summarizemanagercommenttwo: ['', Validators.required],
-          // summarizemanagercommentthree: ['', Validators.required],
+          summarizecommentone: ['', Validators.required],
+          summarizecommenttwo: ['', Validators.required],
+          summarizecommentthree: ['', Validators.required],
+          summarizemanagercommentone: ['', Validators.required],
+          summarizemanagercommenttwo: ['', Validators.required],
+          summarizemanagercommentthree: ['', Validators.required],
           //closure
-          // closuremanagercommentone: ['', Validators.required],
-          // closuremanagercommenttwo: ['', Validators.required],
-          // closurehrcommentone: ['', Validators.required],
-          // closurehrcommenttwo: ['', Validators.required],
-          // closuremanagementcommentone: ['', Validators.required],
-          // closuremanagementcommenttwo: ['', Validators.required],
+          closuremanagercommentone: ['', Validators.required],
+          closuremanagercommenttwo: ['', Validators.required],
+          closurehrcommentone: ['', Validators.required],
+          closurehrcommenttwo: ['', Validators.required],
+          closuremanagementcommentone: ['', Validators.required],
+          closuremanagementcommenttwo: ['', Validators.required],
     });
     debugger   
     this.goalForm.reset();   
@@ -179,30 +179,31 @@ export class AppraisalFormHrComponent implements OnInit {
  this.GetemployeeDetails(idval);
 this.Getgoalemployee(idval);
 // disable goal for hr view
-  this.disablegoal();
-  this.disableratingitselfandcomments();
-  this.disablemanagerratingandcomments();
+  this.disablegoalall();
+  this.ratingitselfandcomments();
+  this.disableemployeeSummaryall();
+  this.managerratingandcomments();
+  this.disableambitionsinfo();
+  this.disableBehaviourratingandcomments();
+  this.disablemanagerSummaryall();
+  this.disableclosureall();
   }
   
   else{
     // disable rating for manager
  // 
   if(loginby=="employee"){
-    this.disablegoal();
-    this.disablemanagerratingandcomments();
-    this.disableBehaviourratingandcomments();
-    this.disablemanagerSummary();
-    this.disableclosure();
-    this.ButtonToogle=false;
+  
+    
   }
   else{
-    this.disableratingitselfandcomments();
-    this.disablemanagerratingandcomments();
+    this.ratingitselfandcomments();
+    this.managerratingandcomments();
     this.disableBehaviourratingandcomments();
-    this.disableambitions();
-    this.disablemanagerSummary();
-    this.disableemployeeSummary();
-    this.disableclosure();
+    this.disableambitionsinfo();
+    this.disablemanagerSummaryall();
+    this.disableemployeeSummaryall();
+    this.disableclosureall();
   }
    
     
@@ -533,7 +534,7 @@ onSubmit(){
   
 }
 
-  disablegoal(){
+  disablegoalall(){
     this.goalForm.controls.goalone.disable();
     this.goalForm.controls.goaltwo.disable();
     this.goalForm.controls.goalthree.disable();
@@ -548,7 +549,7 @@ onSubmit(){
     this.goalForm.controls.goaltwelve.disable();
   }
 
-  disableratingitselfandcomments(){
+  ratingitselfandcomments(){
     this.goalForm.controls.ratingone.disable();
     this.goalForm.controls.ratingtwo.disable();
     this.goalForm.controls.ratingthree.disable();
@@ -579,7 +580,7 @@ onSubmit(){
 
 
 
-  disablemanagerratingandcomments(){
+  managerratingandcomments(){
     
     this.goalForm.controls.managerratingone.disable();
     this.goalForm.controls.managerratingtwo.disable();
@@ -625,23 +626,23 @@ onSubmit(){
  
   }
 //disable ambitions
-  disableambitions(){
+  disableambitionsinfo(){
     this.goalForm.controls.ambitions.disable();
   }
 //disable employee Summary comments
-  disableemployeeSummary(){
+  disableemployeeSummaryall(){
     this.goalForm.controls.summarizecommentone.disable();
     this.goalForm.controls.summarizecommenttwo.disable();
     this.goalForm.controls.summarizecommentthree.disable();
   }
   //disable manager Summary comments
-  disablemanagerSummary(){
+  disablemanagerSummaryall(){
     this.goalForm.controls.summarizemanagercommentone.disable();
     this.goalForm.controls.summarizemanagercommenttwo.disable();
     this.goalForm.controls.summarizemanagercommentthree.disable();
   }
  //disable manager ,hr and management closure comments
-  disableclosure(){
+  disableclosureall(){
     this.goalForm.controls.closuremanagercommentone.disable();
     this.goalForm.controls.closuremanagercommenttwo.disable();
     this.goalForm.controls.closurehrcommentone.disable();

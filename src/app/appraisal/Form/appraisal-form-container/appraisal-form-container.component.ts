@@ -3,7 +3,7 @@ import { SessionStorageService } from '../../Service/session-storage.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppraisalFormService } from '../../Service/appraisal-form.service';
 import { Global } from 'src/app/global';
-import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes } from '../../Model/Response/appraisal-employee-list-res';
+import { AppraisalEmpRes, AppraisalEmpGoalRes, EmpDetailRes, AppraisalEmpformdetailRes } from '../../Model/Response/appraisal-employee-list-res';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { AppraisalManagerContainerComponent } from '../../Manager/appraisal-manager-container/appraisal-manager-container.component';
 import { CommonTaskService } from '../../Service/common-task.service';
@@ -36,6 +36,31 @@ export class AppraisalFormContainerComponent implements OnInit {
   goalten:string;
   goaleleven: string;
   goaltwelve:string;
+  ratingone: string;
+  ratingtwo: string;
+  ratingthree: string;
+  ratingfour: string;
+  ratingfive:string;
+  ratingsix: string;
+  ratingseven: string;
+  ratingeight:string;
+  ratingnine:string;
+  ratingten:string;
+  ratingeleven: string;
+  ratingtwelve:string;
+  ambitions:string;
+  Commentone: string;
+  Commenttwo: string;
+  Commentthree: string;
+  Commentfour: string;
+  Commentfive:string;
+  Commentsix: string;
+  Commentseven: string;
+  Commenteight:string;
+  Commentnine:string;
+  Commentten:string;
+  Commenteleven: string;
+  Commenttwelve:string;
   grade: string;
   designation: string;
   department: string;
@@ -56,12 +81,16 @@ export class AppraisalFormContainerComponent implements OnInit {
   pid10:any;
   pid11:any;
   pid12:any;
-  ButtonToogle = false;
+  ButtonToogle: boolean;
+  summarizecommenttwo:string;
+  summarizecommentthree:string;
+  summarizecommentone:string;
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
  editemployeegoal: Array<{ description: string,id:number,departmentHead:string,pid:number}> = [];
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
-  
+ EditGoaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
+ EditGoalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -171,43 +200,54 @@ export class AppraisalFormContainerComponent implements OnInit {
           closuremanagementcommenttwo: ['', Validators.required],
     });
     debugger   
-    
-
-   // this.goalForm.reset();   
-  var loginby=  localStorage.getItem(this._global.login_by) 
+//   var isedit= localStorage.getItem('isedit');
+//    if(isedit=="true"){
+// this.ButtonToogle ==true;
+//    }
+//    else{
+//     this.ButtonToogle ==false; 
+//    }
   
   var idval= this.router.snapshot.queryParamMap.get('id');  
+
+  localStorage.setItem('empid', idval);
   if(idval!=null){
+    debugger
    this.GetemployeeDetails(idval);
-   this.Getgoalemployee(idval);
+    //  this.Getgoalemployee(idval);
+   this.GetemployeeformDetail(idval);
+
+ 
  //disable goal for hr view
   this.disablegoal();
-  this.disableratingitselfandcomments();
+  this.disableBehaviourratingandcomments();
   this.disablemanagerratingandcomments();
+    this.disablemanagerSummary(); 
+    this.disableclosure();
   }
   
   else{
     // disable rating for manager
  // 
-  if(loginby=="employee"){
+  //if(loginby=="employee"){
     
 
-    this.disablegoal();
-    this.disablemanagerratingandcomments();
-    this.disableBehaviourratingandcomments();
-    this.disablemanagerSummary();
-    this.disableclosure();
-    this.ButtonToogle=false;
-  }
-  else{
-    this.disableratingitselfandcomments();
-    this.disablemanagerratingandcomments();
-    this.disableBehaviourratingandcomments();
-    this.disableambitions();
-    this.disablemanagerSummary();
-    this.disableemployeeSummary();
-    this.disableclosure();
-  }
+    // this.disablegoal();
+    // this.disablemanagerratingandcomments();
+    // this.disableBehaviourratingandcomments();
+    // this.disablemanagerSummary();
+    // this.disableclosure();
+    // this.ButtonToogle=false;
+ // }
+ // else{
+    // this.disableratingitselfandcomments();
+    // this.disablemanagerratingandcomments();
+    // this.disableBehaviourratingandcomments();
+    // this.disableambitions();
+    // this.disablemanagerSummary();
+    // this.disableemployeeSummary();
+    // this.disableclosure();
+ // }
    
     
     this.personaldata();    
@@ -231,59 +271,118 @@ export class AppraisalFormContainerComponent implements OnInit {
    this.reportingTo = data.managerName;    
    if(data.id !=null) 
    {
-  this.Getgoalemployee(data.id);
+  //this.Getgoalemployee(data.id);
    }
    else
    {
     var dataval= this._sessionStorage.GetLoggedInUserInfo();
-    this.Getgoalemployee(dataval.id);
+  //  this.Getgoalemployee(dataval.id);
    }
   }
 
-  Getgoalemployee(id: any){
+  // Getgoalemployee(id: any){
+  // //  debugger
+   
+  //   const subs = this.appraisalFormService.GetEmployeeGolaById(id)
+  //   .pipe(catchError(x => {
+  //     this._errorService.LogError(x);
+  //     return throwError(x);
+  //   }))
+  //   .subscribe(
+  //     (data:AppraisalEmpGoalRes[]) => {
+  //   //    debugger
+      
+  //     var dataval=data;
+  //     this.goalone=data[0].description;
+  //     if( this.goalone !=null)
+  //     {    
+  //      //this.ButtonToogle = true;
+  //     }
+  //     this.goalone=dataval[0].description;
+  //     this.goaltwo=dataval[1].description;
+  //     this.goalthree=dataval[2].description;
+  //     this.goalFour=dataval[3].description;
+  //     this.goalFive=dataval[4].description;
+  //     this.goalSix=dataval[5].description;
+  //     this.goalseven=dataval[6].description;
+  //     this.goaleight=dataval[7].description;
+  //     this.goalnine=dataval[8].description;
+  //     this.goalten=dataval[9].description;
+  //     this.goaleleven=dataval[10].description;
+  //     this.goaltwelve=dataval[11].description;
+  //     // primary key id
+     
+  //     this.pid1=data[0].id;
+  //     this.pid2=data[1].id;
+  //     this.pid3=data[2].id;
+  //     this.pid4=data[3].id;
+  //     this.pid5=data[4].id;
+  //     this.pid6=data[5].id;
+  //     this.pid7=data[6].id;
+  //     this.pid8=data[7].id;
+  //     this.pid9=data[8].id;
+  //     this.pid10=data[9].id;
+  //     this.pid11=data[10].id;
+  //     this.pid12=data[11].id;
+  //     localStorage.setItem('pid1', JSON.stringify(this.pid1));
+  //     localStorage.setItem('pid2', JSON.stringify(this.pid2));
+  //     localStorage.setItem('pid3', JSON.stringify(this.pid3));
+  //     localStorage.setItem('pid4', JSON.stringify(this.pid4));
+  //     localStorage.setItem('pid5', JSON.stringify(this.pid5));
+  //     localStorage.setItem('pid6', JSON.stringify(this.pid6));
+  //     localStorage.setItem('pid7', JSON.stringify(this.pid7));
+  //     localStorage.setItem('pid8', JSON.stringify(this.pid8));
+  //     localStorage.setItem('pid9', JSON.stringify(this.pid9));
+  //     localStorage.setItem('pid10', JSON.stringify(this.pid10));
+  //     localStorage.setItem('pid11', JSON.stringify(this.pid11));
+  //     localStorage.setItem('pid12', JSON.stringify(this.pid12));
+    
+  //     //  this._spinner.hide();
+  //     }, 
+  //     (error) => {
+  //       this._errorService.LogError(error);
+  //     //  this._spinner.hide();
+  //     });
+  // }
+
+  GetemployeeformDetail(id: any){
     debugger
    
-    const subs = this.appraisalFormService.GetEmployeeGolaById(id)
+    const subs = this.appraisalFormService.GetEmployeeformDetailForEdit(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
     }))
     .subscribe(
-      (data:AppraisalEmpGoalRes[]) => {
+      (data:any) => {
         debugger
       
-      var dataval=data;
-      this.goalone=data[0].description;
-      if( this.goalone !=null)
-      {    
-       //this.ButtonToogle = true;
-      }
-      this.goalone=dataval[0].description;
-      this.goaltwo=dataval[1].description;
-      this.goalthree=dataval[2].description;
-      this.goalFour=dataval[3].description;
-      this.goalFive=dataval[4].description;
-      this.goalSix=dataval[5].description;
-      this.goalseven=dataval[6].description;
-      this.goaleight=dataval[7].description;
-      this.goalnine=dataval[8].description;
-      this.goalten=dataval[9].description;
-      this.goaleleven=dataval[10].description;
-      this.goaltwelve=dataval[11].description;
-      // primary key id
-     
-      this.pid1=data[0].id;
-      this.pid2=data[1].id;
-      this.pid3=data[2].id;
-      this.pid4=data[3].id;
-      this.pid5=data[4].id;
-      this.pid6=data[5].id;
-      this.pid7=data[6].id;
-      this.pid8=data[7].id;
-      this.pid9=data[8].id;
-      this.pid10=data[9].id;
-      this.pid11=data[10].id;
-      this.pid12=data[11].id;
+        
+      this.goalone=data._EmployeeRatinglist[0].description;
+      this.goaltwo=data._EmployeeRatinglist[1].description;
+      this.goalthree=data._EmployeeRatinglist[2].description;
+      this.goalFour=data._EmployeeRatinglist[3].description;
+      this.goalFive=data._EmployeeRatinglist[4].description;
+      this.goalSix=data._EmployeeRatinglist[5].description;
+      this.goalseven=data._EmployeeRatinglist[6].description;
+      this.goaleight=data._EmployeeRatinglist[7].description;
+      this.goalnine=data._EmployeeRatinglist[8].description;
+      this.goalten=data._EmployeeRatinglist[9].description;
+      this.goaleleven=data._EmployeeRatinglist[10].description;
+      this.goaltwelve=data._EmployeeRatinglist[11].description;
+
+      this.pid1=data._EmployeeRatinglist[0].id;
+      this.pid2=data._EmployeeRatinglist[1].id;
+      this.pid3=data._EmployeeRatinglist[2].id;
+      this.pid4=data._EmployeeRatinglist[3].id;
+      this.pid5=data._EmployeeRatinglist[4].id;
+      this.pid6=data._EmployeeRatinglist[5].id;
+      this.pid7=data._EmployeeRatinglist[6].id;
+      this.pid8=data._EmployeeRatinglist[7].id;
+      this.pid9=data._EmployeeRatinglist[8].id;
+      this.pid10=data._EmployeeRatinglist[9].id;
+      this.pid11=data._EmployeeRatinglist[10].id;
+      this.pid12=data._EmployeeRatinglist[11].id;
       localStorage.setItem('pid1', JSON.stringify(this.pid1));
       localStorage.setItem('pid2', JSON.stringify(this.pid2));
       localStorage.setItem('pid3', JSON.stringify(this.pid3));
@@ -296,8 +395,38 @@ export class AppraisalFormContainerComponent implements OnInit {
       localStorage.setItem('pid10', JSON.stringify(this.pid10));
       localStorage.setItem('pid11', JSON.stringify(this.pid11));
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
-    
-      //  this._spinner.hide();
+
+      this.ratingone=data._EmployeeRatinglist[0].ratings;
+      this.ratingtwo=data._EmployeeRatinglist[1].ratings;
+      this.ratingthree=data._EmployeeRatinglist[2].ratings;
+      this.ratingfour=data._EmployeeRatinglist[3].ratings;
+      this.ratingfive=data._EmployeeRatinglist[4].ratings;
+      this.ratingsix=data._EmployeeRatinglist[5].ratings;
+      this.ratingseven=data._EmployeeRatinglist[6].ratings;
+      this.ratingeight=data._EmployeeRatinglist[7].ratings;
+      this.ratingnine=data._EmployeeRatinglist[8].ratings;
+      this.ratingten=data._EmployeeRatinglist[9].ratings;
+      this.ratingeleven=data._EmployeeRatinglist[10].ratings;
+      this.ratingtwelve=data._EmployeeRatinglist[11].ratings;
+
+      this.Commentone=data._EmployeeRatinglist[0].comments;
+      this.Commenttwo=data._EmployeeRatinglist[1].comments;
+      this.Commentthree=data._EmployeeRatinglist[2].comments;
+      this.Commentfour=data._EmployeeRatinglist[3].comments;
+      this.Commentfive=data._EmployeeRatinglist[4].comments;
+      this.Commentsix=data._EmployeeRatinglist[5].comments;
+      this.Commentseven=data._EmployeeRatinglist[6].comments;
+      this.Commenteight=data._EmployeeRatinglist[7].comments;
+      this.Commentnine=data._EmployeeRatinglist[8].comments;
+      this.Commentten=data._EmployeeRatinglist[9].comments;
+      this.Commenteleven=data._EmployeeRatinglist[10].comments;
+      this.Commenttwelve=data._EmployeeRatinglist[11].comments;
+      
+      this.ambitions=data._EmployeeAmbitionlist[0].ambitions;
+      this.summarizecommentone=data._EmployeeAmbitionlist[0].summarize;
+      this.summarizecommenttwo=data._EmployeeAmbitionlist[0].areaImproveSelf;
+      this.summarizecommentthree=data._EmployeeAmbitionlist[0].actionPlanImproveSelf;
+
       }, 
       (error) => {
         this._errorService.LogError(error);
@@ -306,7 +435,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
 
   GetemployeeDetails(id: any){
-    debugger
+ //   debugger
     const subs = this.appraisalFormService.GetEmployeeDetailsById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -315,7 +444,7 @@ export class AppraisalFormContainerComponent implements OnInit {
     .subscribe(
      
       (data:EmpDetailRes[]) => {
-        debugger
+    //    debugger
       var dataitem=data[0];
     this.FullName=dataitem.fullName;
     this.doj = dataitem.doj;
@@ -362,122 +491,161 @@ export class AppraisalFormContainerComponent implements OnInit {
     this.pid10= localStorage.getItem('pid10');
     this.pid11=localStorage.getItem('pid11');
     this.pid12=  localStorage.getItem('pid12');
-if(this.pid1!=null){
-if(this.goalForm.controls.ratingone.value ==null && this.goalForm.controls.ratingone.value ==null){
-  var goal1 = this.goalForm.controls.goalone.value;
-  var goal2 = this.goalForm.controls.goaltwo.value;
-  var goal3 = this.goalForm.controls.goalthree.value;
-  var goal4 = this.goalForm.controls.goalFour.value;
-  var goal5 = this.goalForm.controls.goalFive.value;
-  var goal6 = this.goalForm.controls.goalSix.value;
-  var goal7 = this.goalForm.controls.goalseven.value;
-  var goal8 = this.goalForm.controls.goaleight.value;
-  var goal9 = this.goalForm.controls.goalnine.value;
-  var goal10 = this.goalForm.controls.goalten.value;
-  var goal11 = this.goalForm.controls.goaleleven.value;
-  var goal12 = this.goalForm.controls.goaltwelve.value;
-
-  var data = this._sessionStorage.GetUserdetailInfo();
- const empid =data.id;
- var managerid =data.departmentHead;
-var manageraating= this.goalForm.controls.managerratingone.value;
-
-this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:managerid,pid:this.pid1});
-    this.editemployeegoal.push({ description: goal2 ,id: empid,departmentHead:managerid,pid:this.pid2});
-    this.editemployeegoal.push({ description: goal3 ,id: empid,departmentHead:managerid,pid:this.pid3});
-    this.editemployeegoal.push({ description: goal4 ,id: empid,departmentHead:managerid,pid:this.pid4});
-    this.editemployeegoal.push({ description: goal5,id: empid,departmentHead:managerid,pid:this.pid5});
-    this.editemployeegoal.push({ description: goal6 ,id: empid,departmentHead:managerid,pid:this.pid6});
-    this.editemployeegoal.push({ description: goal7 ,id: empid,departmentHead:managerid,pid:this.pid7});
-    this.editemployeegoal.push({ description: goal8 ,id: empid,departmentHead:managerid,pid:this.pid8});
-    this.editemployeegoal.push({ description: goal9 ,id: empid,departmentHead:managerid,pid:this.pid9});
-    this.editemployeegoal.push({ description: goal10 ,id: empid,departmentHead:managerid,pid:this.pid10});
-    this.editemployeegoal.push({ description: goal11,id: empid,departmentHead:managerid,pid:this.pid11});
-    this.editemployeegoal.push({ description: goal12 ,id: empid,departmentHead:managerid,pid:this.pid12});
-    console.log('goal setting array',this.editemployeegoal);
-  const body_data = {
-    'editemployeegoal': this.editemployeegoal
-  };
-  this.appraisalFormService.PostgoaleditformData(body_data).subscribe((editemployeegoal: any) => {
-    if (editemployeegoal) {
-      alert('edit sucesss')
-      //this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_update} `);
-      this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
-    }
-  });
-}
-else{
-
+    var isedit= localStorage.getItem('isedit');
+  
+    if(isedit == 'false')
+  {
 // employee Rating and comments saving Code
 
-    var rating1 = this.goalForm.controls.ratingone.value;
-  var rating2 = this.goalForm.controls.ratingtwo.value;
-  var rating3 = this.goalForm.controls.ratingthree.value;
-  var rating4 = this.goalForm.controls.ratingfour.value;
-  var rating5 = this.goalForm.controls.ratingfive.value;
-  var rating6 = this.goalForm.controls.ratingsix.value;
-  var rating7 = this.goalForm.controls.ratingseven.value;
-  var rating8 = this.goalForm.controls.ratingeight.value;
-  var rating9 = this.goalForm.controls.ratingnine.value;
-  var rating10 = this.goalForm.controls.ratingten.value;
-  var rating11 = this.goalForm.controls.ratingeleven.value;
-  var rating12 = this.goalForm.controls.ratingtwelve.value;
+var rating1 = this.goalForm.controls.ratingone.value;
+var rating2 = this.goalForm.controls.ratingtwo.value;
+var rating3 = this.goalForm.controls.ratingthree.value;
+var rating4 = this.goalForm.controls.ratingfour.value;
+var rating5 = this.goalForm.controls.ratingfive.value;
+var rating6 = this.goalForm.controls.ratingsix.value;
+var rating7 = this.goalForm.controls.ratingseven.value;
+var rating8 = this.goalForm.controls.ratingeight.value;
+var rating9 = this.goalForm.controls.ratingnine.value;
+var rating10 = this.goalForm.controls.ratingten.value;
+var rating11 = this.goalForm.controls.ratingeleven.value;
+var rating12 = this.goalForm.controls.ratingtwelve.value;
 
-  var comments1 = this.goalForm.controls.Commentone.value;
-  var comments2 = this.goalForm.controls.Commenttwo.value;
-  var comments3 = this.goalForm.controls.Commentthree.value;
-  var comments4 = this.goalForm.controls.Commentfour.value;
-  var comments5 = this.goalForm.controls.Commentfive.value;
-  var comments6 = this.goalForm.controls.Commentsix.value;
-  var comments7 = this.goalForm.controls.Commentseven.value;
-  var comments8 = this.goalForm.controls.Commenteight.value;
-  var comments9 = this.goalForm.controls.Commentnine.value;
-  var comments10 = this.goalForm.controls.Commentten.value;
-  var comments11 = this.goalForm.controls.Commenteleven.value;
-  var comments12 = this.goalForm.controls.Commenttwelve.value;
+var comments1 = this.goalForm.controls.Commentone.value;
+var comments2 = this.goalForm.controls.Commenttwo.value;
+var comments3 = this.goalForm.controls.Commentthree.value;
+var comments4 = this.goalForm.controls.Commentfour.value;
+var comments5 = this.goalForm.controls.Commentfive.value;
+var comments6 = this.goalForm.controls.Commentsix.value;
+var comments7 = this.goalForm.controls.Commentseven.value;
+var comments8 = this.goalForm.controls.Commenteight.value;
+var comments9 = this.goalForm.controls.Commentnine.value;
+var comments10 = this.goalForm.controls.Commentten.value;
+var comments11 = this.goalForm.controls.Commenteleven.value;
+var comments12 = this.goalForm.controls.Commenttwelve.value;
 
-  var ambitions = this.goalForm.controls.ambitions.value;
-  var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
-  var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
-  var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
+var ambitions = this.goalForm.controls.ambitions.value;
+var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
+var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
+var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
 
-  var data = this._sessionStorage.GetUserdetailInfo();
-  const empid =data.id;
+const empid= parseInt(localStorage.getItem('empid'));
+// var data = this._sessionStorage.GetUserdetailInfo();
+// const empid =data.id;
 
-  this.Goaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
-  this.Goaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
-  this.Goaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
-  this.Goaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
-  this.Goaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
-  this.Goaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
-  this.Goaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
-  this.Goaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
-  this.Goaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
-  this.Goaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
-  this.Goaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
-  this.Goaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
+this.Goaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
+this.Goaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
+this.Goaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
+this.Goaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
+this.Goaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
+this.Goaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
+this.Goaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
+this.Goaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
+this.Goaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
+this.Goaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
+this.Goaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
+this.Goaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
 
-  console.log('goal setting array',this.Goaldataupdate);
+console.log('goal setting array',this.Goaldataupdate);
 
-  this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
+this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
 
 
 const body_data = {
-  'Goaldataupdate': this.Goaldataupdate,
-  'Goalemployeeambitionsummary': this.Goalemployeeambitionsummary
+'Goaldataupdate': this.Goaldataupdate,
+'Goalemployeeambitionsummary': this.Goalemployeeambitionsummary
 };
-if(this.ButtonToogle == false)
-  {
+
 this.appraisalFormService.UpdateEmployeegoalformData(body_data).subscribe((Goaldataupdate: any) => {
-  if (Goaldataupdate) {
-  this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+if (Goaldataupdate) {
+this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+this.ButtonToogle=true;
+}
+});
+  }
+  else{
+    
  
-}
- });
-}
-}
-}
-else{
+      // Edit employee  Rating and comments saving Code
+      
+          var rating1 = this.goalForm.controls.ratingone.value;
+        var rating2 = this.goalForm.controls.ratingtwo.value;
+        var rating3 = this.goalForm.controls.ratingthree.value;
+        var rating4 = this.goalForm.controls.ratingfour.value;
+        var rating5 = this.goalForm.controls.ratingfive.value;
+        var rating6 = this.goalForm.controls.ratingsix.value;
+        var rating7 = this.goalForm.controls.ratingseven.value;
+        var rating8 = this.goalForm.controls.ratingeight.value;
+        var rating9 = this.goalForm.controls.ratingnine.value;
+        var rating10 = this.goalForm.controls.ratingten.value;
+        var rating11 = this.goalForm.controls.ratingeleven.value;
+        var rating12 = this.goalForm.controls.ratingtwelve.value;
+      
+        var comments1 = this.goalForm.controls.Commentone.value;
+        var comments2 = this.goalForm.controls.Commenttwo.value;
+        var comments3 = this.goalForm.controls.Commentthree.value;
+        var comments4 = this.goalForm.controls.Commentfour.value;
+        var comments5 = this.goalForm.controls.Commentfive.value;
+        var comments6 = this.goalForm.controls.Commentsix.value;
+        var comments7 = this.goalForm.controls.Commentseven.value;
+        var comments8 = this.goalForm.controls.Commenteight.value;
+        var comments9 = this.goalForm.controls.Commentnine.value;
+        var comments10 = this.goalForm.controls.Commentten.value;
+        var comments11 = this.goalForm.controls.Commenteleven.value;
+        var comments12 = this.goalForm.controls.Commenttwelve.value;
+      
+        var ambitions = this.goalForm.controls.ambitions.value;
+        var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
+        var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
+        var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
+      
+       // var data = this._sessionStorage.GetUserdetailInfo();
+        const empid= parseInt(localStorage.getItem('empid'));
+       // const empid =636;
+        this.EditGoaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
+        this.EditGoaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
+        this.EditGoaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
+        this.EditGoaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
+        this.EditGoaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
+        this.EditGoaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
+        this.EditGoaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
+        this.EditGoaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
+        this.EditGoaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
+        this.EditGoaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
+        this.EditGoaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
+        this.EditGoaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
+      
+        console.log('goal setting array',this.EditGoaldataupdate);
+      
+        this.EditGoalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo});
+      
+      
+      const body_data = {
+        'EditGoaldataupdate': this.EditGoaldataupdate,
+        'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary
+      };
+      // if(this.ButtonToogle == false)
+      //   {
+      this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((EditGoaldataupdate: any) => {
+        if (EditGoaldataupdate) {
+        this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+        this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+      }
+       });
+     }
+  
+// if(this.pid1!=null){
+
+    
+// }
+// else{
+
+  
+
+
+// }
+//}
+//else{
   // first goal save by manager
 //   if(this.ButtonToogle == false)
 //   {
@@ -531,7 +699,7 @@ else{
 //   });
 
 // }
-  }
+//  }
 
   }
 

@@ -1,0 +1,20 @@
+
+.main-table-wrapper {
+    border: 1px solid #ddd;
+    padding-top: 0;
+    margin-top: 79px;
+    padding: 1px;
+}
+  .table .thead-dark th {
+    background-color: #f3c624;
+    border-color: #f3c624;
+}
+.employeetable {
+    margin-bottom: 0;
+}
+.main-table-wrapper td:last-child {
+    border: none !important;
+}
+.main-table-wrapper td {
+    border-right: 1px solid #ddd;
+}

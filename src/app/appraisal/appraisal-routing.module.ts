@@ -6,6 +6,7 @@ import { AppraisalEmployeeListComponent } from './EmployeeList/appraisal-employe
 import { AppraisalManagerContainerComponent } from './Manager/appraisal-manager-container/appraisal-manager-container.component';
 import { AppraisalFormHrComponent } from './Form/appraisal-form-hr/appraisal-form-hr.component';
 import { AppraisalFormManagerComponent } from './Form/appraisal-form-manager/appraisal-form-manager.component';
+import { AppraisalEmployeeViewComponent } from './Form/appraisal-employee-view/appraisal-employee-view.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: 'Form',
     component: AppraisalFormContainerComponent
   },
+  {
+    path: 'EmployeeviewForm',
+    component: AppraisalEmployeeViewComponent
+  },
+  
   {
     path: 'HrForm',
     component: AppraisalFormHrComponent

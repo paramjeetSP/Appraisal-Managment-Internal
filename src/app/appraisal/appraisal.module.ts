@@ -25,6 +25,7 @@ import { Global } from '../global';
 import { DialogService } from './Service/dialog.service';
 import { AppraisalFormManagerComponent } from './Form/appraisal-form-manager/appraisal-form-manager.component';
 import { AppraisalFormHrComponent } from './Form/appraisal-form-hr/appraisal-form-hr.component';
+import { AppraisalEmployeeViewComponent } from './Form/appraisal-employee-view/appraisal-employee-view.component';
 @NgModule({
   declarations: [
     AppraisalFormContainerComponent,
@@ -40,7 +41,8 @@ import { AppraisalFormHrComponent } from './Form/appraisal-form-hr/appraisal-for
     ManagerDepartmentComponent,
     ManagerEmployeeListComponent,
     AppraisalFormManagerComponent,
-    AppraisalFormHrComponent
+    AppraisalFormHrComponent,
+    AppraisalEmployeeViewComponent
   ],
   imports: [
     CommonModule,
