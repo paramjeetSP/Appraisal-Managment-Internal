@@ -85,6 +85,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   summarizecommenttwo:string;
   summarizecommentthree:string;
   summarizecommentone:string;
+  submitted = false;
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
  editemployeegoal: Array<{ description: string,id:number,departmentHead:string,pid:number}> = [];
@@ -175,7 +176,7 @@ export class AppraisalFormContainerComponent implements OnInit {
          behaviourratingfour: ['', Validators.required],
          behaviourratingfive: ['', Validators.required],
 
-          // behavior comments by manager
+         // behavior comments by manager
           behaviourCommentone: ['', Validators.required],
           behaviourCommenttwo: ['', Validators.required],
           behaviourCommentthree: ['', Validators.required],
@@ -258,7 +259,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
   
   }
-
+  get goalsettingform() { return this.goalForm.controls; }
   personaldata(){
     debugger
     
@@ -479,6 +480,12 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
   onSubmit() {
     debugger
+    this.submitted = true;
+    if (this.goalForm.invalid) {
+      return;
+  }
+  
+
     this.pid1= localStorage.getItem('pid1');
     this.pid2= localStorage.getItem('pid2');
     this.pid3=localStorage.getItem('pid3');
@@ -567,6 +574,12 @@ this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
 
   }
   }
+  Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+  }
+
+ 
+
 //   onSubmit() {
 //     debugger
 //     this.pid1= localStorage.getItem('pid1');

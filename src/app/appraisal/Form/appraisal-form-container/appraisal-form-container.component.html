@@ -119,24 +119,33 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input1 formControlName="ratingone" [(ngModel)]='ratingone' type="number" > -->
-                                            <input  formControlName="ratingone" [(ngModel)]='ratingone'  Input1  type="number" >
-                                         
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                            <!-- <input disabled Input2 formControlName="ratingtwo" [(ngModel)]='ratingtwo' type="number" > -->
-                                            <input formControlName="ratingtwo" [(ngModel)]='ratingtwo'  Input2  type="number" >
-                                            
                                           
+                                            <div class="form-group">
+                                            <input onkeypress="return false"  formControlName="ratingone" [(ngModel)]='ratingone' min="1" max="5" Input1 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingone.errors }" type="number" >
+                                            <div *ngIf="submitted && goalsettingform.ratingone.errors" class="invalid-feedback">
+                                              <div >Rating is required</div>
+                                          </div>
+                                        </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input3 formControlName="ratingthree" [(ngModel)]='ratingthree' type="number" > -->
-                                            <input formControlName="ratingthree"  [(ngModel)]='ratingthree' Input3  type="number" > 
-                                         
+                                          <div class="form-group">
+                                            <input onkeypress="return false" formControlName="ratingtwo" [(ngModel)]='ratingtwo' min="1" max="5" class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingtwo.errors }" Input2  type="number" >
+                                            <div *ngIf="submitted && goalsettingform.ratingtwo.errors" class="invalid-feedback">
+                                              <div >Rating is required</div>
+                                          </div>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="form-group">
+                                            <input onkeypress="return false" formControlName="ratingthree" class="form-control" min="1" max="5" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingthree.errors }"  [(ngModel)]='ratingthree' Input3  type="number" > 
+                                            <div *ngIf="submitted && goalsettingform.ratingthree.errors" class="invalid-feedback">
+                                              <div >Rating is required</div>
+                                          </div>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -144,24 +153,34 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                       
-                                            <!-- <textarea disabled Input7 formControlName="Commentone" [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea> -->
-                                            <textarea  Input7 formControlName="Commentone" [(ngModel)]='Commentone'  placeholder="Leave a comment"></textarea>
-                                        </td>
+                                          <div class="form-group">
+                                            <textarea  Input7 formControlName="Commentone" [(ngModel)]='Commentone' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentone.errors }"  placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commentone.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                          </div>
+                                          </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <!-- <textarea disabled Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo' placeholder="Leave a comment"></textarea> -->
-                                            <textarea  Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo'  placeholder="Leave a comment"></textarea>
-                                        </td>
+                                          <div class="form-group">
+                                            <textarea  Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commenttwo.errors }"  placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commenttwo.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                          </div>
+                                          </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          
-                                            <!-- <textarea disabled Input9 formControlName="Commentthree" [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea> -->
-                                            <textarea formControlName="Commentthree" [(ngModel)]='Commentthree' Input9  placeholder="Leave a comment"></textarea>
-                                        </td>
+                                          <div class="form-group"> 
+                                            
+                                            <textarea formControlName="Commentthree" [(ngModel)]='Commentthree' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentthree.errors }" Input9  placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commentthree.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                          </div>
+                                          </td>
                                       </tr>
                                     </table></td>
                                     <td class="sub-table"><table >
@@ -249,23 +268,33 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input16 formControlName="ratingfour" [(ngModel)]='ratingfour' type="number" > -->
+                                            <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingfour"  [(ngModel)]='ratingfour'  min="1" max="5" Input16 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingfour.errors }" type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingfour.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
                                              
-                                              <input formControlName="ratingfour"  [(ngModel)]='ratingfour' Input16  type="number" >
+                                              <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingfive" [(ngModel)]='ratingfive'  min="1" max="5" class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingfive.errors }" Input17 type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingfive.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input17 formControlName="ratingfive" [(ngModel)]='ratingfive' type="number" > -->
-                                              
-                                              <input formControlName="ratingfive" [(ngModel)]='ratingfive' Input17 type="number" >
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td>
-                                              <!-- <input disabled Input18 formControlName="ratingsix" [(ngModel)]='ratingsix' type="number" > -->
-                                              <input formControlName="ratingsix" [(ngModel)]='ratingsix'  Input18  type="number" >
-                                          
+                                            <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingsix" [(ngModel)]='ratingsix'  min="1" max="5"  Input18 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingsix.errors }" type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingsix.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
@@ -297,23 +326,32 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input22 formControlName="Commentfour"  [(ngModel)]='Commentfour' placeholder="Leave a comment"></textarea>
-                                           
+                                            <div class="form-group"> 
+                                              <textarea  Input22 formControlName="Commentfour"  [(ngModel)]='Commentfour' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentfour.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commentfour.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                          </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input23 formControlName="Commentfive" [(ngModel)]='Commentfive'  placeholder="Leave a comment"></textarea>
-                                            
+                                            <div class="form-group"> 
+                                              <textarea  Input23 formControlName="Commentfive" [(ngModel)]='Commentfive' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentfive.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commentfive.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                          </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input24 formControlName="Commentsix"  [(ngModel)]='Commentsix'  placeholder="Leave a comment"></textarea>
-                                           
+                                            <div class="form-group"> 
+                                              <textarea  Input24 formControlName="Commentsix"  [(ngModel)]='Commentsix' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentsix.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commentsix.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
@@ -403,24 +441,34 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input31 formControlName="ratingseven" [(ngModel)]='ratingseven' type="number" > -->
-                                              <input formControlName="ratingseven"  [(ngModel)]='ratingseven'  Input31  type="number" >
-                                        
+                                            <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingseven"  [(ngModel)]='ratingseven'  min="1" max="5" Input31 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingseven.errors }"  type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingseven.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input32 formControlName="ratingeight" [(ngModel)]='ratingeight' type="number" > -->
-                                              <input formControlName="ratingeight" [(ngModel)]='ratingeight' Input32  type="number" >
-                                           
+                                            <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingeight" [(ngModel)]='ratingeight'  min="1" max="5" Input32 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingeight.errors }"  type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingeight.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input33 formControlName="ratingnine" [(ngModel)]='ratingnine' type="number" > -->
-                                            
-                                              <input formControlName="ratingnine" [(ngModel)]='ratingnine'  Input33  type="number" >
-                                          </td>
+                                             
+                                            <div class="form-group">
+                                              <input onkeypress="return false" formControlName="ratingnine" [(ngModel)]='ratingnine'  min="1" max="5" class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingnine.errors }"  Input33  type="number" >
+                                              <div *ngIf="submitted && goalsettingform.ratingnine.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                            </div>
+                                            </td>
                                         </tr>
                                       </table></td>
                                       <!-- <td class="sub-table"><table >
@@ -445,23 +493,32 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input37  formControlName="Commentseven"  [(ngModel)]='Commentseven'  placeholder="Leave a comment"></textarea>
-                                         
+                                            <div class="form-group">
+                                              <textarea  Input37  formControlName="Commentseven"  [(ngModel)]='Commentseven'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentseven.errors }"  placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commentseven.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input38 formControlName="Commenteight" [(ngModel)]='Commenteight'  placeholder="Leave a comment"></textarea>
-                                            
+                                            <div class="form-group">
+                                              <textarea  Input38 formControlName="Commenteight" [(ngModel)]='Commenteight'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commenteight.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commenteight.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                            
-                                              <textarea  Input39 formControlName="Commentnine" [(ngModel)]='Commentnine'   placeholder="Leave a comment"></textarea>
-                                         
+                                            <div class="form-group">
+                                              <textarea  Input39 formControlName="Commentnine" [(ngModel)]='Commentnine'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentnine.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.Commentnine.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
@@ -554,23 +611,32 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input46 formControlName="ratingten" [(ngModel)]='ratingten' type="number" > -->
-                                            <input formControlName="ratingten" [(ngModel)]='ratingten' Input47  type="number" > 
-                                         
+                                          <div class="form-group">
+                                            <input onkeypress="return false" formControlName="ratingten" [(ngModel)]='ratingten'  min="1" max="5" Input47  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingten.errors }" type="number" > 
+                                            <div *ngIf="submitted && goalsettingform.ratingten.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input47 formControlName="ratingeleven" [(ngModel)]='ratingeleven' type="number" > -->
-                                            <input formControlName="ratingeleven" [(ngModel)]='ratingeleven' Input47  type="number" >
-                                         
+                                            <div class="form-group">
+                                            <input onkeypress="return false" formControlName="ratingeleven" [(ngModel)]='ratingeleven'  min="1" max="5" Input47  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingeleven.errors }" type="number" >
+                                            <div *ngIf="submitted && goalsettingform.ratingeleven.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input  disabled Input48 formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' type="number" > -->
-                                            <input  formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' Input48  type="number" > 
-                                         
+                                            <div class="form-group">
+                                            <input onkeypress="return false" formControlName="ratingtwelve" [(ngModel)]='ratingtwelve'  min="1" max="5" Input48 class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ratingtwelve.errors }" type="number" > 
+                                            <div *ngIf="submitted && goalsettingform.ratingtwelve.errors" class="invalid-feedback">
+                                                <div >Rating is required</div>
+                                            </div>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -600,23 +666,32 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                       
-                                            <textarea  Input52 formControlName="Commentten"  [(ngModel)]='Commentten'  placeholder="Leave a comment"></textarea>
-                                       
+                                          <div class="form-group">
+                                            <textarea  Input52 formControlName="Commentten"  [(ngModel)]='Commentten' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commentten.errors }"  placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commenteight.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <textarea  Input53 formControlName="Commenteleven" [(ngModel)]='Commenteleven'   placeholder="Leave a comment"></textarea>
-                                      
+                                          <div class="form-group">
+                                            <textarea  Input53 formControlName="Commenteleven" [(ngModel)]='Commenteleven' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commenteleven.errors }"  placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commenteleven.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <textarea  Input54 formControlName="Commenttwelve" [(ngModel)]='Commenttwelve'  placeholder="Leave a comment"></textarea>
-                                         
+                                          <div class="form-group">
+                                            <textarea  Input54 formControlName="Commenttwelve" [(ngModel)]='Commenttwelve'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.Commenttwelve.errors }" placeholder="Leave a comment"></textarea>
+                                            <div *ngIf="submitted && goalsettingform.Commenttwelve.errors" class="invalid-feedback">
+                                              <div>Comment is required</div>
+                                          </div>
+                                        </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -785,9 +860,12 @@
                                     <tr>
                                       <td scope="row">What are my ambitions/job expectations and goals in a 1-3 year perspective</td>
                                       <td style="width: 650px;">
-                                       
-                                          <textarea Input71 formControlName="ambitions" [(ngModel)]='ambitions'   placeholder="Leave a comment"></textarea>
-                                       
+                                        <div class="form-group">
+                                          <textarea Input71 formControlName="ambitions" [(ngModel)]='ambitions' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.ambitions.errors }"  placeholder="Leave a comment"></textarea>
+                                          <div *ngIf="submitted && goalsettingform.ambitions.errors" class="invalid-feedback">
+                                            <div>Comment is required</div>
+                                        </div>
+                                        </div>
                                       </td>
                                     </tr>
                                   
@@ -811,9 +889,12 @@
                                     <tr>
                                       <td scope="row">Summarize Overall Performance</td>
                                       <td>
-                                          
-                                              <textarea Input72 formControlName="summarizecommentone" [(ngModel)]='summarizecommentone'  placeholder="Leave a comment"></textarea>
-                                           
+                                        <div class="form-group">
+                                              <textarea Input72 formControlName="summarizecommentone" [(ngModel)]='summarizecommentone' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizecommentone.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.summarizecommentone.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                       </td>
                                       <td>
                                          
@@ -825,9 +906,12 @@
                                     <tr>
                                       <td scope="row">Areas of Improvement</td>
                                       <td>
-                                       
-                                              <textarea Input74 formControlName="summarizecommenttwo" [(ngModel)]='summarizecommenttwo'  placeholder="Leave a comment"></textarea>
-                                           
+                                        <div class="form-group">
+                                              <textarea Input74 formControlName="summarizecommenttwo" [(ngModel)]='summarizecommenttwo'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizecommenttwo.errors }" placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.summarizecommenttwo.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>
                                       </td>
                                       <td>
                                          
@@ -839,9 +923,12 @@
                                     <tr>
                                       <td scope="row">Action Plan for Improvement </td>
                                       <td>
-                                       
-                                              <textarea Input76 formControlName="summarizecommentthree" [(ngModel)]='summarizecommentthree'  placeholder="Leave a comment"></textarea>
-                                           
+                                        <div class="form-group">
+                                              <textarea Input76 formControlName="summarizecommentthree" [(ngModel)]='summarizecommentthree'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizecommentthree.errors }"  placeholder="Leave a comment"></textarea>
+                                              <div *ngIf="submitted && goalsettingform.summarizecommentthree.errors" class="invalid-feedback">
+                                                <div>Comment is required</div>
+                                            </div>
+                                            </div>  
                                       </td>
                                       <td>
                                         
@@ -910,11 +997,8 @@
                                      </table>
                  
                                      
-                             
-                 
-                                         <!-- <button   (click)="goalformsubmit()">SUBMIT</button>  -->
-                                       <!-- app-appraisal-form-closure ends -->
-                                       <!-- <button class="btn btn-danger">Cancel</button> -->
+                          
+                                       <button class="btn btn-primary full_width font_lat yello-bg"   (click)="Cancelclick()">Cancel</button> 
                                        <button class="btn btn-primary full_width font_lato"> {{  ButtonToogle == true ? 'Update' : 'Submit' }}</button>
                                        
                                       </form>

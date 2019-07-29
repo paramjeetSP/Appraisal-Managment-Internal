@@ -25,7 +25,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   employeeList = new MatTableDataSource<AppraisalEmpRes>();
   employeeListOriginal: AppraisalEmpRes[];
  // displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrAssesmentStatus'];
-   displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrinitiateFormStatus','GoalsettingByLeadStatus','SelfAssesmentStatus','LeadAssesmentStatus','HrAssesmentStatus','Cyclestatus','ViewForm'];
+   displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrinitiateFormStatus','GoalsettingByLeadStatus','SelfAssesmentStatus','LeadAssesmentStatus','HrAssesmentStatus','ViewForm'];
   filterTypes: FilterTypes[] = []; // Type should match AppraisalEmpRes interface property names
   allDepartments: Department[];
   Showemployeelistgrid: boolean = false;
@@ -45,12 +45,13 @@ export class AppraisalEmployeeListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    debugger
    this.employeeList.paginator = this.paginator;
     this.GetAllDepartments();
    this.SetupComponentVars();
    // this._spinner.show();
    this.GetEmployeeForAppraisal();
-
+   
   }
 
   SubmitrequestToInitiateAppraisalProcess(item: AppraisalEmpRes): void {
@@ -121,6 +122,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   DepartmentSelected(value: any){
     debugger
     console.log(value);
+   
     this.DepartmentSelectedGetData(value);//.emit(value.value);
   }
 
@@ -177,11 +179,14 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
 
   SetEmployeeTablePaginator() {
+    debugger
     this.employeeList.paginator = this.paginator;
+    //setTimeout(() => this.employeeList.paginator = this.paginator);
   }
   DepartmentFilter(filtervalue: string) {
     debugger
     this.employeeList = new MatTableDataSource<AppraisalEmpRes>(this.employeeListOriginal);
+  
     filtervalue === '' ? this.SetSholdFilterToFlase(this._global.COL_DEPARTMENT) : null; // Here we set the filterType element value to false, which will not include it in the filtering processif(filtervalue && filtervalue === '') this.GetEmployeeForAppraisal();
     if( filtervalue == ''){
       this.Showemployeelistgrid=false;
@@ -194,6 +199,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
           val.shouldFilter = true;
           this.Showemployeelistgrid=true;
           this.Showemptygrid=false;
+         
         }
         return val;
       });
@@ -261,6 +267,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
     if (departmentString.length > 0) {
       this.DepartmentFilter(departmentString[0].deptName);
       this.Showemployeelistgrid=true;
+      
     } else {
       this.DepartmentFilter('');
       this.Showemployeelistgrid=false;

@@ -18,3 +18,8 @@
 .main-table-wrapper td {
     border-right: 1px solid #ddd;
 }
+.main-heading-show-empty-grid {
+    margin-top: 100px;
+    color: #ffc800;
+    text-align: center;
+}

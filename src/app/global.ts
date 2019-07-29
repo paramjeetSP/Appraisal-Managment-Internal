@@ -5,6 +5,11 @@ export class Global {
   public API_APPRAISAL_CONTROLLER_URL = `${this.API_BASE_URL}api/APIAppraisal/`;
   public API_FULL_URL = `${this.API_APPRAISAL_CONTROLLER_URL}`;
 
+ // For local Debugging
+  // public API_BASE_URL = 'http://localhost:50512/';
+  // public API_APPRAISAL_CONTROLLER_URL = `${this.API_BASE_URL}api/APIAppraisal/`;
+  // public API_FULL_URL = `${this.API_APPRAISAL_CONTROLLER_URL}`;
+
   public ROLE_ADMIN = 'Admin';
 
   /** TOASTER MESSAGE AND TITLES START */

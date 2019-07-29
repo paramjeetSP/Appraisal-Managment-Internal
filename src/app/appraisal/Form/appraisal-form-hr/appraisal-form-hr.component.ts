@@ -56,11 +56,90 @@ export class AppraisalFormHrComponent implements OnInit {
   pid10:any;
   pid11:any;
   pid12:any;
+    ratingone: string;
+  ratingtwo: string;
+  ratingthree: string;
+  ratingfour: string;
+  ratingfive: string;
+  ratingsix: string;
+  ratingseven: string;
+  ratingeight: string;
+  ratingnine: string;
+  ratingten: string;
+  ratingeleven: string;
+  ratingtwelve: string;
+
+  Commentone: string;
+  Commenttwo: string;
+  Commentthree: string;
+  Commentfour: string;
+  Commentfive: string;
+  Commentsix: string;
+  Commentseven: string;
+  Commenteight: string;
+  Commentnine: string;
+  Commentten: string;
+  Commenteleven: string;
+  Commenttwelve: string;
+  managerratingone: string;
+  managerratingtwo: string;
+  managerratingthree: string;
+  managerratingfour: string;
+  managerratingfive: string;
+  managerratingsix: string;
+  managerratingseven: string;
+  managerratingeight: string;
+  managerratingnine: string;
+  managerratingten: string;
+  managerratingeleven: string;
+  managerratingtwelve: string;
+
+  managerCommentone: string;
+  managerCommenttwo: string;
+  managerCommentthree: string;
+  managerCommentfour: string;
+  managerCommentfive: string;
+  managerCommentsix: string;
+  managerCommentseven: string;
+  managerCommenteight: string;
+  managerCommentnine: string;
+  managerCommentten: string;
+  managerCommenteleven: string;
+  managerCommenttwelve: string;
+
+    // behavior rating by manager
+    behaviourratingone: string;
+    behaviourratingtwo: string;
+    behaviourratingthree: string;
+    behaviourratingfour: string;
+    behaviourratingfive: string;
+
+     // behavior comments by manager
+     behaviourCommentone: string;
+     behaviourCommenttwo: string;
+     behaviourCommentthree: string;
+     behaviourCommentfour: string;
+     behaviourCommentfive: string;
+
+   //ambitions
+   ambitions: string;
+   //summary
+   summarizecommentone: string;
+   summarizecommenttwo: string;
+   summarizecommentthree: string;
+   summarizemanagercommentone: string;
+   summarizemanagercommenttwo: string;
+   summarizemanagercommentthree: string;
+
+   //closure
+   closuremanagercommentone: string;
+   closuremanagercommenttwo: string;
   ButtonToogle = false;
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
  editemployeegoal: Array<{ description: string,id:number,departmentHead:string,pid:number}> = [];
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
+  summarypid1: any;
   
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
@@ -178,6 +257,7 @@ export class AppraisalFormHrComponent implements OnInit {
   if(idval!=null){
  this.GetemployeeDetails(idval);
 this.Getgoalemployee(idval);
+this.GetManagerRCDetails(idval);
 // disable goal for hr view
   this.disablegoalall();
   this.ratingitselfandcomments();
@@ -197,13 +277,13 @@ this.Getgoalemployee(idval);
     
   }
   else{
-    this.ratingitselfandcomments();
-    this.managerratingandcomments();
-    this.disableBehaviourratingandcomments();
-    this.disableambitionsinfo();
-    this.disablemanagerSummaryall();
-    this.disableemployeeSummaryall();
-    this.disableclosureall();
+    // this.ratingitselfandcomments();
+    // this.managerratingandcomments();
+    // this.disableBehaviourratingandcomments();
+    // this.disableambitionsinfo();
+    // this.disablemanagerSummaryall();
+    // this.disableemployeeSummaryall();
+    // this.disableclosureall();
   }
    
     
@@ -342,6 +422,147 @@ this.Getgoalemployee(idval);
       (error) => {
         this._errorService.LogError(error);
       //  this._spinner.hide();
+      });
+  }
+
+  GetManagerRCDetails(id: any){
+    debugger
+    const subs = this.appraisalFormService.GetmanagerRCDetailsById(id)
+    .pipe(catchError(x => {
+      this._errorService.LogError(x);
+      return throwError(x);
+    }))
+    .subscribe(
+      (data:any) => {  
+    // this.dataval=data;
+    this.goalone=data._ManagerRatinglist[0].description;
+    this.goaltwo=data._ManagerRatinglist[1].description;
+    this.goalthree=data._ManagerRatinglist[2].description;
+    this.goalFour=data._ManagerRatinglist[3].description;
+    this.goalFive=data._ManagerRatinglist[4].description;
+    this.goalSix=data._ManagerRatinglist[5].description;
+    this.goalseven=data._ManagerRatinglist[6].description;
+    this.goaleight=data._ManagerRatinglist[7].description;
+    this.goalnine=data._ManagerRatinglist[8].description;
+    this.goalten=data._ManagerRatinglist[9].description;
+    this.goaleleven=data._ManagerRatinglist[10].description;
+    this.goaltwelve=data._ManagerRatinglist[11].description;
+
+      this.ratingone =  data._ManagerRatinglist[0].ratings;
+      this.ratingtwo = data._ManagerRatinglist[1].ratings;
+      this.ratingthree = data._ManagerRatinglist[2].ratings;
+      this.ratingfour = data._ManagerRatinglist[3].ratings;
+      this.ratingfive = data._ManagerRatinglist[4].ratings;
+      this.ratingsix = data._ManagerRatinglist[5].ratings;
+      this.ratingseven = data._ManagerRatinglist[6].ratings;
+      this.ratingeight = data._ManagerRatinglist[7].ratings;
+      this.ratingnine = data._ManagerRatinglist[8].ratings;
+      this.ratingten = data._ManagerRatinglist[9].ratings;
+      this.ratingeleven =data._ManagerRatinglist[10].ratings;
+      this.ratingtwelve = data._ManagerRatinglist[11].ratings;
+      
+      this.Commentone =data._ManagerRatinglist[0].comments;
+      this.Commenttwo = data._ManagerRatinglist[1].comments;
+      this.Commentthree = data._ManagerRatinglist[2].comments;
+      this.Commentfour = data._ManagerRatinglist[3].comments;
+      this.Commentfive = data._ManagerRatinglist[4].comments; 
+      this.Commentsix = data._ManagerRatinglist[5].comments;
+      this.Commentseven = data._ManagerRatinglist[6].comments;
+      this.Commenteight = data._ManagerRatinglist[7].comments;
+      this.Commentnine = data._ManagerRatinglist[8].comments;
+      this.Commentten = data._ManagerRatinglist[9].comments;
+      this.Commenteleven = data._ManagerRatinglist[10].comments;
+      this.Commenttwelve = data._ManagerRatinglist[11].comments;
+
+
+      this.managerratingone =data._ManagerRatinglist[0].ratingManager;
+      this.managerratingtwo = data._ManagerRatinglist[1].ratingManager;
+      this.managerratingthree = data._ManagerRatinglist[2].ratingManager;
+      this.managerratingfour = data._ManagerRatinglist[3].ratingManager;
+      this.managerratingfive = data._ManagerRatinglist[4].ratingManager; 
+      this.managerratingsix = data._ManagerRatinglist[5].ratingManager;
+      this.managerratingseven = data._ManagerRatinglist[6].ratingManager;
+      this.managerratingeight = data._ManagerRatinglist[7].ratingManager;
+      this.managerratingnine = data._ManagerRatinglist[8].ratingManager;
+      this.managerratingten = data._ManagerRatinglist[9].ratingManager;
+      this.managerratingeleven = data._ManagerRatinglist[10].ratingManager;
+      this.managerratingtwelve = data._ManagerRatinglist[11].ratingManager;
+
+  
+      this.managerCommentone =data._ManagerRatinglist[0].commentManager;
+      this.managerCommenttwo = data._ManagerRatinglist[1].commentManager;
+      this.managerCommentthree = data._ManagerRatinglist[2].commentManager;
+      this.managerCommentfour = data._ManagerRatinglist[3].commentManager;
+      this.managerCommentfive = data._ManagerRatinglist[4].commentManager; 
+      this.managerCommentsix = data._ManagerRatinglist[5].commentManager;
+      this.managerCommentseven = data._ManagerRatinglist[6].commentManager;
+      this.managerCommenteight = data._ManagerRatinglist[7].commentManager;
+      this.managerCommentnine = data._ManagerRatinglist[8].commentManager;
+      this.managerCommentten = data._ManagerRatinglist[9].commentManager;
+      this.managerCommenteleven = data._ManagerRatinglist[10].commentManager;
+      this.managerCommenttwelve = data._ManagerRatinglist[11].commentManager;
+     
+      this.pid1=data._ManagerRatinglist[0].id;
+      this.pid2=data._ManagerRatinglist[1].id;
+      this.pid3=data._ManagerRatinglist[2].id;
+      this.pid4=data._ManagerRatinglist[3].id;
+      this.pid5=data._ManagerRatinglist[4].id;
+      this.pid6=data._ManagerRatinglist[5].id;
+      this.pid7=data._ManagerRatinglist[6].id;
+      this.pid8=data._ManagerRatinglist[7].id;
+      this.pid9=data._ManagerRatinglist[8].id;
+      this.pid10=data._ManagerRatinglist[9].id;
+      this.pid11=data._ManagerRatinglist[10].id;
+      this.pid12=data._ManagerRatinglist[11].id;
+
+      this.pid12=data._ManagerRatinglist[11].id;
+
+      this.summarypid1=data._ManagerSummarylist[0].id;
+     
+      localStorage.setItem('pid1', JSON.stringify(this.pid1));
+      localStorage.setItem('pid2', JSON.stringify(this.pid2));
+      localStorage.setItem('pid3', JSON.stringify(this.pid3));
+      localStorage.setItem('pid4', JSON.stringify(this.pid4));
+      localStorage.setItem('pid5', JSON.stringify(this.pid5));
+      localStorage.setItem('pid6', JSON.stringify(this.pid6));
+      localStorage.setItem('pid7', JSON.stringify(this.pid7));
+      localStorage.setItem('pid8', JSON.stringify(this.pid8));
+      localStorage.setItem('pid9', JSON.stringify(this.pid9));
+      localStorage.setItem('pid10', JSON.stringify(this.pid10));
+      localStorage.setItem('pid11', JSON.stringify(this.pid11));
+      localStorage.setItem('pid12', JSON.stringify(this.pid12));
+
+      localStorage.setItem('summarypid1', JSON.stringify(this.summarypid1));
+
+      this.ambitions = data._ManagerSummarylist[0].ambitions;
+      this.summarizecommentone =  data._ManagerSummarylist[0].summarize;
+      this.summarizecommenttwo =  data._ManagerSummarylist[0].areaImproveSelf;
+      this.summarizecommentthree = data._ManagerSummarylist[0].actionPlanImproveSelf;
+      
+      this.summarizemanagercommentone =  data._ManagerSummarylist[0].summarizeOverallPerformanceManager;
+      this.summarizemanagercommenttwo =  data._ManagerSummarylist[0].areasImprovementManager;
+      this.summarizemanagercommentthree = data._ManagerSummarylist[0].actionPlanImprovementManager;  
+      
+      this.closuremanagercommentone = data._ManagerSummarylist[0].overallRatingManager;  
+      this.closuremanagercommenttwo = data._ManagerSummarylist[0].overallRatingManagercomment;  
+
+      this.behaviourratingone = data._ManagerBehaviourRatinglist[0].managerRating;
+      this.behaviourratingtwo = data._ManagerBehaviourRatinglist[0].managerRating;
+      this.behaviourratingthree = data._ManagerBehaviourRatinglist[0].managerRating;
+      this.behaviourratingfour = data._ManagerBehaviourRatinglist[0].managerRating;
+      this.behaviourratingfive = data._ManagerBehaviourRatinglist[0].managerRating;
+    
+      this.behaviourCommentone = data._ManagerBehaviourRatinglist[0].managerComments;
+      this.behaviourCommenttwo = data._ManagerBehaviourRatinglist[0].managerComments;
+      this.behaviourCommentthree = data._ManagerBehaviourRatinglist[0].managerComments;
+      this.behaviourCommentfour = data._ManagerBehaviourRatinglist[0].managerComments;
+      this.behaviourCommentfive = data._ManagerBehaviourRatinglist[0].managerComments;
+       // behavior comments by manager
+   
+      }, 
+      (error) => {
+        this._errorService.LogError(error);
+     
       });
   }
 //   onSubmit() {

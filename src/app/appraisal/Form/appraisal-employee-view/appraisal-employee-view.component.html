@@ -2,7 +2,7 @@
 <!-- <button  (click)="employeeview()">View</button>  -->
 <app-menu></app-menu>
 <div class="container">
-    <div class="main-table-wrapper">
+    <div  *ngIf="Showemployeelistgrid" class="main-table-wrapper">
 <div  *ngIf="Showemployeelistgrid" class="table-responsive" >
 <table class="table employeetable">
         <thead class="thead-dark">
@@ -28,7 +28,7 @@
     </div>
    
 </div>
-<div  *ngIf="Showemptygrid" >
+<div class="main-heading-show-empty-grid"  *ngIf="Showemptygrid" >
   <h1> Appraisal Form is not Re-initiated.</h1>
 </div>
 </div>

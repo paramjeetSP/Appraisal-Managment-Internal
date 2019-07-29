@@ -136,6 +136,8 @@ export class AppraisalFormManagerComponent implements OnInit {
   pid10:any;
   pid11:any;
   pid12:any;
+
+  summarypid1:any;
   ButtonToogle = false;
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
@@ -143,7 +145,8 @@ export class AppraisalFormManagerComponent implements OnInit {
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
  ManagerRatingComment : Array<{ id:number,Ratings:string,Comments:string,pid:number}> = [];
  BehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean}> = [];
- Summary: Array<{ id:number, ActionPlanImprovementManager :string,SummarizeOverallPerformanceManager :string; AreasImprovementManager :string}> = [];
+ Summary: Array<{ SummarizeOverallPerformanceManager :string,AreasImprovementManager :string, ActionPlanImprovementManager :string, OverallRatingManager :string,OverallRatingManagercomment :string,pid:number}> = [];
+ submitted = false;
  constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -257,12 +260,13 @@ export class AppraisalFormManagerComponent implements OnInit {
    var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
    var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
  var idval= this.router.snapshot.queryParamMap.get('id');  
-   if(idval!=null && userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1" ){
-  //  if(idval!=null ){
+   if(idval!=null && userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1" ||userselfAssesmentStatus =="2"){
+debugger
  this.GetemployeeDetails(idval);
+ 
 this.Getgoalemployee(idval);
-// disable goal for hr view
- // this.disablegoal();
+this.GetEmployeeRCDetails(idval);
+
   this.disableratingitself();
   this.disablemanagerratingComments();
  this.disableBehaviourratingcomments();
@@ -271,7 +275,7 @@ this.Getgoalemployee(idval);
  this.disableempSummary();
  this.disableclosurecomment();
   }
-  else if(idval!=null && userleadAssesmentStatus=="2" &&  userselfAssesmentStatus=="3" ){
+  else if(idval!=null && userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3" ){
     this.GetemployeeDetails(idval);
   //  this.GetEmployeeRCDetails(idval);
   this.GetManagerRCDetails(idval);
@@ -283,7 +287,7 @@ this.Getgoalemployee(idval);
   }
 
   }
-
+  get goalsettingform() { return this.goalForm.controls; }
   personaldata(){
     debugger
    var data = this._sessionStorage.GetUserdetailInfo();
@@ -360,6 +364,8 @@ this.Getgoalemployee(idval);
       localStorage.setItem('pid10', JSON.stringify(this.pid10));
       localStorage.setItem('pid11', JSON.stringify(this.pid11));
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
+
+      
     
       //  this._spinner.hide();
       }, 
@@ -569,6 +575,10 @@ this.Getgoalemployee(idval);
       this.pid10=data._ManagerRatinglist[9].id;
       this.pid11=data._ManagerRatinglist[10].id;
       this.pid12=data._ManagerRatinglist[11].id;
+
+      this.pid12=data._ManagerRatinglist[11].id;
+
+      this.summarypid1=data._ManagerSummarylist[0].id;
      
       localStorage.setItem('pid1', JSON.stringify(this.pid1));
       localStorage.setItem('pid2', JSON.stringify(this.pid2));
@@ -583,6 +593,8 @@ this.Getgoalemployee(idval);
       localStorage.setItem('pid11', JSON.stringify(this.pid11));
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
 
+      localStorage.setItem('summarypid1', JSON.stringify(this.summarypid1));
+
       this.ambitions = data._ManagerSummarylist[0].ambitions;
       this.summarizecommentone =  data._ManagerSummarylist[0].summarize;
       this.summarizecommenttwo =  data._ManagerSummarylist[0].areaImproveSelf;
@@ -592,6 +604,9 @@ this.Getgoalemployee(idval);
       this.summarizemanagercommenttwo =  data._ManagerSummarylist[0].areasImprovementManager;
       this.summarizemanagercommentthree = data._ManagerSummarylist[0].actionPlanImprovementManager;  
       
+      this.closuremanagercommentone = data._ManagerSummarylist[0].overallRatingManager;  
+      this.closuremanagercommenttwo = data._ManagerSummarylist[0].overallRatingManagercomment;  
+
       this.behaviourratingone = data._ManagerBehaviourRatinglist[0].managerRating;
       this.behaviourratingtwo = data._ManagerBehaviourRatinglist[0].managerRating;
       this.behaviourratingthree = data._ManagerBehaviourRatinglist[0].managerRating;
@@ -629,8 +644,15 @@ this.Getgoalemployee(idval);
       //  this._spinner.hide();
       });
   }
+  Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
+  }
   onSubmit() {
     debugger
+    this.submitted = true;
+    if (this.goalForm.invalid) {
+      return;
+  }
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
     var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
     var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
@@ -646,6 +668,8 @@ this.Getgoalemployee(idval);
     this.pid10= localStorage.getItem('pid10');
     this.pid11=localStorage.getItem('pid11');
     this.pid12=  localStorage.getItem('pid12');
+    this.summarypid1 =  localStorage.getItem('summarypid1');
+
 if(this.pid1!=null){
  if(userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1"){
   var goal1 = this.goalForm.controls.goalone.value;
@@ -690,7 +714,7 @@ this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:manager
     }
   });
 }
-else if(userleadAssesmentStatus=="2" &&  userselfAssesmentStatus=="3"){
+else if(userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3"){
 // manager rating
   var managerrating1 = this.goalForm.controls.managerratingone.value;
   var managerrating2 = this.goalForm.controls.managerratingtwo.value;
@@ -768,9 +792,9 @@ this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,M
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true});
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true});
 console.log('BehaviourRatingComment',this.BehaviourRatingComment);
-this.Summary.push({ id:empid,ActionPlanImprovementManager :summarizemanagercomment3,SummarizeOverallPerformanceManager :summarizemanagercomment1, AreasImprovementManager :summarizemanagercomment2});
+this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
 console.log('Summary',this.Summary);
-
+debugger
 const body_data = {
   'ManagerRatingComment': this.ManagerRatingComment,
   'BehaviourRatingComment': this.BehaviourRatingComment,
