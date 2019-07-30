@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from '../../appraisal/Service/session-storage.service';
 import { Router } from '@angular/router';
 import { Global } from 'src/app/global';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
   constructor(
     private _sessionStorage: SessionStorageService,
     private _router: Router,
-    private _global:Global
+    private _global:Global,
+    private _authenticationService:AuthService
   ) { }
 
   ngOnInit() {
@@ -22,8 +24,10 @@ export class MenuComponent implements OnInit {
   }
 
   Logout(){
+    this._authenticationService.logout();
+    this._router.navigate(['/Appraisal']);
     this._sessionStorage.StoreLoggedInUserInfo(null);
-    this._router.navigate(['']);
+   // this._router.navigate(['']);
     localStorage.removeItem(this._global.login_by);
     localStorage.clear();
   }

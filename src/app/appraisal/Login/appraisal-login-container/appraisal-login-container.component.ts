@@ -10,6 +10,7 @@ import { ErrorService } from '../../Service/error.service';
 import { Router } from '@angular/router';
 import { Global } from '../../../global';
 import { SessionStorageService } from '../../Service/session-storage.service';
+import { AuthService } from 'src/app/auth.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -44,7 +45,8 @@ export class AppraisalLoginContainerComponent implements OnInit {
     private _errorService: ErrorService,
     private _router: Router,
     private _global: Global,
-    private _sessionStorage: SessionStorageService
+    private _sessionStorage: SessionStorageService,
+    private _authService:AuthService
   ) { }
 
   ngOnInit() {
@@ -67,6 +69,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
       }))
       .subscribe((data: AppraisalLoginResponse) => {
         debugger
+        this._authService.login(loginBody);
         // localStorage.setItem('deptID', data.deptID);
         this.showSpinner = false;
         this._sessionStorage.StoreLoggedInUserInfo(data);

@@ -7,46 +7,77 @@ import { AppraisalManagerContainerComponent } from './Manager/appraisal-manager-
 import { AppraisalFormHrComponent } from './Form/appraisal-form-hr/appraisal-form-hr.component';
 import { AppraisalFormManagerComponent } from './Form/appraisal-form-manager/appraisal-form-manager.component';
 import { AppraisalEmployeeViewComponent } from './Form/appraisal-employee-view/appraisal-employee-view.component';
+import { AuthGuard } from '../auth.guard';
+import { AuthLoginGuard } from '../auth-login.guard';
 
 const routes: Routes = [
   {
     path: 'Listing',
-    component: AppraisalEmployeeListComponent
+    component: AppraisalEmployeeListComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'Listing Page'
+    }
   },
   {
     path: 'Form',
-    component: AppraisalFormContainerComponent
+    component: AppraisalFormContainerComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'Form Page'
+    }
   },
   {
     path: 'EmployeeviewForm',
-    component: AppraisalEmployeeViewComponent
+    component: AppraisalEmployeeViewComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'Employee Page'
+    }
   },
   
   {
     path: 'HrForm',
-    component: AppraisalFormHrComponent
+    component: AppraisalFormHrComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'HrForm Page'
+    }
   },
   {
     path: 'ManagerForm',
-    component: AppraisalFormManagerComponent
+    component: AppraisalFormManagerComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'ManagerForm Page'
+    }
   },
   {
     path: 'Login',
-    component: AppraisalLoginContainerComponent
+    component: AppraisalLoginContainerComponent,
+    canActivate :[AuthLoginGuard],
+    data:{
+title : 'Login Page'
+    }
   },
   {
     path: 'Goal',
-    component: AppraisalManagerContainerComponent
+    component: AppraisalManagerContainerComponent,
+    canActivate :[AuthGuard],
+    data:{
+title : 'Goal Page'
+    }
   },
   {
     path: '',
-    redirectTo: 'Login',
+    redirectTo: '/Appraisal/Login',
     pathMatch : 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard,AuthLoginGuard]
 })
 export class AppraisalRoutingModule { }
