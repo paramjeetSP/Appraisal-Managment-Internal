@@ -24,23 +24,56 @@
                             <tbody>
                               <tr>
                                 <td scope="row">
-                                    Employee Name:   <input  disabled   [(ngModel)]='FullName' type="label" >
-                                  
+                                    <div class="form-group">
+                                    Employee Name:   <input  disabled class="form-control"   [(ngModel)]='FullName' type="label" >
+                                  </div>
                                 </td>
-                                <td>Current Designation:  <input  disabled   [(ngModel)]='designation' type="label" ></td>
-                                <td>Cycle – November 2018 to April 2019</td>
+                                <td> 
+                                   <div class="form-group">
+                                  Current Designation:  <input  disabled  class="form-control" [(ngModel)]='designation' type="label" >
+                                </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                  Cycle :<input  disabled   class="form-control"   type="label" > 
+                                </div>
+                                </td>
             
                               </tr>
                               <tr>
-                                <td scope="row">Team: <input  disabled   [(ngModel)]='department' type="label" ></td>
-                                <td>Date of Goal Setting: </td>
-                                <td>Date of Evaluation :</td>
+                                <td scope="row">
+                                    <div class="form-group">
+                                  Team: <input  disabled class="form-control"  [(ngModel)]='department' type="label" >
+                                </div>
+                                </td>
+                                <td>
+                                  <div class="form-group">
+                                  Date of Goal Setting: <input  disabled   class="form-control"  type="label" >
+                                </div>
+                              </td>
+                                <td>
+                                    <div class="form-group">
+                                  Date of Evaluation : <input  disabled   class="form-control"  type="label" >
+                                </div>
+                                </td>
             
                               </tr>
                               <tr>
-                                <td scope="row">Reporting to: <input  disabled   [(ngModel)]='reportingTo' type="label" ></td>
-                                <td>Date of Joining:<input  disabled   [(ngModel)]='doj' type="label" ></td>
-                                <td>Grade :<input  disabled   [(ngModel)]='grade' type="label" > </td>
+                                <td scope="row">
+                                    <div class="form-group">
+                                  Reporting to: <input  disabled  class="form-control" [(ngModel)]='reportingTo' type="label" >
+                                </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                  Date of Joining:<input  disabled   class="form-control" [(ngModel)]='doj' type="label" >
+                                </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                  Grade :<input  disabled class="form-control"  [(ngModel)]='grade' type="label" > 
+                                </div>
+                                </td>
             
                               </tr>
                             </tbody>
@@ -82,20 +115,23 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-  
-                                            <textarea formControlName="goalone"   [(ngModel)]='goalone'  placeholder="Goal 1" cols="30"></textarea> 
-                                                         
+                                            <div class="form-group">
+                                            <textarea formControlName="goalone" class="form-control"  [(ngModel)]='goalone'  placeholder="Goal 1" cols="30"></textarea> 
+                                          </div>          
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goaltwo" [(ngModel)]='goaltwo'  placeholder="Goal 2" cols="30"></textarea> 
-                                        </td>
+                                            <div class="form-group">
+                                            <textarea formControlName="goaltwo" class="form-control" [(ngModel)]='goaltwo'  placeholder="Goal 2" cols="30"></textarea> 
+                                          </div> 
+                                          </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goalthree" [(ngModel)]='goalthree'  placeholder="Goal 3" cols="30"></textarea> 
-                                        
+                                            <div class="form-group">
+                                            <textarea formControlName="goalthree" class="form-control" [(ngModel)]='goalthree'  placeholder="Goal 3" cols="30"></textarea> 
+                                          </div> 
                                           </td>
                                       </tr>
                                     </table></td>
@@ -119,92 +155,94 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input1 formControlName="ratingone" [(ngModel)]='ratingone' type="number" > -->
-                                            <input minlength="1" maxlength="5" formControlName="ratingone" [(ngModel)]='ratingone' Input1  type="number" >
-                                         
+                                            <div class="form-group">
+                                            <input minlength="1" maxlength="5" class="form-control" formControlName="ratingone" [(ngModel)]='ratingone' Input1  type="number" >
+                                          </div> 
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input2 formControlName="ratingtwo" [(ngModel)]='ratingtwo' type="number" > -->
-                                            <input formControlName="ratingtwo"  Input2  [(ngModel)]='ratingtwo' type="number" >
-                                          
+                                            <div class="form-group">
+                                            <input formControlName="ratingtwo"  class="form-control" Input2  [(ngModel)]='ratingtwo' type="number" >
+                                          </div> 
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input3 formControlName="ratingthree" [(ngModel)]='ratingthree' type="number" > -->
-                                            <input formControlName="ratingthree"  Input3 [(ngModel)]='ratingthree' type="number" > 
-                                         
+                                            <div class="form-group">
+                                            <input formControlName="ratingthree" class="form-control" Input3 [(ngModel)]='ratingthree' type="number" > 
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
                                    
                                     <td class="sub-table"><table >
                                       <tr>
-                                        <td>
-                                       
-                                            <!-- <textarea disabled Input7 formControlName="Commentone" [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea> -->
-                                            <textarea  Input7 formControlName="Commentone"  [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea>
-                                        </td>
+                                        <td>                                  
+                                            <div class="form-group">
+                                            <textarea  Input7 formControlName="Commentone"  class="form-control" [(ngModel)]='Commentone' placeholder="Leave a comment"></textarea>
+                                          </div>
+                                          </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <!-- <textarea disabled Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo' placeholder="Leave a comment"></textarea> -->
-                                            <textarea  Input8 formControlName="Commenttwo" [(ngModel)]='Commenttwo'  placeholder="Leave a comment"></textarea>
-                                        </td>
+                                            <div class="form-group">
+                                            <textarea  Input8 formControlName="Commenttwo"  class="form-control" [(ngModel)]='Commenttwo'  placeholder="Leave a comment"></textarea>
+                                          </div>
+                                          </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          
-                                            <!-- <textarea disabled Input9 formControlName="Commentthree" [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea> -->
-                                            <textarea formControlName="Commentthree"  Input9 [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea>
-                                        </td>
+                                            <div class="form-group">
+                                            <textarea formControlName="Commentthree" class="form-control" Input9 [(ngModel)]='Commentthree' placeholder="Leave a comment"></textarea>
+                                          </div>
+                                          </td>
                                       </tr>
                                     </table></td>
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input10 formControlName="managerratingone" [(ngModel)]='managerratingone' type="number"> -->
-                                            <input  Input10 formControlName="managerratingone" [(ngModel)]='managerratingone'   type="number">
-                                         
+                                            <div class="form-group">
+                                            <input  Input10 formControlName="managerratingone" class="form-control" [(ngModel)]='managerratingone'   type="number">
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input11 formControlName="managerratingtwo" [(ngModel)]='managerratingtwo' type="number"> -->
-                                            <input  Input11 formControlName="managerratingtwo" [(ngModel)]='managerratingtwo'  type="number">
-                                        
+                                            <div class="form-group">
+                                            <input  Input11 formControlName="managerratingtwo" class="form-control" [(ngModel)]='managerratingtwo'  type="number">
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input12 formControlName="managerratingthree" [(ngModel)]='managerratingthree' type="number"> -->
-                                            <input  Input12  formControlName="managerratingthree" [(ngModel)]='managerratingthree' type="number">
-                                        </td>
+                                            <div class="form-group">
+                                            <input  Input12  formControlName="managerratingthree" class="form-control" [(ngModel)]='managerratingthree' type="number">
+                                          </div>
+                                          </td>
                                       </tr>
                                     </table></td>
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <textarea  matInput13 formControlName="managerCommentone" [(ngModel)]='managerCommentone' placeholder="Leave a comment"></textarea> -->
-                                            <textarea  matInput13 formControlName="managerCommentone" [(ngModel)]='managerCommentone' placeholder="Leave a comment"></textarea>
-                                         
+                                            <div class="form-group">
+                                            <textarea  matInput13 formControlName="managerCommentone" class="form-control" [(ngModel)]='managerCommentone' placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <textarea  Input14 formControlName="managerCommenttwo" [(ngModel)]='managerCommenttwo' placeholder="Leave a comment"></textarea>
-                                        
+                                            <div class="form-group">
+                                            <textarea  Input14 formControlName="managerCommenttwo" class="form-control" [(ngModel)]='managerCommenttwo' placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          
-                                            <textarea  Input15 formControlName="managerCommentthree" [(ngModel)]='managerCommentthree'  placeholder="Leave a comment"></textarea>
-                                         
+                                            <div class="form-group">
+                                            <textarea  Input15 formControlName="managerCommentthree" class="form-control" [(ngModel)]='managerCommentthree'  placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -214,18 +252,24 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <textarea formControlName="goalFour" [(ngModel)]='goalFour'  placeholder="Goal 4" cols="30"></textarea> 
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea formControlName="goalFour" [(ngModel)]='goalFour' class="form-control"  placeholder="Goal 4" cols="30"></textarea> 
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <textarea formControlName="goalFive" [(ngModel)]='goalFive' placeholder="Goal 5" cols="30"></textarea> 
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea formControlName="goalFive" [(ngModel)]='goalFive' class="form-control" placeholder="Goal 5" cols="30"></textarea> 
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <textarea formControlName="goalSix" [(ngModel)]='goalSix'  placeholder="Goal 6" cols="30"></textarea>
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea formControlName="goalSix" [(ngModel)]='goalSix' class="form-control" placeholder="Goal 6" cols="30"></textarea>
+                                            </div>
+                                            </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
@@ -248,117 +292,94 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input16 formControlName="ratingfour" [(ngModel)]='ratingfour' type="number" > -->
-                                             
-                                              <input formControlName="ratingfour" [(ngModel)]='ratingfour' Input16  type="number" >
-                                          </td>
+                                              <div class="form-group">
+                                              <input formControlName="ratingfour" class="form-control" [(ngModel)]='ratingfour' Input16  type="number" >
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input17 formControlName="ratingfive" [(ngModel)]='ratingfive' type="number" > -->
-                                              
-                                              <input formControlName="ratingfive" [(ngModel)]='ratingfive'  Input17 type="number" >
-                                          </td>
+                                            
+                                              <div class="form-group">
+                                              <input formControlName="ratingfive" class="form-control" [(ngModel)]='ratingfive'  Input17 type="number" >
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input18 formControlName="ratingsix" [(ngModel)]='ratingsix' type="number" > -->
-                                              <input formControlName="ratingsix" [(ngModel)]='ratingsix' Input18  type="number" >
-                                          
+                                              <div class="form-group">
+                                              <input formControlName="ratingsix" class="form-control" [(ngModel)]='ratingsix' Input18  type="number" >
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
-                                      <!-- <td class="sub-table">
-                                        <table >
-                                        <tr>
-                                          <td>
-                                          
-                                              <textarea Input19 placeholder="Leave a comment"></textarea>
-                                           
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td>
-                                           
-                                              <textarea Input20 placeholder="Leave a comment"></textarea>
-                                          
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td>
-                                            
-                                              <textarea Input21 placeholder="Leave a comment"></textarea>
-                                          
-                                          </td>
-                                        </tr>
-                                      </table>
-                                    </td> -->
+
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input22 formControlName="Commentfour" [(ngModel)]='Commentfour'  placeholder="Leave a comment"></textarea>
-                                           
+                                              <div class="form-group">
+                                              <textarea  Input22 class="form-control" formControlName="Commentfour" [(ngModel)]='Commentfour'  placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input23 formControlName="Commentfive" [(ngModel)]='Commentfive'  placeholder="Leave a comment"></textarea>
-                                            
+                                              <div class="form-group">
+                                              <textarea  Input23 class="form-control" formControlName="Commentfive" [(ngModel)]='Commentfive'  placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input24 formControlName="Commentsix" [(ngModel)]='Commentsix' placeholder="Leave a comment"></textarea>
-                                           
+                                              <div class="form-group">
+                                              <textarea  Input24 class="form-control" formControlName="Commentsix" [(ngModel)]='Commentsix' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input25 formControlName="managerratingfour" [(ngModel)]='managerratingfour' type="number"> -->
-                                              <input  Input25 formControlName="managerratingfour"  [(ngModel)]='managerratingfour' type="number">
-                                            
+                                              <div class="form-group">
+                                              <input  Input25 formControlName="managerratingfour" class="form-control" [(ngModel)]='managerratingfour' type="number">
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input26 formControlName="managerratingfive" [(ngModel)]='managerratingfive' type="number"> -->
-                                              <input  Input26 formControlName="managerratingfive" [(ngModel)]='managerratingfive'  type="number">
-                                          
+                                              <div class="form-group">
+                                              <input  Input26 formControlName="managerratingfive" class="form-control" [(ngModel)]='managerratingfive'  type="number">
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input27 formControlName="managerratingsix" [(ngModel)]='managerratingsix' type="number"> -->
-                                              <input  Input27 formControlName="managerratingsix" [(ngModel)]='managerratingsix'  type="number">
-                                      
+                                              <div class="form-group">
+                                              <input  Input27 formControlName="managerratingsix" class="form-control" [(ngModel)]='managerratingsix'  type="number">
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                            
-                                              <textarea  Input28   formControlName="managerCommentfour" [(ngModel)]='managerCommentfour' placeholder="Leave a comment"></textarea>
-                                          
+                                              <div class="form-group">
+                                              <textarea  Input28   formControlName="managerCommentfour" class="form-control" [(ngModel)]='managerCommentfour' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input29 formControlName="managerCommentfive"  [(ngModel)]='managerCommentfive'  placeholder="Leave a comment"></textarea>
-                                          
+                                              <div class="form-group">
+                                              <textarea  Input29 formControlName="managerCommentfive" class="form-control"  [(ngModel)]='managerCommentfive'  placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input30 formControlName="managerCommentsix" [(ngModel)]='managerCommentsix' placeholder="Leave a comment"></textarea>
-                                           
+                                              <div class="form-group">
+                                              <textarea  Input30 formControlName="managerCommentsix" class="form-control" [(ngModel)]='managerCommentsix' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
@@ -368,18 +389,24 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <textarea  formControlName="goalseven" [(ngModel)]='goalseven' name="goal7" rows="3" placeholder="Goal 7" cols="30"></textarea>                   
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea  formControlName="goalseven" [(ngModel)]='goalseven' class="form-control" name="goal7" rows="3" placeholder="Goal 7" cols="30"></textarea>                   
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <textarea  formControlName="goaleight" [(ngModel)]='goaleight' name="goal8" rows="3" placeholder="Goal 8" cols="30"></textarea>
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea  formControlName="goaleight" [(ngModel)]='goaleight' class="form-control" name="goal8" rows="3" placeholder="Goal 8" cols="30"></textarea>
+                                            </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <textarea  formControlName="goalnine" [(ngModel)]='goalnine' name="goal9" rows="3" placeholder="Goal 9" cols="30"></textarea>  
-                                          </td>
+                                              <div class="form-group">
+                                              <textarea  formControlName="goalnine" [(ngModel)]='goalnine' class="form-control" name="goal9" rows="3" placeholder="Goal 9" cols="30"></textarea>  
+                                            </div>
+                                            </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
@@ -402,111 +429,94 @@
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input31 formControlName="ratingseven" [(ngModel)]='ratingseven' type="number" > -->
-                                              <input formControlName="ratingseven"  [(ngModel)]='ratingseven' Input31  type="number" >
-                                        
+                                              <div class="form-group">
+                                              <input formControlName="ratingseven"  class="form-control" [(ngModel)]='ratingseven' Input31  type="number" >
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input32 formControlName="ratingeight" [(ngModel)]='ratingeight' type="number" > -->
-                                              <input formControlName="ratingeight" [(ngModel)]='ratingeight' Input32  type="number" >
-                                           
+                                              <div class="form-group">
+                                              <input formControlName="ratingeight" class="form-control" [(ngModel)]='ratingeight' Input32  type="number" >
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input33 formControlName="ratingnine" [(ngModel)]='ratingnine' type="number" > -->
-                                            
+                                              
+                                              <div class="form-group">
                                               <input formControlName="ratingnine" [(ngModel)]='ratingnine' Input33  type="number" >
-                                          </td>
+                                            </div>
+                                            </td>
                                         </tr>
                                       </table></td>
-                                      <!-- <td class="sub-table"><table >
-                                        <tr>
-                                          <td>
-                                         
-                                              <textarea Input34 placeholder="Leave a comment"></textarea>
-                                         
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td>                   
-                                              <textarea Input35 placeholder="Leave a comment"></textarea>                   
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td>                  
-                                              <textarea Input36 placeholder="Leave a comment"></textarea>
-                                          </td>
-                                        </tr>
-                                      </table></td> -->
+                                   
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                          
-                                              <textarea  Input37  formControlName="Commentseven" [(ngModel)]='Commentseven' placeholder="Leave a comment"></textarea>
-                                         
+                                              <div class="form-group">
+                                              <textarea  Input37  formControlName="Commentseven" class="form-control" [(ngModel)]='Commentseven' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input38 formControlName="Commenteight"  [(ngModel)]='Commenteight' placeholder="Leave a comment"></textarea>
-                                            
+                                              <div class="form-group">
+                                              <textarea  Input38 formControlName="Commenteight" class="form-control"  [(ngModel)]='Commenteight' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                            
-                                              <textarea  Input39 formControlName="Commentnine" [(ngModel)]='Commentnine' placeholder="Leave a comment"></textarea>
-                                         
+                                              <div class="form-group">
+                                              <textarea  Input39 formControlName="Commentnine" class="form-control" [(ngModel)]='Commentnine' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input40 formControlName="managerratingseven" [(ngModel)]='managerratingseven' type="number"> -->
-                                              <input  Input47 formControlName="managerratingseven"  [(ngModel)]='managerratingseven' type="number" >
-                                          
+                                              <div class="form-group">
+                                              <input  Input47 formControlName="managerratingseven" class="form-control"  [(ngModel)]='managerratingseven' type="number" >
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input41 formControlName="managerratingeight" [(ngModel)]='managerratingeight' type="number"> -->
-                                              <input  Input41 formControlName="managerratingeight"  [(ngModel)]='managerratingeight'  type="number">
-                                         
+                                              <div class="form-group">
+                                              <input  Input41 formControlName="managerratingeight"  class="form-control" [(ngModel)]='managerratingeight'  type="number">
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                              <!-- <input disabled Input42 formControlName="managerratingnine" [(ngModel)]='managerratingnine' type="number"> -->
-                                              <input  Input42 formControlName="managerratingnine" [(ngModel)]='managerratingnine' type="number">
-                                         
+                                              <div class="form-group">
+                                              <input  Input42 formControlName="managerratingnine" class="form-control" [(ngModel)]='managerratingnine' type="number">
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
                                       <td class="sub-table"><table >
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input43 formControlName="managerCommentseven"  [(ngModel)]='managerCommentseven' placeholder="Leave a comment"></textarea>
-                                         
+                                              <div class="form-group">
+                                              <textarea  Input43 formControlName="managerCommentseven" class="form-control" [(ngModel)]='managerCommentseven' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input44 formControlName="managerCommenteight" [(ngModel)]='managerCommenteight' placeholder="Leave a comment"></textarea>
-                                           
+                                              <div class="form-group">
+                                              <textarea  Input44 formControlName="managerCommenteight" class="form-control" [(ngModel)]='managerCommenteight' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                         <tr>
                                           <td>
-                                           
-                                              <textarea  Input45 formControlName="managerCommentnine" [(ngModel)]='managerCommentnine' placeholder="Leave a comment"></textarea>
-                                            
+                                              <div class="form-group">
+                                              <textarea  Input45 formControlName="managerCommentnine" class="form-control" [(ngModel)]='managerCommentnine' placeholder="Leave a comment"></textarea>
+                                            </div>
                                           </td>
                                         </tr>
                                       </table></td>
@@ -516,20 +526,23 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goalten" [(ngModel)]='goalten' name="goal10" rows="3" placeholder="Goal 10" cols="30"></textarea> 
-                                         
+                                            <div class="form-group">
+                                            <textarea formControlName="goalten" [(ngModel)]='goalten' class="form-control" name="goal10" rows="3" placeholder="Goal 10" cols="30"></textarea> 
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goaleleven" [(ngModel)]='goaleleven' name="goal11" rows="3" placeholder="Goal 11" cols="30"></textarea>
-                                       
+                                            <div class="form-group">
+                                            <textarea formControlName="goaleleven" [(ngModel)]='goaleleven' class="form-control" name="goal11" rows="3" placeholder="Goal 11" cols="30"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <textarea formControlName="goaltwelve" [(ngModel)]='goaltwelve' name="goal12" rows="3" placeholder="Goal 12" cols="30"></textarea>
-                                     
+                                            <div class="form-group">
+                                            <textarea formControlName="goaltwelve" [(ngModel)]='goaltwelve' class="form-control" name="goal12" rows="3" placeholder="Goal 12" cols="30"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -553,115 +566,94 @@
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input46 formControlName="ratingten" [(ngModel)]='ratingten' type="number" > -->
-                                            <input formControlName="ratingten" Input47  [(ngModel)]='ratingten' type="number" > 
-                                         
+                                            <div class="form-group">
+                                            <input formControlName="ratingten" Input47  class="form-control" [(ngModel)]='ratingten' type="number" > 
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input disabled Input47 formControlName="ratingeleven" [(ngModel)]='ratingeleven' type="number" > -->
-                                            <input formControlName="ratingeleven"  Input47 [(ngModel)]='ratingeleven'  type="number" >
-                                         
+                                            <div class="form-group">
+                                            <input formControlName="ratingeleven"  Input47 class="form-control" [(ngModel)]='ratingeleven'  type="number" >
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input  disabled Input48 formControlName="ratingtwelve" [(ngModel)]='ratingtwelve' type="number" > -->
-                                            <input  formControlName="ratingtwelve"  Input48 [(ngModel)]='ratingtwelve'  type="number" > 
-                                         
+                                            <div class="form-group">
+                                            <input  formControlName="ratingtwelve"  Input48 class="form-control" [(ngModel)]='ratingtwelve'  type="number" > 
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
-                                    <!-- <td class="sub-table"><table >
-                                      <tr>
-                                        <td>
-                                       
-                                            <textarea Input49 placeholder="Leave a comment"></textarea>
-                                       
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                         
-                                            <textarea Input50 placeholder="Leave a comment"></textarea>
-                                         
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          
-                                            <textarea Input51 placeholder="Leave a comment"></textarea>
-                                        
-                                        </td>
-                                      </tr>
-                                    </table></td> -->
+        
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                       
-                                            <textarea  Input52 formControlName="Commentten" [(ngModel)]='Commentten'  placeholder="Leave a comment"></textarea>
-                                       
+                                            <div class="form-group">
+                                            <textarea  Input52 formControlName="Commentten" class="form-control" [(ngModel)]='Commentten'  placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <textarea  Input53 formControlName="Commenteleven" [(ngModel)]='Commenteleven'   placeholder="Leave a comment"></textarea>
-                                      
+                                            <div class="form-group">
+                                            <textarea  Input53 formControlName="Commenteleven" class="form-control" [(ngModel)]='Commenteleven'   placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                         
-                                            <textarea  Input54 formControlName="Commenttwelve"  [(ngModel)]='Commenttwelve'  placeholder="Leave a comment"></textarea>
-                                         
+                                            <div class="form-group">
+                                            <textarea  Input54 formControlName="Commenttwelve" class="form-control"  [(ngModel)]='Commenttwelve'  placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                                            <!-- <input  disabled Input55 formControlName="managerratingten" [(ngModel)]='managerratingten' type="number"> -->
-                                            <input   Input55  formControlName="managerratingten"  [(ngModel)]='managerratingten' type="number">
-                                       
+                                            <div class="form-group">
+                                            <input   Input55  formControlName="managerratingten" class="form-control"  [(ngModel)]='managerratingten' type="number">
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                            <!-- <input  disabled Input56 formControlName="managerratingeleven" [(ngModel)]='managerratingeleven' type="number"> -->
-                                            <input   Input56 formControlName="managerratingeleven" [(ngModel)]='managerratingeleven' type="number">
-                                     
+                                            <div class="form-group">
+                                            <input   Input56 formControlName="managerratingeleven" class="form-control" [(ngModel)]='managerratingeleven' type="number">
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>      
-                                            <!-- <input disabled Input57 formControlName="managerratingtwelve" [(ngModel)]='managerratingtwelve' type="number">         -->
-                                            <input   Input56 formControlName="managerratingtwelve" [(ngModel)]='managerratingtwelve' type="number">
-                                        </td>
+                                            <div class="form-group">
+                                            <input   Input56 formControlName="managerratingtwelve" class="form-control" [(ngModel)]='managerratingtwelve' type="number">
+                                          </div>
+                                          </td>
                                       </tr>
                                     </table></td>
                                     <td class="sub-table"><table >
                                       <tr>
                                         <td>
-                          
-                                            <textarea  Input58 formControlName="managerCommentten" [(ngModel)]='managerCommentten' placeholder="Leave a comment"></textarea>
-                                       
+                                            <div class="form-group">
+                                            <textarea  Input58 formControlName="managerCommentten"  class="form-control" [(ngModel)]='managerCommentten' placeholder="Leave a comment"></textarea>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <div class="form-group">
+                                            <textarea  Input59 formControlName="managerCommenteleven" class="form-control" [(ngModel)]='managerCommenteleven'  placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
                                          
-                                            <textarea  Input59 formControlName="managerCommenteleven" [(ngModel)]='managerCommenteleven'  placeholder="Leave a comment"></textarea>
-                                         
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                         
-                                             
-                                            <textarea  Input60 formControlName="managerCommenttwelve" [(ngModel)]='managerCommenttwelve' placeholder="Leave a comment"></textarea>
-                                        
+                                            <div class="form-group">
+                                            <textarea  Input60 formControlName="managerCommenttwelve" class="form-control" [(ngModel)]='managerCommenttwelve' placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                                       </tr>
                                     </table></td>
@@ -691,70 +683,75 @@
                                           Goal 1: Fulfilment of SP Values and Code of Conduct
                                         </td>
                                         <td>
-                                          
-                                            <textarea Input61 formControlName="behaviourratingone"  [(ngModel)]='behaviourratingone' placeholder="Leave a comment"></textarea>
-                                       
+                                            <div class="form-group">
+                                                <input  Input61 formControlName="behaviourratingone" class="form-control" [(ngModel)]='behaviourratingone' type="number">
+                                            <!-- <textarea Input61 formControlName="behaviourratingone" class="form-control" [(ngModel)]='behaviourratingone' placeholder="Leave a comment"></textarea> -->
+                                          </div>
                                         </td>
                                         <td>
-                                         
-                                            <textarea Input62 formControlName="behaviourCommentone"   [(ngModel)]='behaviourCommentone' placeholder="Leave a comment"></textarea>
-                                          
+                                            <div class="form-group">
+                                            <textarea Input62 formControlName="behaviourCommentone" class="form-control"  [(ngModel)]='behaviourCommentone' placeholder="Leave a comment"></textarea>
+                                          </div>
                                         </td>
                     
                                       </tr>
                                       <tr>
                                         <td scope="row">Goal 2: Willingness to Learn new things</td>
                                         <td>
-                                          
-                                            <textarea Input63 formControlName="behaviourratingtwo"   [(ngModel)]='behaviourratingtwo' placeholder="Leave a comment"></textarea>
-                                        
+                                            <div class="form-group">
+                                                <input  Input63 formControlName="behaviourratingtwo"  class="form-control" [(ngModel)]='behaviourratingtwo' type="number">
+                                            <!-- <textarea Input63 formControlName="behaviourratingtwo"  class="form-control" [(ngModel)]='behaviourratingtwo' placeholder="Leave a comment"></textarea> -->
+                                          </div>
                                         </td>
                                         <td>
-                                           
-                                                <textarea Input64  formControlName="behaviourCommenttwo"  [(ngModel)]='behaviourCommenttwo' placeholder="Leave a comment"></textarea>
-                                          
+                                            <div class="form-group">
+                                                <textarea Input64  formControlName="behaviourCommenttwo" class="form-control"  [(ngModel)]='behaviourCommenttwo' placeholder="Leave a comment"></textarea>
+                                              </div>
                                              </td>
                     
                                       </tr>
                                       <tr>
                                         <td scope="row">Goal 3: Communication Skills(Oral and Written) </td>
                                         <td>
-                                          
-                                                <textarea Input65 formControlName="behaviourratingthree" [(ngModel)]='behaviourratingthree'  placeholder="Leave a comment"></textarea>
-                                             
+                                            <div class="form-group">
+                                                <input Input65 formControlName="behaviourratingthree" class="form-control" [(ngModel)]='behaviourratingthree'  type="number">
+                                                <!-- <textarea Input65 formControlName="behaviourratingthree" class="form-control" [(ngModel)]='behaviourratingthree'  placeholder="Leave a comment"></textarea> -->
+                                              </div>
                                         </td>
                                         <td>
-                                           
-                                                <textarea Input66 formControlName="behaviourCommentthree" [(ngModel)]='behaviourCommentthree' placeholder="Leave a comment"></textarea>
-                                            
+                                            <div class="form-group">
+                                                <textarea Input66 formControlName="behaviourCommentthree" class="form-control" [(ngModel)]='behaviourCommentthree' placeholder="Leave a comment"></textarea>
+                                              </div>
                                         </td>
                     
                                       </tr>
                                       <tr>
                                         <td scope="row">Goal 4: Ability to Work in Teams(Team Bonding) </td>
                                         <td>
-                                          
-                                                <textarea Input67 formControlName="behaviourratingfour" [(ngModel)]='behaviourratingfour'  placeholder="Leave a comment"></textarea>
-                                             
+                                            <div class="form-group">
+                                                <input  Input67 formControlName="behaviourratingfour" class="form-control" [(ngModel)]='behaviourratingfour' type="number">
+                                                <!-- <textarea Input67 formControlName="behaviourratingfour" class="form-control" [(ngModel)]='behaviourratingfour'  placeholder="Leave a comment"></textarea> -->
+                                              </div>
                                         </td>
                                         <td>
-                                           
-                                                <textarea Input68 formControlName="behaviourCommentfour" [(ngModel)]='behaviourCommentfour' placeholder="Leave a comment"></textarea>
-                                             
+                                            <div class="form-group">
+                                                <textarea Input68 formControlName="behaviourCommentfour" class="form-control" [(ngModel)]='behaviourCommentfour' placeholder="Leave a comment"></textarea>
+                                              </div>
                                         </td>
                     
                                       </tr>
                                       <tr>
                                         <td scope="row">Goal 5: Initiative and Pro-Activeness</td>
                                         <td>
-                                           
-                                                <textarea Input69 formControlName="behaviourratingfive" [(ngModel)]='behaviourratingfive'  placeholder="Leave a comment"></textarea>
-                                             
+                                            <div class="form-group">
+                                                <input Input69 formControlName="behaviourratingfive" class="form-control" [(ngModel)]='behaviourratingfive'  type="number">
+                                                <!-- <textarea Input69 formControlName="behaviourratingfive" class="form-control" [(ngModel)]='behaviourratingfive'  placeholder="Leave a comment"></textarea> -->
+                                              </div>
                                         </td>
                                         <td>
-                                           
-                                                <textarea Input70 formControlName="behaviourCommentfive" [(ngModel)]='behaviourCommentfive' placeholder="Leave a comment"></textarea>
-                                           
+                                            <div class="form-group">
+                                                <textarea Input70 formControlName="behaviourCommentfive" class="form-control" [(ngModel)]='behaviourCommentfive' placeholder="Leave a comment"></textarea>
+                                              </div>
                                         </td>
                     
                                       </tr>
@@ -784,9 +781,9 @@
                                     <tr>
                                       <td scope="row">What are my ambitions/job expectations and goals in a 1-3 year perspective</td>
                                       <td style="width: 650px;">
-                                       
-                                          <textarea Input71 formControlName="ambitions"  [(ngModel)]='ambitions' placeholder="Leave a comment"></textarea>
-                                       
+                                          <div class="form-group">
+                                          <textarea Input71 formControlName="ambitions" class="form-control" [(ngModel)]='ambitions' placeholder="Leave a comment"></textarea>
+                                        </div>
                                       </td>
                                     </tr>
                                   
@@ -810,42 +807,42 @@
                                     <tr>
                                       <td scope="row">Summarize Overall Performance</td>
                                       <td>
-                                          
-                                              <textarea Input72 formControlName="summarizecommentone" [(ngModel)]='summarizecommentone' placeholder="Leave a comment"></textarea>
-                                           
+                                          <div class="form-group">
+                                              <textarea Input72 formControlName="summarizecommentone" class="form-control" [(ngModel)]='summarizecommentone' placeholder="Leave a comment"></textarea>
+                                            </div>
                                       </td>
                                       <td>
-                                         
-                                              <textarea Input73 formControlName="summarizemanagercommentone" [(ngModel)]='summarizemanagercommentone' placeholder="Leave a comment"></textarea>
-                                           
+                                          <div class="form-group">
+                                              <textarea Input73 formControlName="summarizemanagercommentone" class="form-control" [(ngModel)]='summarizemanagercommentone' placeholder="Leave a comment"></textarea>
+                                            </div>
                                       </td>
                                 
                                     </tr>
                                     <tr>
                                       <td scope="row">Areas of Improvement</td>
                                       <td>
-                                       
-                                              <textarea Input74 formControlName="summarizecommenttwo" [(ngModel)]='summarizecommenttwo' placeholder="Leave a comment"></textarea>
-                                           
+                                          <div class="form-group">
+                                              <textarea Input74 formControlName="summarizecommenttwo" class="form-control" [(ngModel)]='summarizecommenttwo' placeholder="Leave a comment"></textarea>
+                                            </div>
                                       </td>
                                       <td>
-                                         
-                                              <textarea Input75 formControlName="summarizemanagercommenttwo" [(ngModel)]='summarizemanagercommenttwo' placeholder="Leave a comment"></textarea>
-                                           
+                                          <div class="form-group">
+                                              <textarea Input75 formControlName="summarizemanagercommenttwo" class="form-control" [(ngModel)]='summarizemanagercommenttwo' placeholder="Leave a comment"></textarea>
+                                            </div>
                                            </td>
                                 
                                     </tr>
                                     <tr>
                                       <td scope="row">Action Plan for Improvement </td>
                                       <td>
-                                       
-                                              <textarea Input76 formControlName="summarizecommentthree" [(ngModel)]='summarizecommentthree' placeholder="Leave a comment"></textarea>
-                                           
+                                          <div class="form-group">
+                                              <textarea Input76 formControlName="summarizecommentthree" class="form-control" [(ngModel)]='summarizecommentthree' placeholder="Leave a comment"></textarea>
+                                            </div>
                                       </td>
                                       <td>
-                                        
-                                              <textarea Input77 formControlName="summarizemanagercommentthree" [(ngModel)]='summarizemanagercommentthree' placeholder="Leave a comment"></textarea>
-                                            
+                                          <div class="form-group">
+                                              <textarea Input77 formControlName="summarizemanagercommentthree" class="form-control" [(ngModel)]='summarizemanagercommentthree' placeholder="Leave a comment"></textarea>
+                                            </div>
                                       </td>
                                 
                                     </tr>
@@ -865,42 +862,46 @@
                                            <td scope="row">Overall Rating(As per Performance Rating 
                                              Scale)(To be filled by Manager)</td>
                                            <td style="width: 350px;">
-                                            
-                                                   <textarea Input78 formControlName="closuremanagercommentone" [(ngModel)]='closuremanagercommentone' placeholder="Leave a comment"></textarea>
-                                               
+                                              <div class="form-group">
+                                                  <input  Input78 formControlName="closuremanagercommentone" class="form-control" [(ngModel)]='closuremanagercommentone'  type="number">
+                                                   <!-- <textarea Input78 formControlName="closuremanagercommentone" class="form-control" [(ngModel)]='closuremanagercommentone' placeholder="Leave a comment"></textarea> -->
+                                                  </div>
                                            </td>
                                            <td style="width: 350px;">
-                                            
-                                                   <textarea Input79 formControlName="closuremanagercommenttwo" [(ngModel)]='closuremanagercommenttwo' placeholder="Leave a comment"></textarea>
-                                              
+                                              <div class="form-group">
+                                                
+                                                   <textarea Input79 formControlName="closuremanagercommenttwo" class="form-control" [(ngModel)]='closuremanagercommenttwo' placeholder="Leave a comment"></textarea>
+                                                  </div>
                                            </td>
                        
                                          </tr>
                                          <tr>
                                            <td scope="row">HR Feedback</td>
                                            <td>
-                                              
-                                                   <textarea Input80  formControlName="closurehrcommentone"  placeholder="Leave a comment"></textarea>
-                                               
+                                              <div class="form-group">
+                                                  <input  Input80  formControlName="closurehrcommentone" class="form-control" type="number">
+                                                   <!-- <textarea Input80  formControlName="closurehrcommentone" class="form-control" placeholder="Leave a comment"></textarea> -->
+                                                  </div>
                                            </td>
                                            <td> 
-                                              
-                                                   <textarea Input81 formControlName="closurehrcommenttwo"  placeholder="Leave a comment"></textarea>
-                                               
+                                              <div class="form-group">
+                                                   <textarea Input81 formControlName="closurehrcommenttwo" class="form-control" placeholder="Leave a comment"></textarea>
+                                                  </div>
                                            </td>
                        
                                          </tr>
                                          <tr>
                                            <td scope="row">Management Feedback</td>
                                            <td>
-                                              
-                                                   <textarea Input82 formControlName="closuremanagementcommentone"  placeholder="Leave a comment"></textarea>
-                                                
+                                              <div class="form-group">
+                                                  <input Input82 formControlName="closuremanagementcommentone" class="form-control" type="number">
+                                                   <!-- <textarea Input82 formControlName="closuremanagementcommentone" class="form-control" placeholder="Leave a comment"></textarea> -->
+                                                  </div>
                                            </td>
                                            <td>
-                                              
-                                                   <textarea Input83 formControlName="closuremanagementcommenttwo"  placeholder="Leave a comment"></textarea>
-                                                
+                                              <div class="form-group">
+                                                   <textarea Input83 formControlName="closuremanagementcommenttwo" class="form-control" placeholder="Leave a comment"></textarea>
+                                                  </div>
                                            </td>
                        
                                          </tr>
@@ -911,7 +912,7 @@
                                      
                              
                  
-                                         <!-- <button   (click)="goalformsubmit()">SUBMIT</button>  -->
+                                     <button class="btn btn-primary full_width font_lat yello-bg"   (click)="Cancelclick()">Cancel</button>
                                        <!-- app-appraisal-form-closure ends -->
                                        <!-- <button class="btn btn-danger">Cancel</button>
                                        <button class="btn btn-primary full_width font_lato"> {{  ButtonToogle == true ? 'Update' : 'Submit' }}</button> -->

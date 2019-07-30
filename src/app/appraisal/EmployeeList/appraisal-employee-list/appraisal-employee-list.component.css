@@ -69,3 +69,9 @@ td {
 .main-heading h3 {
   color: #f3c624;
 }
+
+.orange-bg {
+  background: #ff9800;
+  color: #fff;
+  font-weight: 600;
+}

@@ -26,7 +26,7 @@ export class AppraisalEmployeeViewComponent implements OnInit {
   Showemptygrid:boolean;
   isviewform:boolean;
   displayedColumns: string[] = ['fullName',  'department','ViewForm'];
-  employeeviewList: import("e:/Appraisaltimelog/Appraisal-Managment-Internal/src/app/appraisal/Model/Response/appraisal-login-response").AppraisalLoginResponse;
+  //employeeviewList: import("e:/Appraisaltimelog/Appraisal-Managment-Internal/src/app/appraisal/Model/Response/appraisal-login-response").AppraisalLoginResponse;
   constructor(
     private _errorService: ErrorService,
     private _spinner: NgxSpinnerService,

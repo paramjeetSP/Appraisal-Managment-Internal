@@ -272,19 +272,19 @@ this.GetManagerRCDetails(idval);
   else{
     // disable rating for manager
  // 
-  if(loginby=="employee"){
+  // if(loginby=="employee"){
   
     
-  }
-  else{
-    // this.ratingitselfandcomments();
-    // this.managerratingandcomments();
-    // this.disableBehaviourratingandcomments();
-    // this.disableambitionsinfo();
-    // this.disablemanagerSummaryall();
-    // this.disableemployeeSummaryall();
-    // this.disableclosureall();
-  }
+  // }
+  // else{
+  //   // this.ratingitselfandcomments();
+  //   // this.managerratingandcomments();
+  //   // this.disableBehaviourratingandcomments();
+  //   // this.disableambitionsinfo();
+  //   // this.disablemanagerSummaryall();
+  //   // this.disableemployeeSummaryall();
+  //   // this.disableclosureall();
+  // }
    
     
     this.personaldata();    
@@ -564,6 +564,9 @@ this.GetManagerRCDetails(idval);
         this._errorService.LogError(error);
      
       });
+  }
+  Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_LISTING]);
   }
 //   onSubmit() {
 //     debugger
