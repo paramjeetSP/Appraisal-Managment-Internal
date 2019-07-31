@@ -89,9 +89,10 @@ export class AppraisalFormContainerComponent implements OnInit {
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
  editemployeegoal: Array<{ description: string,id:number,departmentHead:string,pid:number}> = [];
- Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string,isActive:boolean}> = [];
- EditGoaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
- EditGoalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
+ Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string, AreasImprovementSelf :string,isActive:boolean}> = [];
+ //EditGoaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
+ EditGoalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string,AreasImprovementSelf :string,isActive:boolean,pid:number}> = [];
+  ambitionspid: any;
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -201,25 +202,19 @@ export class AppraisalFormContainerComponent implements OnInit {
           closuremanagementcommenttwo: ['', Validators.required],
     });
     debugger   
-//   var isedit= localStorage.getItem('isedit');
-//    if(isedit=="true"){
-// this.ButtonToogle ==true;
-//    }
-//    else{
-//     this.ButtonToogle ==false; 
-//    }
-  
+    
   var idval= this.router.snapshot.queryParamMap.get('id');  
 
   localStorage.setItem('empid', idval);
   if(idval!=null){
     debugger
+   
    this.GetemployeeDetails(idval);
     //  this.Getgoalemployee(idval);
    this.GetemployeeformDetail(idval);
-
+  
  
- //disable goal for hr view
+ 
   this.disablegoal();
   this.disableBehaviourratingandcomments();
   this.disablemanagerratingandcomments();
@@ -228,34 +223,10 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
   
   else{
-    // disable rating for manager
- // 
-  //if(loginby=="employee"){
-    
+ 
 
-    // this.disablegoal();
-    // this.disablemanagerratingandcomments();
-    // this.disableBehaviourratingandcomments();
-    // this.disablemanagerSummary();
-    // this.disableclosure();
-    // this.ButtonToogle=false;
- // }
- // else{
-    // this.disableratingitselfandcomments();
-    // this.disablemanagerratingandcomments();
-    // this.disableBehaviourratingandcomments();
-    // this.disableambitions();
-    // this.disablemanagerSummary();
-    // this.disableemployeeSummary();
-    // this.disableclosure();
- // }
-   
-    
     this.personaldata();    
-  //   var data= this._sessionStorage.GetLoggedInUserInfo();
-  //   const id=data.id;
-  //  this.Getgoalemployee(id);
-   
+
   }
   
   }
@@ -281,70 +252,7 @@ export class AppraisalFormContainerComponent implements OnInit {
    }
   }
 
-  // Getgoalemployee(id: any){
-  // //  debugger
-   
-  //   const subs = this.appraisalFormService.GetEmployeeGolaById(id)
-  //   .pipe(catchError(x => {
-  //     this._errorService.LogError(x);
-  //     return throwError(x);
-  //   }))
-  //   .subscribe(
-  //     (data:AppraisalEmpGoalRes[]) => {
-  //   //    debugger
-      
-  //     var dataval=data;
-  //     this.goalone=data[0].description;
-  //     if( this.goalone !=null)
-  //     {    
-  //      //this.ButtonToogle = true;
-  //     }
-  //     this.goalone=dataval[0].description;
-  //     this.goaltwo=dataval[1].description;
-  //     this.goalthree=dataval[2].description;
-  //     this.goalFour=dataval[3].description;
-  //     this.goalFive=dataval[4].description;
-  //     this.goalSix=dataval[5].description;
-  //     this.goalseven=dataval[6].description;
-  //     this.goaleight=dataval[7].description;
-  //     this.goalnine=dataval[8].description;
-  //     this.goalten=dataval[9].description;
-  //     this.goaleleven=dataval[10].description;
-  //     this.goaltwelve=dataval[11].description;
-  //     // primary key id
-     
-  //     this.pid1=data[0].id;
-  //     this.pid2=data[1].id;
-  //     this.pid3=data[2].id;
-  //     this.pid4=data[3].id;
-  //     this.pid5=data[4].id;
-  //     this.pid6=data[5].id;
-  //     this.pid7=data[6].id;
-  //     this.pid8=data[7].id;
-  //     this.pid9=data[8].id;
-  //     this.pid10=data[9].id;
-  //     this.pid11=data[10].id;
-  //     this.pid12=data[11].id;
-  //     localStorage.setItem('pid1', JSON.stringify(this.pid1));
-  //     localStorage.setItem('pid2', JSON.stringify(this.pid2));
-  //     localStorage.setItem('pid3', JSON.stringify(this.pid3));
-  //     localStorage.setItem('pid4', JSON.stringify(this.pid4));
-  //     localStorage.setItem('pid5', JSON.stringify(this.pid5));
-  //     localStorage.setItem('pid6', JSON.stringify(this.pid6));
-  //     localStorage.setItem('pid7', JSON.stringify(this.pid7));
-  //     localStorage.setItem('pid8', JSON.stringify(this.pid8));
-  //     localStorage.setItem('pid9', JSON.stringify(this.pid9));
-  //     localStorage.setItem('pid10', JSON.stringify(this.pid10));
-  //     localStorage.setItem('pid11', JSON.stringify(this.pid11));
-  //     localStorage.setItem('pid12', JSON.stringify(this.pid12));
-    
-  //     //  this._spinner.hide();
-  //     }, 
-  //     (error) => {
-  //       this._errorService.LogError(error);
-  //     //  this._spinner.hide();
-  //     });
-  // }
+
 
   GetemployeeformDetail(id: any){
     debugger
@@ -384,6 +292,8 @@ export class AppraisalFormContainerComponent implements OnInit {
       this.pid10=data._EmployeeRatinglist[9].id;
       this.pid11=data._EmployeeRatinglist[10].id;
       this.pid12=data._EmployeeRatinglist[11].id;
+
+
       localStorage.setItem('pid1', JSON.stringify(this.pid1));
       localStorage.setItem('pid2', JSON.stringify(this.pid2));
       localStorage.setItem('pid3', JSON.stringify(this.pid3));
@@ -422,12 +332,18 @@ export class AppraisalFormContainerComponent implements OnInit {
       this.Commentten=data._EmployeeRatinglist[9].comments;
       this.Commenteleven=data._EmployeeRatinglist[10].comments;
       this.Commenttwelve=data._EmployeeRatinglist[11].comments;
-      
+      var UserInfo = this._sessionStorage.GetLoggedInUserInfo();
+    var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
+  
+    //  this.ambitionspid= data._EmployeeAmbitionlist[0].id
+      localStorage.setItem('ambitionspid', JSON.stringify( data._EmployeeAmbitionlist[0].id));
+  
+    
       this.ambitions=data._EmployeeAmbitionlist[0].ambitions;
       this.summarizecommentone=data._EmployeeAmbitionlist[0].summarize;
       this.summarizecommenttwo=data._EmployeeAmbitionlist[0].areaImproveSelf;
       this.summarizecommentthree=data._EmployeeAmbitionlist[0].actionPlanImproveSelf;
-
+ 
       }, 
       (error) => {
         this._errorService.LogError(error);
@@ -499,10 +415,83 @@ export class AppraisalFormContainerComponent implements OnInit {
     this.pid11=localStorage.getItem('pid11');
     this.pid12=  localStorage.getItem('pid12');
     var isedit= localStorage.getItem('isedit');
-  
+    this.ambitionspid =localStorage.getItem('ambitionspid')
     if( this.pid1 != null)
   {
 // employee Rating and comments saving Code
+// var UserInfo = this._sessionStorage.GetLoggedInUserInfo();
+// var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
+// var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
+if(this.ambitionspid !=null ){
+  // for Edit code
+  var rating1 = this.goalForm.controls.ratingone.value;
+  var rating2 = this.goalForm.controls.ratingtwo.value;
+  var rating3 = this.goalForm.controls.ratingthree.value;
+  var rating4 = this.goalForm.controls.ratingfour.value;
+  var rating5 = this.goalForm.controls.ratingfive.value;
+  var rating6 = this.goalForm.controls.ratingsix.value;
+  var rating7 = this.goalForm.controls.ratingseven.value;
+  var rating8 = this.goalForm.controls.ratingeight.value;
+  var rating9 = this.goalForm.controls.ratingnine.value;
+  var rating10 = this.goalForm.controls.ratingten.value;
+  var rating11 = this.goalForm.controls.ratingeleven.value;
+  var rating12 = this.goalForm.controls.ratingtwelve.value;
+  
+  var comments1 = this.goalForm.controls.Commentone.value;
+  var comments2 = this.goalForm.controls.Commenttwo.value;
+  var comments3 = this.goalForm.controls.Commentthree.value;
+  var comments4 = this.goalForm.controls.Commentfour.value;
+  var comments5 = this.goalForm.controls.Commentfive.value;
+  var comments6 = this.goalForm.controls.Commentsix.value;
+  var comments7 = this.goalForm.controls.Commentseven.value;
+  var comments8 = this.goalForm.controls.Commenteight.value;
+  var comments9 = this.goalForm.controls.Commentnine.value;
+  var comments10 = this.goalForm.controls.Commentten.value;
+  var comments11 = this.goalForm.controls.Commenteleven.value;
+  var comments12 = this.goalForm.controls.Commenttwelve.value;
+  
+  var ambitions = this.goalForm.controls.ambitions.value;
+  var summarizecommentone = this.goalForm.controls.summarizecommentone.value;
+  var summarizecommenttwo = this.goalForm.controls.summarizecommenttwo.value;
+  var summarizecommentthree = this.goalForm.controls.summarizecommentthree.value;
+  
+  const empid= parseInt(localStorage.getItem('empid'));
+  // var data = this._sessionStorage.GetUserdetailInfo();
+  // const empid =data.id;
+  
+  this.Goaldataupdate.push({ pid: this.pid1,id: empid,RatingSelf: rating1,CommentSelf:comments1});
+  this.Goaldataupdate.push({ pid: this.pid2,id: empid,RatingSelf: rating2,CommentSelf:comments2});
+  this.Goaldataupdate.push({ pid: this.pid3,id: empid,RatingSelf: rating3,CommentSelf:comments3});
+  this.Goaldataupdate.push({ pid: this.pid4,id: empid,RatingSelf: rating4,CommentSelf:comments4});
+  this.Goaldataupdate.push({ pid: this.pid5,id: empid,RatingSelf: rating5,CommentSelf:comments5});
+  this.Goaldataupdate.push({ pid: this.pid6,id: empid,RatingSelf: rating6,CommentSelf:comments6});
+  this.Goaldataupdate.push({ pid: this.pid7,id: empid,RatingSelf: rating7,CommentSelf:comments7});
+  this.Goaldataupdate.push({pid: this.pid8,id: empid,RatingSelf: rating8,CommentSelf:comments8});
+  this.Goaldataupdate.push({ pid: this.pid9,id: empid,RatingSelf: rating9,CommentSelf:comments9});
+  this.Goaldataupdate.push({pid: this.pid10,id: empid,RatingSelf: rating10,CommentSelf:comments10});
+  this.Goaldataupdate.push({ pid: this.pid11,id: empid,RatingSelf: rating11,CommentSelf:comments11});
+  this.Goaldataupdate.push({pid: this.pid12,id: empid,RatingSelf: rating12,CommentSelf:comments12});
+  
+  console.log('goal setting array',this.Goaldataupdate);
+  
+  this.EditGoalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambitions, ActionPlanImprovementSelf :summarizecommentthree,SummarizeOverallPerformanceSelf :summarizecommentone, AreasImprovementSelf :summarizecommenttwo,isActive:true,pid:this.ambitionspid});
+  
+  
+  const body_data = {
+  'Goaldataupdate': this.Goaldataupdate,
+  'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary
+  };
+  
+  this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((Goaldataupdate: any) => {
+  if (Goaldataupdate) {
+  this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
+  this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+  //this.ButtonToogle=true;
+  }
+  });
+   }
+else{
+
 
 var rating1 = this.goalForm.controls.ratingone.value;
 var rating2 = this.goalForm.controls.ratingtwo.value;
@@ -571,7 +560,7 @@ this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
 });
 
 
-
+}
   }
   }
   Cancelclick(){

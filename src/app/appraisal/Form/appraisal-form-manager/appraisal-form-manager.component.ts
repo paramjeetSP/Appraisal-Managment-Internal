@@ -138,6 +138,11 @@ export class AppraisalFormManagerComponent implements OnInit {
   pid12:any;
 
   summarypid1:any;
+  behaviourpid1:any;
+  behaviourpid2:any;
+  behaviourpid3:any;
+  behaviourpid4:any;
+  behaviourpid5:any;
   ButtonToogle = false;
   Goaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  employeegoal: Array<{ description: string,id:number,departmentHead:string}> = [];
@@ -145,6 +150,7 @@ export class AppraisalFormManagerComponent implements OnInit {
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
  ManagerRatingComment : Array<{ id:number,Ratings:string,Comments:string,pid:number}> = [];
  BehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean}> = [];
+//BehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean,pid:number}> = [];
  Summary: Array<{ SummarizeOverallPerformanceManager :string,AreasImprovementManager :string, ActionPlanImprovementManager :string, OverallRatingManager :string,OverallRatingManagercomment :string,pid:number}> = [];
  submitted = false;
  constructor(private _sessionStorage: SessionStorageService,
@@ -579,7 +585,11 @@ this.GetEmployeeRCDetails(idval);
       this.pid12=data._ManagerRatinglist[11].id;
 
       this.summarypid1=data._ManagerSummarylist[0].id;
-     
+      this.behaviourpid1=data._ManagerBehaviourRatinglist[0].pid;
+      this.behaviourpid2=data._ManagerBehaviourRatinglist[1].pid;
+      this.behaviourpid3=data._ManagerBehaviourRatinglist[2].pid;
+      this.behaviourpid4=data._ManagerBehaviourRatinglist[3].pid;
+      this.behaviourpid5=data._ManagerBehaviourRatinglist[4].pid;
       localStorage.setItem('pid1', JSON.stringify(this.pid1));
       localStorage.setItem('pid2', JSON.stringify(this.pid2));
       localStorage.setItem('pid3', JSON.stringify(this.pid3));
@@ -594,6 +604,11 @@ this.GetEmployeeRCDetails(idval);
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
 
       localStorage.setItem('summarypid1', JSON.stringify(this.summarypid1));
+      localStorage.setItem('behaviourpid1',JSON.stringify(this.behaviourpid1));
+      localStorage.setItem('behaviourpid2',JSON.stringify(this.behaviourpid2));
+      localStorage.setItem('behaviourpid3',JSON.stringify(this.behaviourpid3));
+      localStorage.setItem('behaviourpid4',JSON.stringify(this.behaviourpid4));
+      localStorage.setItem('behaviourpid5',JSON.stringify(this.behaviourpid5));
 
       this.ambitions = data._ManagerSummarylist[0].ambitions;
       this.summarizecommentone =  data._ManagerSummarylist[0].summarize;
@@ -669,6 +684,11 @@ this.GetEmployeeRCDetails(idval);
     this.pid11=localStorage.getItem('pid11');
     this.pid12=  localStorage.getItem('pid12');
     this.summarypid1 =  localStorage.getItem('summarypid1');
+    this.behaviourpid1 =  localStorage.getItem('behaviourpid1');
+    this.behaviourpid2 =  localStorage.getItem('behaviourpid2');
+    this.behaviourpid3 =  localStorage.getItem('behaviourpid3');
+    this.behaviourpid4 =  localStorage.getItem('behaviourpid4');
+    this.behaviourpid5 =  localStorage.getItem('behaviourpid5');
 
 if(this.pid1!=null){
  if(userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1"){
@@ -791,6 +811,12 @@ this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals2,M
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,ManagerRating:behaviourrating3,ManagerComments:behaviourComment3,IsActive:true});
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true});
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true});
+//varinder code
+// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals1,ManagerRating:behaviourrating1,ManagerComments:behaviourComment1,IsActive:true,pid:this.behaviourpid1});
+// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals2,ManagerRating:behaviourrating2,ManagerComments:behaviourComment2,IsActive:true,pid:this.behaviourpid2});
+// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,ManagerRating:behaviourrating3,ManagerComments:behaviourComment3,IsActive:true,pid:this.behaviourpid3});
+// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true,pid:this.behaviourpid4});
+// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true,pid:this.behaviourpid5});
 console.log('BehaviourRatingComment',this.BehaviourRatingComment);
 this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
 console.log('Summary',this.Summary);

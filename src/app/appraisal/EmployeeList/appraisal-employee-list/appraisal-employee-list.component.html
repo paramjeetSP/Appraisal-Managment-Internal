@@ -13,7 +13,7 @@
   </div>
   <div   *ngIf="Showemployeelistgrid" class="container-fluid mat-elevation-z8">
       <!-- <div    class="container-fluid mat-elevation-z8"> -->
-  <div class="table-responsive"> 
+  <div  class="table-responsive"> 
     <table mat-table [dataSource]="employeeList" class=" table table-sm table-wrapper">
       <!-- Full Name Column -->
       <ng-container matColumnDef="fullName">
@@ -41,12 +41,12 @@
       <ng-container matColumnDef="appraisalStatus">
         <th mat-header-cell *matHeaderCellDef> Appraisal Status </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button *ngIf="element.appraisalStatus === 0" (click)="SubmitrequestToInitiateAppraisalProcess(element);"
-            color="primary">Initiate
+          <button mat-raised-button class="brown-bg" *ngIf="element.appraisalStatus === 0" (click)="SubmitrequestToInitiateAppraisalProcess(element);"
+            >Initiate
             Process</button>
-          <p class="in-progress-color text-center blue-bg" *ngIf="element.appraisalStatus === 1" >In-Progress</p>
-          <p class="in-progress-color text-center blue-bg" (click)="SubmitReinitiate(element)" *ngIf="element.appraisalStatus === 2" >Re-Initiate</p>
-          <p class="in-progress-color text-center blue-bg" *ngIf="element.appraisalStatus === 3" >Form-In-Progress</p>
+          <p class="in-progress-color text-center amber-bg" *ngIf="element.appraisalStatus === 1" >In-Progress</p>
+          <p class="in-progress-color text-center lime-green-bg" (click)="SubmitReinitiate(element)" *ngIf="element.appraisalStatus === 2" >Re-Initiate</p>
+          <p class="in-progress-color text-center green-bg" *ngIf="element.appraisalStatus === 3" >Form-In-Progress</p>
         </td>
       </ng-container>
       <ng-container matColumnDef="HrinitiateFormStatus">

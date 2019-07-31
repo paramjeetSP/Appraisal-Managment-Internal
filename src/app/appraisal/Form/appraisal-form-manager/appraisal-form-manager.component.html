@@ -801,7 +801,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                            <textarea Input62 formControlName="behaviourCommentone" [(ngModel)]='behaviourCommentone'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentone.errors }" placeholder="Leave a comment"></textarea>
+                                            <textarea Input62 formControlName="behaviourCommentone" [(ngModel)]='behaviourCommentone'  class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentone.errors }" placeholder="Leave a comment"></textarea>
                                             <div *ngIf="submitted && goalsettingform.behaviourCommentone.errors" class="invalid-feedback">
                                                 <div>BehaviourComment is required</div>
                                             </div>
@@ -822,7 +822,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <textarea Input64  formControlName="behaviourCommenttwo" [(ngModel)]='behaviourCommenttwo'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommenttwo.errors }" placeholder="Leave a comment"></textarea>
+                                                <textarea Input64  formControlName="behaviourCommenttwo" [(ngModel)]='behaviourCommenttwo'  class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommenttwo.errors }" placeholder="Leave a comment"></textarea>
                                                 <div *ngIf="submitted && goalsettingform.behaviourCommenttwo.errors" class="invalid-feedback">
                                                     <div>BehaviourComment is required</div>
                                                 </div>
@@ -843,7 +843,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <textarea Input66 formControlName="behaviourCommentthree" [(ngModel)]='behaviourCommentthree' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentthree.errors }"  placeholder="Leave a comment"></textarea>
+                                                <textarea Input66 formControlName="behaviourCommentthree" [(ngModel)]='behaviourCommentthree' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentthree.errors }"  placeholder="Leave a comment"></textarea>
                                                 <div *ngIf="submitted && goalsettingform.behaviourCommentthree.errors" class="invalid-feedback">
                                                     <div>BehaviourComment is required</div>
                                                 </div>
@@ -864,7 +864,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <textarea Input68 formControlName="behaviourCommentfour" [(ngModel)]='behaviourCommentfour' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentfour.errors }" placeholder="Leave a comment"></textarea>
+                                                <textarea Input68 formControlName="behaviourCommentfour" [(ngModel)]='behaviourCommentfour' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentfour.errors }" placeholder="Leave a comment"></textarea>
                                                 <div *ngIf="submitted && goalsettingform.behaviourCommentfour.errors" class="invalid-feedback">
                                                     <div>BehaviourComment is required</div>
                                                 </div>
@@ -885,7 +885,7 @@
                                         <td>
                                             <div class="form-group">
                                            
-                                                <textarea Input70 formControlName="behaviourCommentfive"  [(ngModel)]='behaviourCommentfive' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentfive.errors }" placeholder="Leave a comment"></textarea>
+                                                <textarea Input70 formControlName="behaviourCommentfive"  [(ngModel)]='behaviourCommentfive' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.behaviourCommentfive.errors }" placeholder="Leave a comment"></textarea>
                                                 <div *ngIf="submitted && goalsettingform.behaviourCommentfive.errors" class="invalid-feedback">
                                                     <div>BehaviourComment is required</div>
                                                 </div>
@@ -920,7 +920,7 @@
                                       <td scope="row">What are my ambitions/job expectations and goals in a 1-3 year perspective</td>
                                       <td style="width: 650px;">
                                           <div class="form-group">
-                                          <textarea Input71 formControlName="ambitions" class="form-control" [(ngModel)]='ambitions' placeholder="Leave a comment"></textarea>
+                                          <textarea Input71 formControlName="ambitions" class="form-control summarize" [(ngModel)]='ambitions' placeholder="Leave a comment"></textarea>
                                         </div>
                                       </td>
                                     </tr>
@@ -946,12 +946,12 @@
                                       <td scope="row">Summarize Overall Performance</td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input72 formControlName="summarizecommentone"  class="form-control" [(ngModel)]='summarizecommentone' placeholder="Leave a comment"></textarea>
+                                              <textarea Input72 formControlName="summarizecommentone"  class="form-control summarize" [(ngModel)]='summarizecommentone' placeholder="Leave a comment"></textarea>
                                             </div>
                                       </td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input73 formControlName="summarizemanagercommentone"  [(ngModel)]='summarizemanagercommentone' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
+                                              <textarea Input73 formControlName="summarizemanagercommentone"  [(ngModel)]='summarizemanagercommentone' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
                                               <div *ngIf="submitted && goalsettingform.summarizemanagercommentone.errors" class="invalid-feedback">
                                                   <div>SummaryComment is required</div>
                                               </div>
@@ -963,12 +963,12 @@
                                       <td scope="row">Areas of Improvement</td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input74 formControlName="summarizecommenttwo"  class="form-control" [(ngModel)]='summarizecommenttwo' placeholder="Leave a comment"></textarea>
+                                              <textarea Input74 formControlName="summarizecommenttwo"  class="form-control summarize" [(ngModel)]='summarizecommenttwo' placeholder="Leave a comment"></textarea>
                                             </div>
                                       </td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input75 formControlName="summarizemanagercommenttwo" [(ngModel)]='summarizemanagercommenttwo' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
+                                              <textarea Input75 formControlName="summarizemanagercommenttwo" [(ngModel)]='summarizemanagercommenttwo' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
                                               <div *ngIf="submitted && goalsettingform.summarizemanagercommenttwo.errors" class="invalid-feedback">
                                                   <div>SummaryComment is required</div>
                                               </div>
@@ -981,12 +981,12 @@
                                       <td scope="row">Action Plan for Improvement </td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input76 formControlName="summarizecommentthree"  [(ngModel)]='summarizecommentthree' class="form-control"   placeholder="Leave a comment"></textarea>
+                                              <textarea Input76 formControlName="summarizecommentthree"  [(ngModel)]='summarizecommentthree' class="form-control summarize"   placeholder="Leave a comment"></textarea>
                                             </div>
                                       </td>
                                       <td>
                                           <div class="form-group">
-                                              <textarea Input77 formControlName="summarizemanagercommentthree"  [(ngModel)]='summarizemanagercommentthree'  class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
+                                              <textarea Input77 formControlName="summarizemanagercommentthree"  [(ngModel)]='summarizemanagercommentthree'  class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.summarizemanagercommentone.errors }" placeholder="Leave a comment"></textarea>
                                               <div *ngIf="submitted && goalsettingform.summarizemanagercommentthree.errors" class="invalid-feedback">
                                                   <div>SummaryComment is required</div>
                                               </div>
@@ -1020,7 +1020,7 @@
                                            </td>
                                            <td style="width: 350px;">
                                               <div class="form-group">
-                                                   <textarea Input79 formControlName="closuremanagercommenttwo"  [(ngModel)]='closuremanagercommenttwo' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.closuremanagercommenttwo.errors }" placeholder="Leave a comment"></textarea>
+                                                   <textarea Input79 formControlName="closuremanagercommenttwo"  [(ngModel)]='closuremanagercommenttwo' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.closuremanagercommenttwo.errors }" placeholder="Leave a comment"></textarea>
                                                    <div *ngIf="submitted && goalsettingform.closuremanagercommenttwo.errors" class="invalid-feedback">
                                                       <div>ClosureComment is required</div>
                                                   </div>
@@ -1032,13 +1032,13 @@
                                            <td scope="row">HR Feedback</td>
                                            <td>
                                               <div class="form-group">
-                                              <input Input80 formControlName="closurehrcommentone"  class="form-control"  type="number" placeholder="Leave a comment">
+                                              <input Input80 formControlName="closurehrcommentone"  class="form-control"  type="number" >
                                                    <!-- <textarea Input80  formControlName="closurehrcommentone"  placeholder="Leave a comment"></textarea> -->
                                                   </div> 
                                            </td>
                                            <td> 
                                               <div class="form-group">
-                                                   <textarea Input81 formControlName="closurehrcommenttwo" class="form-control" placeholder="Leave a comment"></textarea>
+                                                   <textarea Input81 formControlName="closurehrcommenttwo" class="form-control summarize" placeholder="Leave a comment"></textarea>
                                                   </div> 
                                            </td>
                        
@@ -1047,13 +1047,13 @@
                                            <td scope="row">Management Feedback</td>
                                            <td>
                                               <div class="form-group">
-                                                  <input Input82 formControlName="closuremanagementcommentone"  class="form-control"  type="number" placeholder="Leave a comment">
+                                                  <input Input82 formControlName="closuremanagementcommentone"  class="form-control"  type="number">
                                                    <!-- <textarea Input82 formControlName="closuremanagementcommentone"  placeholder="Leave a comment"></textarea> -->
                                                   </div> 
                                            </td>
                                            <td>
                                               <div class="form-group">
-                                                   <textarea Input83 formControlName="closuremanagementcommenttwo" class="form-control" placeholder="Leave a comment"></textarea>
+                                                   <textarea Input83 formControlName="closuremanagementcommenttwo" class="form-control summarize" placeholder="Leave a comment"></textarea>
                                                   </div> 
                                            </td>
                        

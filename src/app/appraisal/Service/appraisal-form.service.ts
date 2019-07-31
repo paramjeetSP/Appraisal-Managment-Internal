@@ -34,6 +34,7 @@ export class AppraisalFormService {
     return this._http.post(url,Goaldataupdate,httpOptions)
   }
 
+  
   GetEmployeeGolaById(id: number): Observable<AppraisalEmpGoalRes[]> {
   //  debugger
     const url = `${this._global.API_FULL_URL}GetGoalByEmpId`;
@@ -56,10 +57,10 @@ export class AppraisalFormService {
     return this._http.post<AppraisalEmpformdetailRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
   }
 
-  EditEmployeegoalformData(EditGoaldataupdate:any) {
+  EditEmployeegoalformData(Goaldataupdate:any) {
     debugger
     const url = `${this._global.API_FULL_URL}UpdateEmployeeRatingComment`;
-    return this._http.post(url,EditGoaldataupdate,httpOptions)
+    return this._http.post(url,Goaldataupdate,httpOptions)
   }
 
   GetEmployeeRCDetailsById(id: number): Observable<AppraisalEmpGoalRatingComments[]> {

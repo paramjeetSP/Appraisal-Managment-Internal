@@ -75,3 +75,34 @@ td {
   color: #fff;
   font-weight: 600;
 }
+
+.brown-bg {
+  background: #BF3D0F;
+  color: #fff;
+  font-weight: 600;
+}
+
+.lime-green-bg {
+  background: #8bc34a;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+.amber-bg {
+  background: #ffc107;
+  color: #fff;
+  font-weight: 600;
+}
+
+.indigo-bg {
+  background: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.red-bg {
+  background: #e20724;
+  color: #fff;
+  font-weight: 600;
+}

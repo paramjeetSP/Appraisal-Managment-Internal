@@ -2,3 +2,18 @@
     background: #f3c624;
     font-weight: 600;
   }
+  .sub-table input {
+    width: 60px;
+  }
+  textarea {
+    width: 269px !important;
+  }
+  .container {
+    max-width: 1266px;
+  }
+  textarea.form-control {
+    height: 60px;
+  }
+  textarea.summarize{
+    width: 100% !important;
+  }
