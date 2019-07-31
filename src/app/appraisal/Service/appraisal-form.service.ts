@@ -80,4 +80,10 @@ export class AppraisalFormService {
     const url = `${this._global.API_FULL_URL}GetManagerRcInfoById`;
     return this._http.post<AppraisalmanagerGoalRatingComments[]>(url, { id: id }, this._global.HTTP_OPTIONS);
   }
+
+  EditManagerFinalSubmitData(ManagerRatingComment:any) {
+    debugger
+    const url = `${this._global.API_FULL_URL}EditManagerAllRatingComment`;
+    return this._http.post(url,ManagerRatingComment,httpOptions)
+  }
 }

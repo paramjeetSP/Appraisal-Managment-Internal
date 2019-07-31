@@ -150,7 +150,7 @@ export class AppraisalFormManagerComponent implements OnInit {
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
  ManagerRatingComment : Array<{ id:number,Ratings:string,Comments:string,pid:number}> = [];
  BehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean}> = [];
-//BehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean,pid:number}> = [];
+EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean,pid:number}> = [];
  Summary: Array<{ SummarizeOverallPerformanceManager :string,AreasImprovementManager :string, ActionPlanImprovementManager :string, OverallRatingManager :string,OverallRatingManagercomment :string,pid:number}> = [];
  submitted = false;
  constructor(private _sessionStorage: SessionStorageService,
@@ -502,6 +502,7 @@ this.GetEmployeeRCDetails(idval);
     .subscribe(
       (data:any) => {  
     // this.dataval=data;
+    debugger
     this.goalone=data._ManagerRatinglist[0].description;
     this.goaltwo=data._ManagerRatinglist[1].description;
     this.goalthree=data._ManagerRatinglist[2].description;
@@ -585,11 +586,7 @@ this.GetEmployeeRCDetails(idval);
       this.pid12=data._ManagerRatinglist[11].id;
 
       this.summarypid1=data._ManagerSummarylist[0].id;
-      this.behaviourpid1=data._ManagerBehaviourRatinglist[0].pid;
-      this.behaviourpid2=data._ManagerBehaviourRatinglist[1].pid;
-      this.behaviourpid3=data._ManagerBehaviourRatinglist[2].pid;
-      this.behaviourpid4=data._ManagerBehaviourRatinglist[3].pid;
-      this.behaviourpid5=data._ManagerBehaviourRatinglist[4].pid;
+     
       localStorage.setItem('pid1', JSON.stringify(this.pid1));
       localStorage.setItem('pid2', JSON.stringify(this.pid2));
       localStorage.setItem('pid3', JSON.stringify(this.pid3));
@@ -604,11 +601,14 @@ this.GetEmployeeRCDetails(idval);
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
 
       localStorage.setItem('summarypid1', JSON.stringify(this.summarypid1));
-      localStorage.setItem('behaviourpid1',JSON.stringify(this.behaviourpid1));
-      localStorage.setItem('behaviourpid2',JSON.stringify(this.behaviourpid2));
-      localStorage.setItem('behaviourpid3',JSON.stringify(this.behaviourpid3));
-      localStorage.setItem('behaviourpid4',JSON.stringify(this.behaviourpid4));
-      localStorage.setItem('behaviourpid5',JSON.stringify(this.behaviourpid5));
+      if(data._ManagerBehaviourRatinglist!=0){
+        localStorage.setItem('behaviourpid1',JSON.stringify(data._ManagerBehaviourRatinglist[0].pid));
+        localStorage.setItem('behaviourpid2',JSON.stringify(data._ManagerBehaviourRatinglist[1].pid));
+        localStorage.setItem('behaviourpid3',JSON.stringify(data._ManagerBehaviourRatinglist[2].pid));
+        localStorage.setItem('behaviourpid4',JSON.stringify(data._ManagerBehaviourRatinglist[3].pid));
+        localStorage.setItem('behaviourpid5',JSON.stringify(data._ManagerBehaviourRatinglist[4].pid));
+      }
+    
 
       this.ambitions = data._ManagerSummarylist[0].ambitions;
       this.summarizecommentone =  data._ManagerSummarylist[0].summarize;
@@ -623,16 +623,16 @@ this.GetEmployeeRCDetails(idval);
       this.closuremanagercommenttwo = data._ManagerSummarylist[0].overallRatingManagercomment;  
 
       this.behaviourratingone = data._ManagerBehaviourRatinglist[0].managerRating;
-      this.behaviourratingtwo = data._ManagerBehaviourRatinglist[0].managerRating;
-      this.behaviourratingthree = data._ManagerBehaviourRatinglist[0].managerRating;
-      this.behaviourratingfour = data._ManagerBehaviourRatinglist[0].managerRating;
-      this.behaviourratingfive = data._ManagerBehaviourRatinglist[0].managerRating;
+      this.behaviourratingtwo = data._ManagerBehaviourRatinglist[1].managerRating;
+      this.behaviourratingthree = data._ManagerBehaviourRatinglist[2].managerRating;
+      this.behaviourratingfour = data._ManagerBehaviourRatinglist[3].managerRating;
+      this.behaviourratingfive = data._ManagerBehaviourRatinglist[4].managerRating;
     
       this.behaviourCommentone = data._ManagerBehaviourRatinglist[0].managerComments;
-      this.behaviourCommenttwo = data._ManagerBehaviourRatinglist[0].managerComments;
-      this.behaviourCommentthree = data._ManagerBehaviourRatinglist[0].managerComments;
-      this.behaviourCommentfour = data._ManagerBehaviourRatinglist[0].managerComments;
-      this.behaviourCommentfive = data._ManagerBehaviourRatinglist[0].managerComments;
+      this.behaviourCommenttwo = data._ManagerBehaviourRatinglist[1].managerComments;
+      this.behaviourCommentthree = data._ManagerBehaviourRatinglist[2].managerComments;
+      this.behaviourCommentfour = data._ManagerBehaviourRatinglist[3].managerComments;
+      this.behaviourCommentfive = data._ManagerBehaviourRatinglist[4].managerComments;
        // behavior comments by manager
    
       }, 
@@ -684,11 +684,8 @@ this.GetEmployeeRCDetails(idval);
     this.pid11=localStorage.getItem('pid11');
     this.pid12=  localStorage.getItem('pid12');
     this.summarypid1 =  localStorage.getItem('summarypid1');
-    this.behaviourpid1 =  localStorage.getItem('behaviourpid1');
-    this.behaviourpid2 =  localStorage.getItem('behaviourpid2');
-    this.behaviourpid3 =  localStorage.getItem('behaviourpid3');
-    this.behaviourpid4 =  localStorage.getItem('behaviourpid4');
-    this.behaviourpid5 =  localStorage.getItem('behaviourpid5');
+     this.behaviourpid1 =  localStorage.getItem('behaviourpid1');
+    
 
 if(this.pid1!=null){
  if(userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1"){
@@ -736,6 +733,112 @@ this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:manager
 }
 else if(userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3"){
 // manager rating
+if( this.behaviourpid1!=null){
+  debugger
+  // For EDIT
+    var managerrating1 = this.goalForm.controls.managerratingone.value;
+    var managerrating2 = this.goalForm.controls.managerratingtwo.value;
+    var managerrating3 = this.goalForm.controls.managerratingthree.value;
+    var managerrating4 = this.goalForm.controls.managerratingfour.value;
+    var managerrating5 = this.goalForm.controls.managerratingfive.value;
+    var managerrating6 = this.goalForm.controls.managerratingsix.value;
+    var managerrating7 = this.goalForm.controls.managerratingseven.value;
+    var managerrating8 = this.goalForm.controls.managerratingeight.value;
+    var managerrating9 = this.goalForm.controls.managerratingnine.value;
+    var managerrating10 = this.goalForm.controls.managerratingten.value;
+    var managerrating11 = this.goalForm.controls.managerratingeleven.value;
+    var managerrating12 = this.goalForm.controls.managerratingtwelve.value;
+  // manager comments
+    var managerComment1 = this.goalForm.controls.managerCommentone.value;
+    var managerComment2 = this.goalForm.controls.managerCommenttwo.value;
+    var managerComment3 = this.goalForm.controls.managerCommentthree.value;
+    var managerComment4 = this.goalForm.controls.managerCommentfour.value;
+    var managerComment5 = this.goalForm.controls.managerCommentfive.value;
+    var managerComment6 = this.goalForm.controls.managerCommentsix.value;
+    var managerComment7 = this.goalForm.controls.managerCommentseven.value;
+    var managerComment8 = this.goalForm.controls.managerCommenteight.value;
+    var managerComment9 = this.goalForm.controls.managerCommentnine.value;
+    var managerComment10 = this.goalForm.controls.managerCommentten.value;
+    var managerComment11 = this.goalForm.controls.managerCommenteleven.value;
+    var managerComment12 = this.goalForm.controls.managerCommenttwelve.value;
+    // manager behaviour rating 
+    var behaviourrating1 = this.goalForm.controls.behaviourratingone.value;
+    var behaviourrating2 = this.goalForm.controls.behaviourratingtwo.value;
+    var behaviourrating3 = this.goalForm.controls.behaviourratingthree.value;
+    var behaviourrating4 = this.goalForm.controls.behaviourratingfour.value;
+    var behaviourrating5 = this.goalForm.controls.behaviourratingfive.value;
+    
+   // manager behaviour comments
+   var behaviourComment1 = this.goalForm.controls.behaviourCommentone.value;
+   var behaviourComment2 = this.goalForm.controls.behaviourCommenttwo.value;
+   var behaviourComment3 = this.goalForm.controls.behaviourCommentthree.value;
+   var behaviourComment4 = this.goalForm.controls.behaviourCommentfour.value;
+   var behaviourComment5 = this.goalForm.controls.behaviourCommentfive.value;
+  
+  
+   // manager summarize comments
+   var summarizemanagercomment1 = this.goalForm.controls.summarizemanagercommentone.value;
+   var summarizemanagercomment2 = this.goalForm.controls.summarizemanagercommenttwo.value;
+   var summarizemanagercomment3 = this.goalForm.controls.summarizemanagercommentthree.value;
+   //  manager closure comments
+   var closuremanagercomment1 = this.goalForm.controls.closuremanagercommentone.value;
+   var closuremanagercomment2 = this.goalForm.controls.closuremanagercommenttwo.value;
+   
+  // static behaviour goal
+   var Behaviouralgoals1="Fulfilment of SP Values and Code of Conduct";
+   var Behaviouralgoals2="Willingness to Learn new things";
+   var Behaviouralgoals3="Communication Skills(Oral and Written)";
+   var Behaviouralgoals4="Ability to Work in Teams(Team Bonding)";
+   var Behaviouralgoals5="Initiative and Pro-Activeness";
+
+   this.behaviourpid2 =  localStorage.getItem('behaviourpid2');
+    this.behaviourpid3 =  localStorage.getItem('behaviourpid3');
+    this.behaviourpid4 =  localStorage.getItem('behaviourpid4');
+    this.behaviourpid5 =  localStorage.getItem('behaviourpid5');
+  //const empid=636;
+  var data = this._sessionStorage.GetUserdetailInfo();
+   const empid =data.id;
+   this.ManagerRatingComment.push({ id:empid,Ratings:managerrating1,Comments:managerComment1,pid:this.pid1});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating2,Comments:managerComment2,pid:this.pid2});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating3,Comments:managerComment3,pid:this.pid3});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating4,Comments:managerComment4,pid:this.pid4});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating5,Comments:managerComment5,pid:this.pid5});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating6,Comments:managerComment6,pid:this.pid6});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating7,Comments:managerComment7,pid:this.pid7});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating8,Comments:managerComment8,pid:this.pid8});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating9,Comments:managerComment9,pid:this.pid9});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating10,Comments:managerComment10,pid:this.pid10});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating11,Comments:managerComment11,pid:this.pid11});
+  this.ManagerRatingComment.push({ id:empid,Ratings:managerrating12,Comments:managerComment12,pid:this.pid12});
+  console.log('RatingCommentSave',this.ManagerRatingComment);
+  this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals1,ManagerRating:behaviourrating1,ManagerComments:behaviourComment1,IsActive:true,pid:this.behaviourpid1});
+this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals2,ManagerRating:behaviourrating2,ManagerComments:behaviourComment2,IsActive:true,pid:this.behaviourpid2});
+this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,ManagerRating:behaviourrating3,ManagerComments:behaviourComment3,IsActive:true,pid:this.behaviourpid3});
+this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true,pid:this.behaviourpid4});
+this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true,pid:this.behaviourpid5});
+  
+  console.log('EditBehaviourRatingComment',this.EditBehaviourRatingComment);
+  this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
+  console.log('Summary',this.Summary);
+  debugger
+  const body_data = {
+    'ManagerRatingComment': this.ManagerRatingComment,
+    'EditBehaviourRatingComment': this.EditBehaviourRatingComment,
+    'Summary': this.Summary
+  };
+  // first time save api 
+    this.appraisalFormService.EditManagerFinalSubmitData(body_data).subscribe((ManagerRatingComment: any) => {
+      if (ManagerRatingComment) {
+        debugger
+      this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
+      this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
+    }
+     
+    });
+  
+  
+}
+else{
   var managerrating1 = this.goalForm.controls.managerratingone.value;
   var managerrating2 = this.goalForm.controls.managerratingtwo.value;
   var managerrating3 = this.goalForm.controls.managerratingthree.value;
@@ -811,12 +914,7 @@ this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals2,M
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,ManagerRating:behaviourrating3,ManagerComments:behaviourComment3,IsActive:true});
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true});
 this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true});
-//varinder code
-// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals1,ManagerRating:behaviourrating1,ManagerComments:behaviourComment1,IsActive:true,pid:this.behaviourpid1});
-// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals2,ManagerRating:behaviourrating2,ManagerComments:behaviourComment2,IsActive:true,pid:this.behaviourpid2});
-// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals3,ManagerRating:behaviourrating3,ManagerComments:behaviourComment3,IsActive:true,pid:this.behaviourpid3});
-// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals4,ManagerRating:behaviourrating4,ManagerComments:behaviourComment4,IsActive:true,pid:this.behaviourpid4});
-// this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,ManagerRating:behaviourrating5,ManagerComments:behaviourComment5,IsActive:true,pid:this.behaviourpid5});
+
 console.log('BehaviourRatingComment',this.BehaviourRatingComment);
 this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
 console.log('Summary',this.Summary);
@@ -835,6 +933,7 @@ const body_data = {
    
   });
 
+}
 }
 
  }
