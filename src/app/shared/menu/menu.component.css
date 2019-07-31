@@ -1,0 +1,28 @@
+i.far.fa-bell {
+    font-size: 21px;
+}
+i.far.fa-bell {
+    color: #fff;
+    padding: 10px;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.count {
+    background: #f00;
+    border-radius: 50%;
+    padding: 1px 6px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 600;
+    position: absolute;
+    right: -4px;
+    border: 2px solid;
+    top: -15px;
+}
+.dropdown-toggle{
+    position: relative;
+}
+a#dropdownMenuLink {
+    position: relative;
+}

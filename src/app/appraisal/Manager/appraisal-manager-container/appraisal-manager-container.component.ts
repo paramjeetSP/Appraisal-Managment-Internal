@@ -84,7 +84,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
 
   ViewFormOfEmployee(employee: AppraisalEmpRes){
     debugger
-    localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
+   // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
     this._sessionStorage.StoreUserdetailInfo(employee);
     this.showUiControls.departmentEmployeeList = false;
     this.showUiControls.departmentSelect = false;

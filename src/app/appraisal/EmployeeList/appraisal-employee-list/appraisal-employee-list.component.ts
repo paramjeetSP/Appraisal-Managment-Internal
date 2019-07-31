@@ -15,6 +15,7 @@ import { DialogService } from '../../Service/dialog.service';
 import { FilterTypes, DialogDataForInitiateAppraisalProcess } from '../../Model/generic.models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SessionStorageService } from '../../Service/session-storage.service';
 
 @Component({
   selector: 'app-appraisal-employee-list',
@@ -42,6 +43,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _dialogService: DialogService,
     private _router: Router,
+    private _sessionStorage: SessionStorageService
   ) { }
 
   ngOnInit() {
@@ -278,8 +280,8 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   // }
   ViewFormClicked(item: AppraisalEmpRes){
     debugger
-   // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
-   // this._sessionStorage.StoreUserdetailInfo(employee);
+  // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(item));
+    this._sessionStorage.StoreUserdetailInfo(item);
   // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
     this._router.navigate([this._global.ROUTE_APPRAISAL_Hr_FORM ], { queryParams: { id: item.id } });     
    // console.log(employee);

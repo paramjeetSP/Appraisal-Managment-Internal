@@ -879,13 +879,18 @@
                                            <td scope="row">HR Feedback</td>
                                            <td>
                                               <div class="form-group">
-                                                  <input  Input80  formControlName="closurehrcommentone" class="form-control" type="number">
-                                                   <!-- <textarea Input80  formControlName="closurehrcommentone" class="form-control" placeholder="Leave a comment"></textarea> -->
+                                                  <input  Input80 onkeypress="return false"  min="1" max="5"  formControlName="closurehrcommentone" [(ngModel)]='closurehrcommentone' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.closurehrcommentone.errors }" type="number">
+                                                  <div *ngIf="submitted && goalsettingform.closurehrcommentone.errors" class="invalid-feedback">
+                                                    <div >HR Rating is required</div>
+                                                </div>
                                                   </div>
                                            </td>
                                            <td> 
                                               <div class="form-group">
-                                                   <textarea Input81 formControlName="closurehrcommenttwo" class="form-control summarize" placeholder="Leave a comment"></textarea>
+                                                   <textarea Input81 formControlName="closurehrcommenttwo" class="form-control summarize" [(ngModel)]='closurehrcommenttwo' [ngClass]="{ 'is-invalid': submitted && goalsettingform.closurehrcommenttwo.errors }" placeholder="Leave a comment"></textarea>
+                                                   <div *ngIf="submitted && goalsettingform.closurehrcommenttwo.errors" class="invalid-feedback">
+                                                    <div >HR Comment is required</div>
+                                                </div>
                                                   </div>
                                            </td>
                        
@@ -894,13 +899,18 @@
                                            <td scope="row">Management Feedback</td>
                                            <td>
                                               <div class="form-group">
-                                                  <input Input82 formControlName="closuremanagementcommentone" class="form-control" type="number">
-                                                   <!-- <textarea Input82 formControlName="closuremanagementcommentone" class="form-control" placeholder="Leave a comment"></textarea> -->
+                                                  <input Input82 onkeypress="return false"  min="1" max="5"  formControlName="closuremanagementcommentone" [(ngModel)]='closuremanagementcommentone' class="form-control" [ngClass]="{ 'is-invalid': submitted && goalsettingform.closuremanagementcommentone.errors }"  type="number">
+                                                  <div *ngIf="submitted && goalsettingform.closuremanagementcommentone.errors" class="invalid-feedback">
+                                                    <div >Management Rating is required</div>
+                                                </div>
                                                   </div>
                                            </td>
                                            <td>
                                               <div class="form-group">
-                                                   <textarea Input83 formControlName="closuremanagementcommenttwo" class="form-control summarize" placeholder="Leave a comment"></textarea>
+                                                   <textarea Input83 formControlName="closuremanagementcommenttwo" [(ngModel)]='closuremanagementcommenttwo' class="form-control summarize" [ngClass]="{ 'is-invalid': submitted && goalsettingform.closuremanagementcommenttwo.errors }" placeholder="Leave a comment"></textarea>
+                                                   <div *ngIf="submitted && goalsettingform.closuremanagementcommenttwo.errors" class="invalid-feedback">
+                                                    <div >Management Comment is required</div>
+                                                </div>
                                                   </div>
                                            </td>
                        
@@ -911,8 +921,9 @@
                  
                                      
                              
-                 
+
                                      <button class="btn btn-primary full_width font_lat yello-bg"   (click)="Cancelclick()">Cancel</button>
+                                     <button class="btn btn-primary full_width font_lato"> Submit</button>
                                        <!-- app-appraisal-form-closure ends -->
                                        <!-- <button class="btn btn-danger">Cancel</button>
                                        <button class="btn btn-primary full_width font_lato"> {{  ButtonToogle == true ? 'Update' : 'Submit' }}</button> -->

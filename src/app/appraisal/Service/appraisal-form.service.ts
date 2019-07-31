@@ -86,4 +86,10 @@ export class AppraisalFormService {
     const url = `${this._global.API_FULL_URL}EditManagerAllRatingComment`;
     return this._http.post(url,ManagerRatingComment,httpOptions)
   }
+
+  PosthrFinalSubmitData(body_data:any) {
+    debugger
+    const url = `${this._global.API_FULL_URL}SaveHrFeedbackAndComment`;
+    return this._http.post(url,body_data,httpOptions)
+  }
 }
