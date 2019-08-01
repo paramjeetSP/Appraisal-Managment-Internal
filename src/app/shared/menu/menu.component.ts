@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
    // debugger
     var data= this._sessionStorage.GetLoggedInUserInfo();
     const id= data.id;
-    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect"){
+    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect" || data.description=="Project Leader"|| data.description=="Lead BA" || data.description=="Manager- SDM" ){
       this.getleadNotifications(id);
       this.foundRole=true;
     }
@@ -76,7 +76,7 @@ export class MenuComponent implements OnInit {
     const body_data = {
       'id': id,
     };
-    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect"){
+    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect" ||data.description=="Project Leader"){
       this.appraisalFormService.ReadleadNotifiactions(body_data).subscribe((body_data: any) => {
         if (body_data) {
       //    debugger
