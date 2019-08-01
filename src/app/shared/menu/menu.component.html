@@ -22,7 +22,7 @@
                         <!-- <h1>{{ sections |json }}</h1> -->
                         <div  class="dropdown-menu notification" aria-labelledby="dropdownMenuLink">
                             <li *ngFor="let section of sections">
-                            <a  (click)="redirect(section.id)" > {{section.description}}</a>
+                            <a style="cursor: pointer" (click)="redirect(section.id,section.empId)" > {{section.description}}</a>
                         </li>
                           <!-- <a class="dropdown-item" >Another action</a>
                           <a class="dropdown-item" >Something else here</a>

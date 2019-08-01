@@ -55,13 +55,13 @@ export class MenuComponent implements OnInit {
   }
 
   getleadNotifications(id:any){
-    debugger
+    //debugger
     const body_data = {
       'id': id,
     };
     this.appraisalFormService.GetleadNotifiactions(body_data).subscribe((body_data: any) => {
       if (body_data) {
-        debugger
+    //    debugger
     this.count=body_data.length;
      this.sections=body_data;
     }
@@ -69,7 +69,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  redirect(id:any){
+  redirect(id:any,empId:number){
     debugger
     var data= this._sessionStorage.GetLoggedInUserInfo();
    
@@ -79,22 +79,24 @@ export class MenuComponent implements OnInit {
     if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect"){
       this.appraisalFormService.ReadleadNotifiactions(body_data).subscribe((body_data: any) => {
         if (body_data) {
-          debugger
+      //    debugger
          
           var data= this._sessionStorage.GetLoggedInUserInfo();
           const id= data.id;
           this.getleadNotifications(id);
+          this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM ], { queryParams: { id: empId } });
       } 
       });
     }
     else if(data.description=="HR" || data.description=="HR Executive"){
       this.appraisalFormService.ReadhrNotifications(body_data).subscribe((body_data: any) => {
         if (body_data) {
-          debugger
+         // debugger
          
           var data= this._sessionStorage.GetLoggedInUserInfo();
           const id= data.id;
           this.gethrNotifications(id);
+          this._router.navigate([this._global.ROUTE_APPRAISAL_Hr_FORM ], { queryParams: { id: empId } }); 
       } 
       });
     }
@@ -102,13 +104,13 @@ export class MenuComponent implements OnInit {
   }
 
   gethrNotifications(id:any){
-    debugger
+    //debugger
     const body_data = {
       'id': id,
     };
     this.appraisalFormService.GethrNotifiactions(body_data).subscribe((body_data: any) => {
       if (body_data) {
-        debugger
+       // debugger
      this.count=body_data.length;
       this.sections=body_data;
     }

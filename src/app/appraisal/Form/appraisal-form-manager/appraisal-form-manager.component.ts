@@ -153,6 +153,7 @@ export class AppraisalFormManagerComponent implements OnInit {
 EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRating:string,ManagerComments:string,IsActive:boolean,pid:number}> = [];
  Summary: Array<{ SummarizeOverallPerformanceManager :string,AreasImprovementManager :string, ActionPlanImprovementManager :string, OverallRatingManager :string,OverallRatingManagercomment :string,pid:number}> = [];
  submitted = false;
+ showsubmitbutton:boolean=true;
  constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -262,10 +263,14 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
           closuremanagementcommenttwo: ['', Validators.required],
     });
     debugger   
+    var idval= this.router.snapshot.queryParamMap.get('id');  
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
-   var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
-   var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
- var idval= this.router.snapshot.queryParamMap.get('id');  
+    if(UserInfo!=null){
+      var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
+      var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
+    }
+   
+ 
    if(idval!=null && userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1" ||userselfAssesmentStatus =="2"){
 debugger
  this.GetemployeeDetails(idval);
@@ -290,6 +295,19 @@ this.GetEmployeeRCDetails(idval);
     this.disableAmbitionsformanager();
     this.disableempSummary();
     this.disablemanagerclosurecommentFeedback();
+  }
+  else{
+    this.showsubmitbutton=false;
+    this.disablegoaldescription();
+   this.GetemployeeDetails(idval);
+   this.disableratingitself();
+   this.disablemanagerratingComments();
+  this.disableBehaviourratingcomments();
+  this.disableAmbitionsformanager();
+  this.disablemangerSummary();
+  this.disableempSummary();
+  this.disableclosurecomment();
+ 
   }
 
   }
@@ -642,7 +660,7 @@ this.GetEmployeeRCDetails(idval);
       });
   }
   DepartmentSelectedGetData(value: number){
-    debugger
+   // debugger
    
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
     .pipe(catchError(x => {
@@ -669,8 +687,11 @@ this.GetEmployeeRCDetails(idval);
       return;
   }
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
-    var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
+    if(UserInfo!=null){
+   var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
     var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
+    }
+ 
     this.pid1= localStorage.getItem('pid1');
     this.pid2= localStorage.getItem('pid2');
     this.pid3=localStorage.getItem('pid3');

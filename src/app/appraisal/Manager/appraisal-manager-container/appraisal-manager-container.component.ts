@@ -91,7 +91,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
     this.showUiControls.employeeForm = true;
     this.showUiControls.backButtonToSelect = true;
    // this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM]);     
-    this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM ], { queryParams: { id: employee.id } })
+    this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM ], { queryParams: { id: employee.id } });
     console.log(employee);
   }
 

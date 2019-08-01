@@ -1066,8 +1066,8 @@
                              
                  
                                          <button class="btn btn-primary full_width font_lat yello-bg"   (click)="Cancelclick()">Cancel</button> 
-                                      
-                                       <button class="btn btn-primary full_width font_lato"> {{  ButtonToogle == true ? 'Update' : 'Submit' }}</button>
+                                         <button *ngIf="showsubmitbutton"  class="btn btn-primary full_width font_lato">Submit</button>
+                                       <!-- <button class="btn btn-primary full_width font_lato"> {{  ButtonToogle == true ? 'Update' : 'Submit' }}</button> -->
                                        <!-- <button  class="btn btn-primary full_width font_lato">Submit</button> -->
                                       </form>
 </div>
