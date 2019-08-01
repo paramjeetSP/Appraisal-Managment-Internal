@@ -76,7 +76,7 @@ export class MenuComponent implements OnInit {
     const body_data = {
       'id': id,
     };
-    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect" ||data.description=="Project Leader"){
+    if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect" ||data.description=="Project Leader"||data.description=="Lead BA" || data.description=="Manager- SDM"){
       this.appraisalFormService.ReadleadNotifiactions(body_data).subscribe((body_data: any) => {
         if (body_data) {
       //    debugger
