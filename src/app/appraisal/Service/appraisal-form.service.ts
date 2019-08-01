@@ -92,4 +92,29 @@ export class AppraisalFormService {
     const url = `${this._global.API_FULL_URL}SaveHrFeedbackAndComment`;
     return this._http.post(url,body_data,httpOptions)
   }
+
+  GetleadNotifiactions(body_data: any){
+    debugger
+    const url = `${this._global.API_FULL_URL}GetLeadNotification`;
+    return this._http.post<any[]>(url, body_data, this._global.HTTP_OPTIONS);
+  }
+
+  ReadleadNotifiactions(body_data: any){
+    debugger
+    const url = `${this._global.API_FULL_URL}SaveLeadNotification`;
+    return this._http.post<any[]>(url, body_data, this._global.HTTP_OPTIONS);
+  }
+
+  
+  GethrNotifiactions(body_data: any){
+    debugger
+    const url = `${this._global.API_FULL_URL}GetHrNotification`;
+    return this._http.post<any[]>(url, body_data, this._global.HTTP_OPTIONS);
+  }
+
+  ReadhrNotifications(body_data: any){
+    debugger
+    const url = `${this._global.API_FULL_URL}SaveHrNotification`;
+    return this._http.post<any[]>(url, body_data, this._global.HTTP_OPTIONS);
+  }
 }

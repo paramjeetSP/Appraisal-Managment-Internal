@@ -12,15 +12,19 @@
                       
                     <a class="nav-link js-scroll-trigger" (click)="Logout()" >Logout</a>
                 </li>
-                <li class="nav-item">
+                <!-- <div *ngIf="foundRole"> -->
+                <li *ngIf="foundRole" class="nav-item">
                       
                     <div class="dropdown show">
                         <a class=" dropdown-toggle"  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="far fa-bell"></i><span class="count">1</span>
+                            <i class="far fa-bell"></i><span class="count">{{count}}</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" >Action</a>
-                          <a class="dropdown-item" >Another action</a>
+                        <!-- <h1>{{ sections |json }}</h1> -->
+                        <div  class="dropdown-menu notification" aria-labelledby="dropdownMenuLink">
+                            <li *ngFor="let section of sections">
+                            <a  (click)="redirect(section.id)" > {{section.description}}</a>
+                        </li>
+                          <!-- <a class="dropdown-item" >Another action</a>
                           <a class="dropdown-item" >Something else here</a>
                           <a class="dropdown-item" >Action</a>
                           <a class="dropdown-item" >Another action</a>
@@ -29,11 +33,12 @@
                           <a class="dropdown-item" >Another action</a>
                           <a class="dropdown-item" >Something else here</a>
                           <a class="dropdown-item" >Action</a>
+                          <a class="dropdown-item" >Action</a> -->
                         
                         </div>
                       </div>
                 </li>
-               
+            <!-- </div> -->
                
             </ul>
         </div>
