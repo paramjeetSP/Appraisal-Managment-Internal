@@ -97,7 +97,8 @@ export class MenuComponent implements OnInit {
           const id= data.id;
           this.gethrNotifications(id);
           this._router.navigate([this._global.ROUTE_APPRAISAL_Hr_FORM ], { queryParams: { id: empId } }); 
-      } 
+          localStorage.setItem('hrnotification', "hrnotification");
+        } 
       });
     }
     

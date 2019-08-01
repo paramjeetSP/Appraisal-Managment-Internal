@@ -280,6 +280,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   // }
   ViewFormClicked(item: AppraisalEmpRes){
     debugger
+    localStorage.removeItem('hrnotification');
   // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(item));
     this._sessionStorage.StoreUserdetailInfo(item);
   // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);

@@ -145,6 +145,7 @@ export class AppraisalFormHrComponent implements OnInit {
  Goalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string; AreasImprovementSelf :string}> = [];
   summarypid1: any;
   submitted = false;
+  showsubmitbutton:boolean=true;
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -255,9 +256,26 @@ export class AppraisalFormHrComponent implements OnInit {
     });
     debugger   
    
-  
+  var hrnotification = localStorage.getItem('hrnotification');
   var idval= this.router.snapshot.queryParamMap.get('id');  
-  if(idval!=null){
+  debugger   
+  if(idval!=null && hrnotification=="hrnotification"){
+    debugger   
+    this.showsubmitbutton=false;
+    this.GetemployeeDetails(idval);
+   this.Getgoalemployee(idval);
+   this.GetManagerRCDetails(idval);
+   // disable goal for hr view
+     this.disablegoalall();
+     this.ratingitselfandcomments();
+     this.disableemployeeSummaryall();
+     this.managerratingandcomments();
+     this.disableambitionsinfo();
+     this.disableBehaviourratingandcomments();
+     this.disablemanagerSummaryall();
+     this.disableclosure();
+     }
+ else if(idval!=null){
  this.GetemployeeDetails(idval);
 this.Getgoalemployee(idval);
 this.GetManagerRCDetails(idval);
@@ -701,5 +719,13 @@ onSubmit(){
     // this.goalForm.controls.closurehrcommenttwo.disable();
     // this.goalForm.controls.closuremanagementcommentone.disable();
     // this.goalForm.controls.closuremanagementcommenttwo.disable();
+  }
+  disableclosure(){
+    this.goalForm.controls.closuremanagercommentone.disable();
+    this.goalForm.controls.closuremanagercommenttwo.disable();
+    this.goalForm.controls.closurehrcommentone.disable();
+    this.goalForm.controls.closurehrcommenttwo.disable();
+    this.goalForm.controls.closuremanagementcommentone.disable();
+    this.goalForm.controls.closuremanagementcommenttwo.disable();
   }
 }
