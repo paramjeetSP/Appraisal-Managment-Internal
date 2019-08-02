@@ -4,7 +4,7 @@
 th{
     color: white;
 } */
-td {
+/* td {
   padding-top: 5px !important;
 }
 
@@ -105,4 +105,144 @@ td {
   background: #e20724;
   color: #fff;
   font-weight: 600;
+}
+.formstatus-wrapper {
+  margin-left: 23px;
+} */
+/* table{
+    background-color: #212529;
+}
+th{
+    color: white;
+} */
+td {
+  padding-top: 5px !important;
+}
+
+.main-table-wrapper {
+  margin-top: 100px;
+}
+
+.mat-form-field {
+  margin-right: 20px;
+}
+
+.in-progress-color {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 64px;
+  line-height: 30px;
+  padding: 0 12px;
+  border-radius: 4px;
+  overflow: visible;
+  transform: translate3d(0, 0, 0);
+  transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+
+}
+.hr_appraisal_list table td {
+  padding: 13px 13px;
+}
+.hr_appraisal_list tr th {
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 0 !important;
+  padding: 15px 15px !important;
+}
+.yello-bg {
+  background: #f3c624;
+  font-weight: 600;
+}
+.blue-bg {
+  background: #3f51b5;
+  font-weight: 600;
+  color: #fff;
+}
+.green-bg {
+  background: #10bf10;
+  color: #fff;
+  font-weight: 600;
+}
+.main-heading h3 {
+  color: #24aef3;
+}
+
+.orange-bg {
+  background: #ff9800;
+  color: #fff;
+  font-weight: 600;
+}
+
+.brown-bg {
+  background: #BF3D0F;
+  color: #fff;
+  font-weight: 600;
+}
+
+.lime-green-bg {
+  background: #8bc34a;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+.amber-bg {
+  background: #ffc107;
+  color: #fff;
+  font-weight: 600;
+}
+
+.indigo-bg {
+  background: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.red-bg {
+  background: #e20724;
+  color: #fff;
+  font-weight: 600;
+}
+.main-table-wrapper.hr_appraisal_list {
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.main-heading h3 {
+  margin-top: 9px;
+}
+.mat-elevation-z8 {
+  border-radius: 8px;
+  box-shadow: 1px 2px 17px rgba(0,0,0,0.1);
+  border-top: 4px solid #04acef;
+  max-height: 558px;
+  overflow: auto;
+}
+td {
+  font-weight: 500;
+  border: 1px solid #ddd;
+}
+tr.mat-header-row {
+  background: #28bdf0;
+}
+tr.mat-header-row th {
+  color: #fff;
+  border: 1px solid;
+}
+.formstatus-wrapper {
+  margin-left: 23px;
 }

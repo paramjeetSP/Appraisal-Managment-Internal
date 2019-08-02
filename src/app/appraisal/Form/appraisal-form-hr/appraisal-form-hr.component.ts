@@ -146,6 +146,9 @@ export class AppraisalFormHrComponent implements OnInit {
   summarypid1: any;
   submitted = false;
   showsubmitbutton:boolean=true;
+  evaluationStartDate: any;
+  evaluationEndDate: any;
+  cycle: string;
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -390,15 +393,18 @@ this.GetManagerRCDetails(idval);
     }))
     .subscribe(
      
-      (data:EmpDetailRes[]) => {
+      (data:any) => {
         debugger
-      var dataitem=data[0];
-    this.FullName=dataitem.fullName;
-    this.doj = dataitem.doj;
-    this.grade = dataitem.grade;
-    this.designation = dataitem.designation;
-    this.department = dataitem.department;
-    this.reportingTo = dataitem.reportingTo;  
+     /// var dataitem=data[0];
+    this.FullName=data.fullName;
+    this.doj = data.doj;
+    this.grade = data.grade;
+    this.designation = data.designation;
+    this.department = data.department;
+    this.reportingTo = data.reportingTo;  
+    this.evaluationStartDate=data.evaluationStartDate;
+    this.evaluationEndDate=data.evaluationEndDate;
+    this.cycle="November-October"
       }, 
       (error) => {
         this._errorService.LogError(error);
@@ -570,6 +576,10 @@ this.GetManagerRCDetails(idval);
       });
   }
   Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_LISTING]);
+  }
+
+  GoBack(){
     this._router.navigate([this._global.ROUTE_APPRAISAL_LISTING]);
   }
 

@@ -16,6 +16,27 @@
     <th mat-header-cell *matHeaderCellDef> Email </th>
     <td mat-cell *matCellDef="let element"> {{element.officialEmail}} </td>
   </ng-container>
+ <!-- varidner -->
+  <ng-container matColumnDef="GoalSubmiited">
+      <th mat-header-cell *matHeaderCellDef> Goal status  </th>
+      <td mat-cell *matCellDef="let element">
+          <p class="btn green-bg" *ngIf="element.goalsettingByLeadStatus === 3" >Completed</p>
+          <p class="btn blue-bg" *ngIf="element.goalsettingByLeadStatus === 1||element.goalsettingByLeadStatus === 2" >Pending</p>
+    <!-- <p class="btn green-bg" *ngIf="element.goalsettingByLeadStatus === 3;else other_content" >Completed</p>
+    <ng-template class="btn blue-bg" #other_content>Pending</ng-template> -->
+    </ng-container>
+  
+    <ng-container matColumnDef="assesmentFilled">
+      <th mat-header-cell *matHeaderCellDef>Assesment status</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- <p  *ngIf="element.leadAssesmentStatus === 3;else other_content" >Completed</p>
+        <ng-template class="btn blue-bg" #other_content >Pending</ng-template> -->
+       
+        <p class="btn green-bg" *ngIf="element.leadAssesmentStatus === 3" >Completed</p>
+        <p class="btn blue-bg" *ngIf="element.leadAssesmentStatus === 1||element.leadAssesmentStatus === 2" >Pending</p>
+       
+    </ng-container>
+ <!-- varidner -->
 
   <!-- Appraisal Status Column -->
   <ng-container matColumnDef="appraisalStatus">

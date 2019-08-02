@@ -10,6 +10,8 @@
                                 <p>The SDP aims to set direction and develop individual, team and organizational capabilities in order to deliver business results.</p>
                                 <h2>Goal Setting and Evaluation Form</h2>
                               </div>
+                              <button class="back btn btn-primary float-left full_width font_lat blue-bg"   (click)="GoBack()">Back</button> 
+                             
                         </div>
 
                         <table class="table">
@@ -35,7 +37,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group"> 
-                                  Cycle :  <input  disabled  class="form-control"  type="label" >
+                                  Cycle :  <input  disabled  class="form-control" [(ngModel)]='cycle' type="label" >
                                 </div>
                                 </td>
             
@@ -48,12 +50,12 @@
                                 </td>
                                 <td>
                                     <div class="form-group"> 
-                                  Date of Goal Setting:  <input  disabled  class="form-control"  type="label" >
+                                  Date of Goal Setting:  <input  disabled  class="form-control" [(ngModel)]='evaluationStartDate' type="label" >
                                 </div>
                                 </td>
                                 <td>
                                     <div class="form-group"> 
-                                  Date of Evaluation :  <input  disabled  class="form-control"  type="label" >
+                                  Date of Evaluation :  <input  disabled  class="form-control" [(ngModel)]='evaluationEndDate' type="label" >
                                 </div>
                                 </td>
             

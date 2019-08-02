@@ -2,6 +2,11 @@
     background: #f3c624;
     font-weight: 600;
   }
+  .blue-bg {
+    background: #3f51b5;
+    font-weight: 600;
+    color: #fff;
+  }
   .sub-table input {
     width: 60px;
   }
@@ -17,3 +22,8 @@
   textarea.summarize{
     width: 100% !important;
   }
+  button.back {
+    position: absolute;
+    left: 0;
+    top: 0;
+}

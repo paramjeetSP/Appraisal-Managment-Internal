@@ -3,7 +3,7 @@
     <a class="logo" href=""><img src="assets/images/sps-logo.png" alt=""></a>
   </div>
   <div class="container">
-    <div class="row justify-content-center">
+    <!-- <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="mid--box p-0 row no-gutters">
           <div class="col-md-12 py-5 px-4 signUp">
@@ -21,13 +21,13 @@
             </div>
             <form  [formGroup]="form" class="text-center" (ngSubmit)="SubmitLoginDetails()">
             <div class="row">
-              <!-- <div>
+               <div>
                 <pre>
 
                   {{userName | json}}
                   {{password | json}}
                 </pre>
-              </div> -->
+              </div> 
               <div class="col-md-12 form-group">
                 <mat-form-field class="example-full-width">
                   <input matInput formControlName="uName" placeholder="Username" type="text"
@@ -59,6 +59,67 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="mid--box p-0 row no-gutters">
+              <form method="post" novalidate="novalidate">
+                  <div class="col-md-12 py-5 px-4 signUp">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="d-flex to--decHolder">
+                                  <div class="to--dec text-center">
+                                      <h2>Sign In</h2>
+                                      <p>
+                                        Appraisal Management System
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <form  [formGroup]="form" class="text-center" (ngSubmit)="SubmitLoginDetails()">
+                      <div class="row">
+                          
+                          <div class="col-md-12 form-group">
+                              <mat-form-field class="example-full-width" style="width:460px !important" [style.fontSize.px]=20 >
+                                  <input matInput formControlName="uName" placeholder="Username" type="text"
+                                    [errorStateMatcher]="matcher">
+                
+                                  <mat-error *ngIf="(userName.touched && userName.value === '') || submitClicked">
+                                    Required
+                                  </mat-error>
+                                </mat-form-field>
+                              <!-- <label for="">User Name</label>
+                              <input class="form-control"  formControlName="uName" placeholder="Username" type="text" data-val="true" data-val-required="Username required !" id="UserName" name="UserName" value="">
+                              <span class="text-danger field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span> -->
+                          </div>
+                          <div class="col-md-12 form-group">
+                              <mat-form-field class="example-full-width"  style="width:460px !important" [style.fontSize.px]=20 >
+
+                                  <input matInput [errorStateMatcher]="matcher"  formControlName="pass"
+                                    placeholder="Password" type="password">
+                                  <mat-error *ngIf="(password.touched && password.value === '') || submitClicked">
+                                    Required
+                                  </mat-error>
+                                </mat-form-field>
+                              <!-- <label for="">PassWord</label>
+                              <input class="form-control" formControlName="pass" placeholder="Password" type="password" data-val="true" data-val-required="Password required !" id="Password" name="Password">
+                              <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span> -->
+                          </div>
+                          <div class="col-md-12 form-group">
+                              <button *ngIf="!showSpinner"  mat-button class="btn btn-block mt-0 submit">SUBMIT</button>
+                              <!-- <button type="submit" class="btn btn-block mt-0 submit">SUBMIT</button> -->
+                              <div style="max-width: 50px;">
+                                  <mat-spinner [diameter]="40" *ngIf="showSpinner" ></mat-spinner>
+                                </div>
+                            </div>
+
+                      </div>
+                    </form>
+                  </div>
+              <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IZnZ54FSspPkDzYJVPh-eb6GkmekK3_riaFj6dzhtqlc7DMQLMuz_T3EW_dNX905SAFIDofe-zolz41OpGZccWzJB8GYcgozue4B0RzuDzrUYbYDaPildrqNB2RWpYdx1Ks6K-obu4NTm8xmoBua7o"></form>
+          </div>
+      </div>
+  </div>
   </div>
 </main>

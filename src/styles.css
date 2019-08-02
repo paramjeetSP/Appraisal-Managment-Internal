@@ -1024,3 +1024,36 @@ SNACKBAR STYLES
     border-right: 1px solid #dee2e6;
 }
 
+/*----------8-2-2019-------------*/
+tr.mat-header-row {
+  background: #28bdf0;
+}
+.mat-elevation-z-2 td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  font-weight: 500;
+}
+tr.mat-header-row {
+  height: auto !important;
+}
+.mat-header-row th {
+  padding: 10px !important;
+  border: 1px solid #fff;
+  font-size: 17px;
+  color: #fff;
+}
+tr.mat-footer-row, tr.mat-row {
+  height: auto !important;
+}
+.mat-row td {
+  padding: 8px !important;
+  font-weight: 500;
+  border: 1px solid #ddd;
+}
+nav#mainNav {
+  background: #28bdf0;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255);
+  font-weight: 600;
+}

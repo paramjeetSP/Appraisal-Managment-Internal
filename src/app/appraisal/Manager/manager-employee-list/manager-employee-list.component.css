@@ -8,4 +8,13 @@
     color: #fff;
     font-weight: 600;
   }
-  
+  .blue-bg {
+    background: #3f51b5;
+    font-weight: 600;
+    color: #fff;
+  }
+  .green-bg {
+    background: #10bf10;
+    color: #fff;
+    font-weight: 600;
+  }

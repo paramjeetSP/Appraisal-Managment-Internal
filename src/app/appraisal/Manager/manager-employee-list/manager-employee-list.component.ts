@@ -9,7 +9,9 @@ import { AppraisalEmpRes } from '../../Model/Response/appraisal-employee-list-re
 })
 export class ManagerEmployeeListComponent implements OnInit {
   @Input() employeesOfDepartment: Department[];
-  displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus'];
+ // displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus'];
+//  varidner
+ displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'GoalSubmiited','assesmentFilled','appraisalStatus'];
   @Output() viewForm = new EventEmitter<AppraisalEmpRes>();
 
   constructor() { }

@@ -154,6 +154,9 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
  Summary: Array<{ SummarizeOverallPerformanceManager :string,AreasImprovementManager :string, ActionPlanImprovementManager :string, OverallRatingManager :string,OverallRatingManagercomment :string,pid:number}> = [];
  submitted = false;
  showsubmitbutton:boolean=true;
+  evaluationStartDate: any;
+  cycle: string;
+  evaluationEndDate: any;
  constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -408,15 +411,18 @@ this.GetEmployeeRCDetails(idval);
     }))
     .subscribe(
      
-      (data:EmpDetailRes[]) => {
+      (data:any) => {
         debugger
-      var dataitem=data[0];
-    this.FullName=dataitem.fullName;
-    this.doj = dataitem.doj;
-    this.grade = dataitem.grade;
-    this.designation = dataitem.designation;
-    this.department = dataitem.department;
-    this.reportingTo = dataitem.reportingTo;  
+    //  var dataitem=data[0];
+    this.FullName=data.fullName;
+    this.doj = data.doj;
+    this.grade = data.grade;
+    this.designation = data.designation;
+    this.department = data.department;
+    this.reportingTo = data.reportingTo;  
+    this.evaluationStartDate=data.evaluationStartDate;
+    this.evaluationEndDate=data.evaluationEndDate;
+    this.cycle="November-October"
       }, 
       (error) => {
         this._errorService.LogError(error);
@@ -678,6 +684,10 @@ this.GetEmployeeRCDetails(idval);
       });
   }
   Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
+  }
+  
+  GoBack(){
     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
   }
   onSubmit() {

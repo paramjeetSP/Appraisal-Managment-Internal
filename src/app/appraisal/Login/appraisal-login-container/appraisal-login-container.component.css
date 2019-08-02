@@ -1,6 +1,80 @@
 .logo img {
   max-width: 380px;
 }
+.submit {
+  padding: 15px;
+  font-weight: 600;
+  background: #56b9f4;
+  border: none;
+  box-shadow: 0 0 20px rgba(86, 185, 244, 0.4);
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: -10px;
+  background: #56b9f4;
+  background: -moz-linear-gradient(left, #56b9f4 0%, #3c9dd7 100%);
+  background: -webkit-linear-gradient(left, #56b9f4 0%, #3c9dd7 100%);
+  background: linear-gradient(to right, #56b9f4 0%, #3c9dd7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56b9f4', endColorstr='#3c9dd7',GradientType=1 );
+  border-radius: 30px;
+  line-height: 20px;
+}
+.mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 448px;
+  border: 1px solid #cedbf3;
+  padding: 12px !important;
+  border-radius: 5px;
+}
+.mid--box {
+  padding: calc(1 / 1 * 4%) calc(1 / 1 * 1%);
+  margin: calc(1 / 1 * 3%) 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.mid--box .form-control {
+  border: 1px solid #d5e8f5;
+  padding: 3px 20px;
+  font-weight: 400;
+  font-size: 14px;
+  box-shadow: none !important;
+  margin: 0 0.5em;
+  height: 40px;
+}
+.mid--box .form-control {
+  border: 1px solid #d5e8f5;
+  padding: 3px 20px;
+  font-weight: 400;
+  font-size: 14px;
+  box-shadow: none !important;
+  margin: 0 0.5em;
+  height: 40px;
+}
+.mid--box .to--decHolder .to--dec h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #3b9cd6;
+}
+.to--dec p {
+  font-weight: 600;
+  font-size: 19px;
+  color: #6b6a6a;
+}
+.mid--box label {
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+  font-size: 13px;
+}
+.mid--box .btn {
+  padding: 15px;
+}
+
 @media(max-width:767px){
 	.logo img {
     max-width: 300px;

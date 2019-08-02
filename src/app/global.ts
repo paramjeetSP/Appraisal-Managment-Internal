@@ -26,7 +26,6 @@ export class Global {
     'Lead',
     'Architect',
     'Manager',
-    ''
   ];
   public ROLES_HR = [
     'HR'

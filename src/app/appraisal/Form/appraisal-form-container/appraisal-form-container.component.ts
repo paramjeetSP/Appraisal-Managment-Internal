@@ -93,6 +93,9 @@ export class AppraisalFormContainerComponent implements OnInit {
  //EditGoaldataupdate: Array<{ pid:number,id:number,RatingSelf:string,CommentSelf:string}> = [];
  EditGoalemployeeambitionsummary: Array<{ id:number,AmbitionsJobExpectations :string, ActionPlanImprovementSelf :string,SummarizeOverallPerformanceSelf :string,AreasImprovementSelf :string,isActive:boolean,pid:number}> = [];
   ambitionspid: any;
+  evaluationStartDate: any;
+  evaluationEndDate: any;
+  cycle: string;
   constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -360,15 +363,18 @@ export class AppraisalFormContainerComponent implements OnInit {
     }))
     .subscribe(
      
-      (data:EmpDetailRes[]) => {
+      (data:any) => {
     //    debugger
-      var dataitem=data[0];
-    this.FullName=dataitem.fullName;
-    this.doj = dataitem.doj;
-    this.grade = dataitem.grade;
-    this.designation = dataitem.designation;
-    this.department = dataitem.department;
-    this.reportingTo = dataitem.reportingTo;  
+     // var dataitem=data[0];
+    this.FullName=data.fullName;
+    this.doj = data.doj;
+    this.grade = data.grade;
+    this.designation = data.designation;
+    this.department = data.department;
+    this.reportingTo = data.reportingTo;  
+    this.evaluationStartDate=data.evaluationStartDate;
+    this.evaluationEndDate=data.evaluationEndDate;
+    this.cycle="November-October"
       }, 
       (error) => {
         this._errorService.LogError(error);
@@ -564,6 +570,10 @@ this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
   }
   }
   Cancelclick(){
+    this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
+  }
+
+  GoBack(){
     this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
   }
 

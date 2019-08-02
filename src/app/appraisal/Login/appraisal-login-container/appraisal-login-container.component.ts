@@ -95,7 +95,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
         });
   }
   RoleManager(data: AppraisalLoginResponse): boolean {
-    debugger
+  //  debugger
     let roles = this._global.ROLES_MANAGER;
     let foundRole = false;
     for (let index = 0; index < roles.length; index++) {

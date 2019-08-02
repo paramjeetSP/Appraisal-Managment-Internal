@@ -24,6 +24,7 @@ import { SessionStorageService } from '../../Service/session-storage.service';
 })
 export class AppraisalEmployeeListComponent implements OnInit {
   employeeList = new MatTableDataSource<AppraisalEmpRes>();
+  employeeListdrpdwn = new MatTableDataSource<AppraisalEmpRes>();
   employeeListOriginal: AppraisalEmpRes[];
  // displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrAssesmentStatus'];
    displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrinitiateFormStatus','GoalsettingByLeadStatus','SelfAssesmentStatus','LeadAssesmentStatus','HrAssesmentStatus','ViewForm'];
@@ -32,6 +33,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   Showemployeelistgrid: boolean = false;
   Showemptygrid : boolean = true;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  selectedOption: any;
 
   constructor(
     private _appraisalEmpListSer: AppraisalEmpListService,
@@ -48,6 +50,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
 
   ngOnInit() {
     debugger
+    localStorage.removeItem("deptName");
    this.employeeList.paginator = this.paginator;
     this.GetAllDepartments();
    this.SetupComponentVars();
@@ -124,7 +127,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   DepartmentSelected(value: any){
     debugger
     console.log(value);
-   
+  
     this.DepartmentSelectedGetData(value);//.emit(value.value);
   }
 
@@ -187,25 +190,26 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
   DepartmentFilter(filtervalue: string) {
     debugger
+    this.selectedOption='0';
     this.employeeList = new MatTableDataSource<AppraisalEmpRes>(this.employeeListOriginal);
   
     filtervalue === '' ? this.SetSholdFilterToFlase(this._global.COL_DEPARTMENT) : null; // Here we set the filterType element value to false, which will not include it in the filtering processif(filtervalue && filtervalue === '') this.GetEmployeeForAppraisal();
-    if( filtervalue == ''){
-      this.Showemployeelistgrid=false;
-      this.Showemptygrid=true;
-     }
-     else{
+    // if( filtervalue == ''){
+    //   // this.Showemployeelistgrid=false;
+    //   // this.Showemptygrid=true;
+    //  }
+    //  else{
       this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
         if (val.type === this._global.COL_DEPARTMENT) {
           val.value = filtervalue;
           val.shouldFilter = true;
-          this.Showemployeelistgrid=true;
-          this.Showemptygrid=false;
+          // this.Showemployeelistgrid=true;
+          // this.Showemptygrid=false;
          
         }
         return val;
       });
-     }
+    // }
    
 
     this.Filter();
@@ -214,21 +218,21 @@ export class AppraisalEmployeeListComponent implements OnInit {
     debugger
     this.employeeList = new MatTableDataSource<AppraisalEmpRes>(this.employeeListOriginal);
     filtervalue === '' ? this.SetSholdFilterToFlase(this._global.COL_FULL_NAME) : null; // Here we set the filterType element value to false, which will not include it in the filtering process
-   if( filtervalue == ''){
-    this.Showemployeelistgrid=false;
-    this.Showemptygrid=true;
-   }
-   else{
+  //  if( filtervalue == ''){
+  //   // this.Showemployeelistgrid=false;
+  //   // this.Showemptygrid=true;
+  //  }
+  //  else{
 this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
       if (val.type === this._global.COL_FULL_NAME) {
         val.value = filtervalue;
         val.shouldFilter = true;
-      this.Showemployeelistgrid=true;
-      this.Showemptygrid=false;
+      // this.Showemployeelistgrid=true;
+      // this.Showemptygrid=false;
       }
       return val;
     });
-   }
+   //}
     
 
     this.Filter();
@@ -265,14 +269,16 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
 
   DepartmentSelectedGetData(value: number) {
     debugger
+    this.selectedOption=null;
     let departmentString = this.allDepartments.filter(x => { return x.id === value });
     if (departmentString.length > 0) {
       this.DepartmentFilter(departmentString[0].deptName);
-      this.Showemployeelistgrid=true;
+      localStorage.setItem("deptName",departmentString[0].deptName);
+     // this.Showemployeelistgrid=true;
       
     } else {
       this.DepartmentFilter('');
-      this.Showemployeelistgrid=false;
+    //  this.Showemployeelistgrid=false;
     }
   }
   // ViewFormClicked(){
@@ -303,4 +309,131 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
       })
   }
 
+  GoalformSelected(value: any){
+    debugger
+
+   if(value.value=='1'){
+    // this.Showemployeelistgrid=true;
+    // this.Showemptygrid=false;
+    this.GetstatusPendingEmployeeForAppraisal();
+  }
+
+  else if(value.value=='2'){
+ 
+    // this.Showemployeelistgrid=true;
+    // this.Showemptygrid=false;
+    this.GetstatusProgressEmployeeForAppraisal();
+  }
+  else if(value.value=='3'){
+ 
+    // this.Showemployeelistgrid=true;
+    // this.Showemptygrid=false;
+    this.GetstatusCompletedEmployeeForAppraisal();
+  }
+  else{
+    // this.Showemployeelistgrid=false;
+    // this.Showemptygrid=true;
+  }
+   
+  }
+  GetstatusPendingEmployeeForAppraisal() {
+    debugger
+    let subs = this._appraisalEmpListSer.GetEmployeeListing()
+      .pipe(catchError(x => {
+        this._errorService.LogError(x);
+        return throwError(x);
+      }))
+      .subscribe(
+        (data: AppraisalEmpRes[]) => {
+          debugger
+          this.employeeListOriginal = data;
+          var dptnam=  localStorage.getItem("deptName");
+          if(dptnam!=null){
+            var datval=   this.employeeListOriginal.filter(x => x.hrinitiateFormStatus =='1'  && x.department ==dptnam);
+            this.employeeList.data=datval;
+          }
+          else{
+            var datval=   this.employeeListOriginal.filter(x => x.hrinitiateFormStatus =='1');
+            this.employeeList.data=datval;
+          }
+   
+          subs.unsubscribe();
+          
+        },
+        (err) => {
+          this._errorService.LogError(err);
+          console.log(err);
+          this._spinner.hide();
+          subs.unsubscribe();
+        }
+      )
+  }
+
+  GetstatusProgressEmployeeForAppraisal() {
+    debugger
+    let subs = this._appraisalEmpListSer.GetEmployeeListing()
+      .pipe(catchError(x => {
+        this._errorService.LogError(x);
+        return throwError(x);
+      }))
+      .subscribe(
+        (data: any) => {
+          debugger
+          this.employeeListOriginal=data;
+          var dptnam=  localStorage.getItem("deptName");
+          if(dptnam!=null){    
+            var datval=   this.employeeListOriginal.filter(x => x.hrinitiateFormStatus !='1' && x.hrAssesmentStatus !='3'  && x.department ==dptnam);
+            this.employeeList.data=datval;
+          }
+          else{
+            var datval=   this.employeeListOriginal.filter(x => x.hrinitiateFormStatus !='1' && x.hrAssesmentStatus !='3');
+            this.employeeList.data=datval;
+          }
+     
+          subs.unsubscribe();
+          
+        },
+        (err) => {
+          this._errorService.LogError(err);
+          console.log(err);
+          this._spinner.hide();
+          subs.unsubscribe();
+        }
+      )
+  }
+
+  GetstatusCompletedEmployeeForAppraisal() {
+    debugger
+    let subs = this._appraisalEmpListSer.GetEmployeeListing()
+      .pipe(catchError(x => {
+        this._errorService.LogError(x);
+        return throwError(x);
+      }))
+      .subscribe(
+        (data: AppraisalEmpRes[]) => {
+          debugger
+          this.employeeListOriginal=data;
+          var dptnam=  localStorage.getItem("deptName");
+          if(dptnam!=null){    
+         var datval=   this.employeeListOriginal.filter(x => x.hrAssesmentStatus =='3' && x.department ==dptnam);
+          this.employeeList.data=datval;
+        }
+        else{
+          var datval=   this.employeeListOriginal.filter(x => x.hrAssesmentStatus =='3');
+          this.employeeList.data=datval;
+        }
+
+          this.SetEmployeeTablePaginator();     
+          this._spinner.hide();
+          subs.unsubscribe();
+          
+        },
+        (err) => {
+          this._errorService.LogError(err);
+          console.log(err);
+          this._spinner.hide();
+          subs.unsubscribe();
+        }
+      )
+  }
 }
