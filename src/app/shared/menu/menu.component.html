@@ -1,12 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-dark blue-bg fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">Appraisal Management</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+     
+  
         <div class="navbar-collapse collapse" id="navbarResponsive">
+                
             <ul class="navbar-nav ml-auto">
+                  
                     <a class="nav-link js-scroll-trigger" >{{username}}</a>
                 <li class="nav-item">
                       
@@ -24,16 +28,7 @@
                             <li *ngFor="let section of sections">
                             <a style="cursor: pointer" (click)="redirect(section.id,section.empId)" > {{section.description}}</a>
                         </li>
-                          <!-- <a class="dropdown-item" >Another action</a>
-                          <a class="dropdown-item" >Something else here</a>
-                          <a class="dropdown-item" >Action</a>
-                          <a class="dropdown-item" >Another action</a>
-                          <a class="dropdown-item" >Something else here</a>
-                          <a class="dropdown-item" >Action</a>
-                          <a class="dropdown-item" >Another action</a>
-                          <a class="dropdown-item" >Something else here</a>
-                          <a class="dropdown-item" >Action</a>
-                          <a class="dropdown-item" >Action</a> -->
+                        
                         
                         </div>
                       </div>
@@ -41,6 +36,7 @@
             <!-- </div> -->
                
             </ul>
+           
         </div>
     </div>
 </nav>

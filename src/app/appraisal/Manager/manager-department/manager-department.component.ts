@@ -25,7 +25,7 @@ export class ManagerDepartmentComponent implements OnInit {
   }
 
   DepartmentSelected(value: any){
-    debugger
+  //  debugger
     console.log(value);
     this.departmentSelectionChanged.emit(value.value);
   }

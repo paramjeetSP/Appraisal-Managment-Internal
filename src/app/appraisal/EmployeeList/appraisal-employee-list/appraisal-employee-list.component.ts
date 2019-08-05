@@ -7,7 +7,7 @@ import { ErrorService } from '../../Service/error.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToasterServiceCustom } from '../../Service/toaster.service';
 import { Global } from '../../../global';
-import { Department } from '../../Model/Response/department';
+import { Department, yearlist } from '../../Model/Response/department';
 import { CommonTaskService } from '../../Service/common-task.service';
 import { MatTableDataSource, MatPaginator, MatSnackBar, MatDialogRef } from '@angular/material';
 import { SnackBarSuccessComponent } from 'src/app/shared/snack-bar-success/snack-bar-success.component';
@@ -30,10 +30,13 @@ export class AppraisalEmployeeListComponent implements OnInit {
    displayedColumns: string[] = ['fullName', 'emp_Code', 'officialEmail', 'appraisalStatus', 'department','HrinitiateFormStatus','GoalsettingByLeadStatus','SelfAssesmentStatus','LeadAssesmentStatus','HrAssesmentStatus','ViewForm'];
   filterTypes: FilterTypes[] = []; // Type should match AppraisalEmpRes interface property names
   allDepartments: Department[];
+  yearselectedOption: yearlist[];
   Showemployeelistgrid: boolean = false;
   Showemptygrid : boolean = true;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   selectedOption: any;
+  periodselectedOption: any;
+  yearselected: any;
 
   constructor(
     private _appraisalEmpListSer: AppraisalEmpListService,
@@ -49,7 +52,8 @@ export class AppraisalEmployeeListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
+ debugger
+ this.Getyeardropdownlist();
     localStorage.removeItem("deptName");
    this.employeeList.paginator = this.paginator;
     this.GetAllDepartments();
@@ -60,12 +64,12 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
 
   SubmitrequestToInitiateAppraisalProcess(item: AppraisalEmpRes): void {
-    debugger
+  //  debugger
     const dialogRef = this._dialogService.OpenDialogForConfirmInitiateProcess(
       { wantToSubmit: true, nameToSubmitFor: item.fullName } as DialogDataForInitiateAppraisalProcess
     );// By default setting the value to true so if the user cancels then the result will be undefined in the callback
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      debugger
+  //    debugger
       if (result) {
         this.InitiateAppraisal(item);  
    
@@ -77,7 +81,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
       { wantToSubmit: true, nameToSubmitFor: item.fullName } as DialogDataForInitiateAppraisalProcess
     );// By default setting the value to true so if the user cancels then the result will be undefined in the callback
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      debugger
+  //    debugger
       if (result) {
         this.ReInitiateAppraisal(item);  
    
@@ -91,14 +95,14 @@ export class AppraisalEmployeeListComponent implements OnInit {
     });
   }
   SetupComponentVars() {
-    debugger
+  //  debugger
     this.filterTypes = [
       { type: this._global.COL_DEPARTMENT, value: '', shouldFilter: false },
       { type: this._global.COL_FULL_NAME, value: '', shouldFilter: false }
     ];
   }
   GetEmployeeForAppraisal() {
-    debugger
+   // debugger
     let subs = this._appraisalEmpListSer.GetEmployeeListing()
       .pipe(catchError(x => {
         this._errorService.LogError(x);
@@ -125,14 +129,14 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
  
   DepartmentSelected(value: any){
-    debugger
+  //  debugger
     console.log(value);
   
     this.DepartmentSelectedGetData(value);//.emit(value.value);
   }
 
   ReInitiateAppraisal(item: AppraisalEmpRes) {
-    debugger
+   // debugger
     // let con = confirm(`Are you sure you want to initiate the process for ${item.fullName}`)
    // this._spinner.show();
     let subs = this._appraisalEmpListSer.ReInitiateApraisalProcess(item)
@@ -158,7 +162,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
 
   InitiateAppraisal(item: AppraisalEmpRes) {
-    debugger
+   // debugger
     // let con = confirm(`Are you sure you want to initiate the process for ${item.fullName}`)
     this._spinner.show();
     let subs = this._appraisalEmpListSer.InitiateApraisalProcess(item)
@@ -184,12 +188,12 @@ export class AppraisalEmployeeListComponent implements OnInit {
   }
 
   SetEmployeeTablePaginator() {
-    debugger
+   // debugger
     this.employeeList.paginator = this.paginator;
     //setTimeout(() => this.employeeList.paginator = this.paginator);
   }
   DepartmentFilter(filtervalue: string) {
-    debugger
+    //debugger
     this.selectedOption='0';
     this.employeeList = new MatTableDataSource<AppraisalEmpRes>(this.employeeListOriginal);
   
@@ -215,7 +219,7 @@ export class AppraisalEmployeeListComponent implements OnInit {
     this.Filter();
   }
   FullNameFilter(filtervalue: string) {
-    debugger
+   // debugger
     this.employeeList = new MatTableDataSource<AppraisalEmpRes>(this.employeeListOriginal);
     filtervalue === '' ? this.SetSholdFilterToFlase(this._global.COL_FULL_NAME) : null; // Here we set the filterType element value to false, which will not include it in the filtering process
   //  if( filtervalue == ''){
@@ -248,7 +252,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
    * the filter value will be included in the filter algo.
    */
   Filter() {
-    debugger
+   // debugger
     this.employeeList.data = this.employeeList.data.filter(employee => {
       let filterThatShouldBeChecked = this.filterTypes.filter(x => { return x.shouldFilter });
       let counterToCheckTheNumberOfFiltersToPass = filterThatShouldBeChecked.length;
@@ -268,7 +272,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   }
 
   DepartmentSelectedGetData(value: number) {
-    debugger
+  //  debugger
     this.selectedOption=null;
     let departmentString = this.allDepartments.filter(x => { return x.id === value });
     if (departmentString.length > 0) {
@@ -285,7 +289,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   //   this._router.navigate([this._global.ROUTE_APPRAISAL_FORM]);
   // }
   ViewFormClicked(item: AppraisalEmpRes){
-    debugger
+ //   debugger
     localStorage.removeItem('hrnotification');
   // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(item));
     this._sessionStorage.StoreUserdetailInfo(item);
@@ -310,7 +314,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   }
 
   GoalformSelected(value: any){
-    debugger
+  //  debugger
 
    if(value.value=='1'){
     // this.Showemployeelistgrid=true;
@@ -333,11 +337,12 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   else{
     // this.Showemployeelistgrid=false;
     // this.Showemptygrid=true;
+    this.selectedOption='0';
   }
    
   }
   GetstatusPendingEmployeeForAppraisal() {
-    debugger
+//    debugger
     let subs = this._appraisalEmpListSer.GetEmployeeListing()
       .pipe(catchError(x => {
         this._errorService.LogError(x);
@@ -345,7 +350,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
       }))
       .subscribe(
         (data: AppraisalEmpRes[]) => {
-          debugger
+        //  debugger
           this.employeeListOriginal = data;
           var dptnam=  localStorage.getItem("deptName");
           if(dptnam!=null){
@@ -370,7 +375,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   }
 
   GetstatusProgressEmployeeForAppraisal() {
-    debugger
+//    debugger
     let subs = this._appraisalEmpListSer.GetEmployeeListing()
       .pipe(catchError(x => {
         this._errorService.LogError(x);
@@ -378,7 +383,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
       }))
       .subscribe(
         (data: any) => {
-          debugger
+      //    debugger
           this.employeeListOriginal=data;
           var dptnam=  localStorage.getItem("deptName");
           if(dptnam!=null){    
@@ -403,7 +408,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
   }
 
   GetstatusCompletedEmployeeForAppraisal() {
-    debugger
+    //debugger
     let subs = this._appraisalEmpListSer.GetEmployeeListing()
       .pipe(catchError(x => {
         this._errorService.LogError(x);
@@ -411,7 +416,7 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
       }))
       .subscribe(
         (data: AppraisalEmpRes[]) => {
-          debugger
+        //  debugger
           this.employeeListOriginal=data;
           var dptnam=  localStorage.getItem("deptName");
           if(dptnam!=null){    
@@ -435,5 +440,59 @@ this.filterTypes = this.filterTypes.map((val: FilterTypes) => {
           subs.unsubscribe();
         }
       )
+  }
+
+  periodSelected(value: any){
+    debugger
+  var defaultyear =  localStorage.getItem("bydefaultyear");
+ 
+  var periodval =value.value;
+  if(periodval==1){
+  var  period="period1";
+  }
+  else if(periodval==2){
+    var  period="period2";
+  }
+  const body_data = {
+    'year': defaultyear,
+    'cycle': period,
+    
+  };
+  // first time save api 
+    this._appraisalEmpListSer.GetEmployeeListingbyyearandperiod(body_data).subscribe((body_data: any) => {
+      if (body_data) {
+     debugger
+    //this.employeeListOriginal=body_data; 
+    this.employeeList.data=body_data;
+    }
+     
+    });
+  }
+
+  yearSelected(value: any){
+    debugger
+    localStorage.removeItem("bydefaultyear");
+    localStorage.setItem("bydefaultyear",value.value);
+    this.periodselectedOption=null;
+  }
+
+  Getyeardropdownlist() {
+    debugger
+    let subs = this._commonTasksservice.Getyearlist()
+    .pipe(catchError(x => {
+      this._errorService.LogError(x);
+      
+      return throwError(x);
+    }))
+    .subscribe((data:any)=>{
+      debugger
+      this.yearselectedOption = data;
+      this.yearselected=data[0].yearlist;
+      localStorage.setItem("bydefaultyear",data[0].yearlist);
+    //  subs.unsubscribe();
+    }, (error) => {
+      this._errorService.LogError(error);
+     // subs.unsubscribe();
+    })
   }
 }

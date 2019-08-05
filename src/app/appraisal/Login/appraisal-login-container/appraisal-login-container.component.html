@@ -89,9 +89,6 @@
                                     Required
                                   </mat-error>
                                 </mat-form-field>
-                              <!-- <label for="">User Name</label>
-                              <input class="form-control"  formControlName="uName" placeholder="Username" type="text" data-val="true" data-val-required="Username required !" id="UserName" name="UserName" value="">
-                              <span class="text-danger field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span> -->
                           </div>
                           <div class="col-md-12 form-group">
                               <mat-form-field class="example-full-width"  style="width:460px !important" [style.fontSize.px]=20 >
@@ -102,13 +99,9 @@
                                     Required
                                   </mat-error>
                                 </mat-form-field>
-                              <!-- <label for="">PassWord</label>
-                              <input class="form-control" formControlName="pass" placeholder="Password" type="password" data-val="true" data-val-required="Password required !" id="Password" name="Password">
-                              <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span> -->
                           </div>
                           <div class="col-md-12 form-group">
                               <button *ngIf="!showSpinner"  mat-button class="btn btn-block mt-0 submit">SUBMIT</button>
-                              <!-- <button type="submit" class="btn btn-block mt-0 submit">SUBMIT</button> -->
                               <div style="max-width: 50px;">
                                   <mat-spinner [diameter]="40" *ngIf="showSpinner" ></mat-spinner>
                                 </div>

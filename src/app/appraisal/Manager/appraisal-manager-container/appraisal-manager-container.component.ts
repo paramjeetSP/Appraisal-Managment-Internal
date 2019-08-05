@@ -63,7 +63,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   DepartmentSelectedGetData(value: number){
-    debugger
+    //debugger
     this.showUiControls.departmentEmployeeList = true;
     this._spinner.show();
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
@@ -83,7 +83,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   ViewFormOfEmployee(employee: AppraisalEmpRes){
-    debugger
+    //debugger
    // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
     this._sessionStorage.StoreUserdetailInfo(employee);
     this.showUiControls.departmentEmployeeList = false;

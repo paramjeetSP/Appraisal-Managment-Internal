@@ -40,7 +40,7 @@ export class AppraisalEmployeeViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {  
- debugger  
+// debugger  
    var  data = this._sessionStorage.GetLoggedInUserInfo();
    this.fullName=data.fullName;
    this.department=data.deptName;
@@ -55,15 +55,15 @@ export class AppraisalEmployeeViewComponent implements OnInit {
    }
   }
   employeeview(){
-    debugger
+  //  debugger
        var data= this._sessionStorage.GetLoggedInUserInfo();
-     //  this.employeeList=data
+   
      const id=data.id;
     this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id } });
   }
 
   employeeEdit(){
-    debugger
+   // debugger
     localStorage.setItem('isedit', "true");
     var data= this._sessionStorage.GetLoggedInUserInfo();
     this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id } });

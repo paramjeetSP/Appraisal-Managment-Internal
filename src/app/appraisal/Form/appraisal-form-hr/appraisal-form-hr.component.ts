@@ -257,13 +257,12 @@ export class AppraisalFormHrComponent implements OnInit {
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-    debugger   
-   
+   // debugger    
   var hrnotification = localStorage.getItem('hrnotification');
   var idval= this.router.snapshot.queryParamMap.get('id');  
   debugger   
   if(idval!=null && hrnotification=="hrnotification"){
-    debugger   
+   // debugger   
     this.showsubmitbutton=false;
     this.GetemployeeDetails(idval);
    this.Getgoalemployee(idval);
@@ -385,7 +384,7 @@ this.GetManagerRCDetails(idval);
   }
 
   GetemployeeDetails(id: any){
-    debugger
+    //debugger
     const subs = this.appraisalFormService.GetEmployeeDetailsById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -394,7 +393,7 @@ this.GetManagerRCDetails(idval);
     .subscribe(
      
       (data:any) => {
-        debugger
+       // debugger
      /// var dataitem=data[0];
     this.FullName=data.fullName;
     this.doj = data.doj;
@@ -413,8 +412,7 @@ this.GetManagerRCDetails(idval);
   }
 
   DepartmentSelectedGetData(value: number){
-    debugger
-   
+  //  debugger
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -432,7 +430,7 @@ this.GetManagerRCDetails(idval);
   }
 
   GetManagerRCDetails(id: any){
-    debugger
+    //debugger
     const subs = this.appraisalFormService.GetmanagerRCDetailsById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -584,7 +582,7 @@ this.GetManagerRCDetails(idval);
   }
 
 onSubmit(){
-  debugger
+  //debugger
   this.submitted = true;
   if (this.goalForm.invalid) {
     return;

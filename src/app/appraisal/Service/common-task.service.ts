@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Department } from '../Model/Response/department';
+import { Department, yearlist } from '../Model/Response/department';
 import { Global } from '../../global';
 import { AppraisalEmpRes } from '../Model/Response/appraisal-employee-list-res';
 
@@ -23,5 +23,10 @@ export class CommonTaskService {
   GetEmployeesByDepartmentId(departmentId: number): Observable<AppraisalEmpRes[]> {
     const url = `${this._global.API_FULL_URL}GetDepartmentEmployeeList`;
     return this._http.post<AppraisalEmpRes[]>(url, { Depid: departmentId }, this._global.HTTP_OPTIONS);
+  }
+  Getyearlist(): Observable<any> {
+    debugger
+    const url = `${this._global.API_FULL_URL}GetYearList`;
+    return this._http.get<any>(url);
   }
 }

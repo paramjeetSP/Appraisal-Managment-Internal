@@ -2,29 +2,59 @@
 <div class="main-table-wrapper hr_appraisal_list">
   <div class="container-fluid">
    <div class="d-flex justify-content-center"> 
-    <mat-form-field>
-      <input class="mr-2" matInput (keyup)="FullNameFilter($event.target.value)" placeholder="Search by Name">
-    </mat-form-field>
-    <app-manager-department (departmentSelectionChanged)="DepartmentSelectedGetData($event)"
-      [departments]="allDepartments">
-
-    </app-manager-department>
-    <div class="formstatus-wrapper">
-        <mat-form-field >
-            <mat-select (selectionChange)="GoalformSelected($event)" [value]="selectedOption" placeholder="Select Form status">
-                <mat-option [value]='0'>None</mat-option>
-              <mat-option [value]='1'>Pending</mat-option>
-                <mat-option [value]='2'>Inprogress</mat-option>
-                <mat-option [value]='3'>Completed</mat-option>
-              </mat-select>
-      </mat-form-field>
-  </div>
+     <div class="row">
+    <div class="col-md-4">
+      <div  class="yearstatus-wrapper">
+            <mat-form-field > 
+                <mat-select (selectionChange)="yearSelected($event)" [value]="yearselected" >
+                    <mat-option *ngFor="let item of yearselectedOption" [value]="item.yearlist">
+                        {{item.yearlist}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+      </div>
+      <div class="periodstatus-wrapper">
+            <mat-form-field >
+                <mat-select (selectionChange)="periodSelected($event)" [value]="periodselectedOption" placeholder="Select period">
+                   
+                  <mat-option [value]='1'>Period1</mat-option>
+                    <mat-option [value]='2'>Period2</mat-option>
+                  
+                  </mat-select>
+          </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+        <mat-form-field>
+            <input class="mr-2" matInput (keyup)="FullNameFilter($event.target.value)" placeholder="Search by Name">
+        </mat-form-field>
+        <app-manager-department (departmentSelectionChanged)="DepartmentSelectedGetData($event)"
+          [departments]="allDepartments">
+    
+        </app-manager-department>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="formstatus-wrapper">
+          <mat-form-field >
+              <mat-select (selectionChange)="GoalformSelected($event)" [value]="selectedOption" placeholder="Select Form status">
+                  <mat-option [value]='0'>None</mat-option>
+                <mat-option [value]='1'>Pending</mat-option>
+                  <mat-option [value]='2'>Inprogress</mat-option>
+                  <mat-option [value]='3'>Completed</mat-option>
+                </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    
+</div>
  
   </div>
  
   </div>
   <!-- <div   *ngIf="Showemployeelistgrid" class="container-fluid mat-elevation-z8"> -->
-      <div    class="container-fluid mat-elevation-z8">
+      <div class="container-fluid mat-elevation-z8">
   <div  class="table-responsive"> 
     <table mat-table [dataSource]="employeeList" class=" table table-sm table-wrapper">
       <!-- Full Name Column -->

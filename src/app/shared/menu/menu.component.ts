@@ -13,7 +13,7 @@ import { AppraisalFormService } from 'src/app/appraisal/Service/appraisal-form.s
 export class MenuComponent implements OnInit {
   username:string;
   count:string;
-  foundRole:boolean=false;
+  foundRole:boolean=false; 
   sections = [];
   constructor(
     private _sessionStorage: SessionStorageService,
@@ -30,13 +30,16 @@ export class MenuComponent implements OnInit {
     if(data.description=="Solution Architect" || data.description=="Manager" ||data.description=="Lead" || data.description=="Architect" || data.description=="Project Leader"|| data.description=="Lead BA" || data.description=="Manager- SDM" ){
       this.getleadNotifications(id);
       this.foundRole=true;
+     
     }
     else if(data.description=="HR" || data.description=="HR Executive" ){
       this.gethrNotifications(id);
       this.foundRole=true;
+    
     }
     else{
       this.foundRole=false;
+     
     }
   //  this.gethrNotifications(id);
     //this.getleadNotifications(id);

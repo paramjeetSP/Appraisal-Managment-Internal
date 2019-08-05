@@ -265,7 +265,7 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-    debugger   
+    //debugger   
     var idval= this.router.snapshot.queryParamMap.get('id');  
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
     if(UserInfo!=null){
@@ -275,7 +275,7 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
    
  
    if(idval!=null && userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1" ||userselfAssesmentStatus =="2"){
-debugger
+//debugger
  this.GetemployeeDetails(idval);
  
 this.Getgoalemployee(idval);
@@ -316,7 +316,7 @@ this.GetEmployeeRCDetails(idval);
   }
   get goalsettingform() { return this.goalForm.controls; }
   personaldata(){
-    debugger
+   // debugger
    var data = this._sessionStorage.GetUserdetailInfo();
     this.FullName = data.fullName;
    this.doj = data.doj;
@@ -336,8 +336,7 @@ this.GetEmployeeRCDetails(idval);
   }
 
   Getgoalemployee(id: any){
-    debugger
-   
+   // debugger
     const subs = this.appraisalFormService.GetEmployeeGolaById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -345,8 +344,7 @@ this.GetEmployeeRCDetails(idval);
     }))
     .subscribe(
       (data:AppraisalEmpGoalRes[]) => {
-        debugger
-      
+        //debugger
       var dataval=data;
       this.goalone=data[0].description;
       if( this.goalone !=null)
@@ -392,18 +390,14 @@ this.GetEmployeeRCDetails(idval);
       localStorage.setItem('pid11', JSON.stringify(this.pid11));
       localStorage.setItem('pid12', JSON.stringify(this.pid12));
 
-      
-    
-      //  this._spinner.hide();
       }, 
       (error) => {
         this._errorService.LogError(error);
-      //  this._spinner.hide();
-      });
+           });
   }
 
   GetemployeeDetails(id: any){
-    debugger
+   // debugger
     const subs = this.appraisalFormService.GetEmployeeDetailsById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -691,7 +685,7 @@ this.GetEmployeeRCDetails(idval);
     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
   }
   onSubmit() {
-    debugger
+    //debugger
     this.submitted = true;
     if (this.goalForm.invalid) {
       return;
@@ -765,7 +759,8 @@ this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:manager
 else if(userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3"){
 // manager rating
 if( this.behaviourpid1!=null){
-  debugger
+  
+//  debugger
   // For EDIT
     var managerrating1 = this.goalForm.controls.managerratingone.value;
     var managerrating2 = this.goalForm.controls.managerratingtwo.value;

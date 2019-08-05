@@ -41,3 +41,13 @@ a#dropdownMenuLink {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
 }
+.blue-bg {
+    background-color: #28bdf0;
+    border-color: #28bdf0;
+}
+.fixed-top {
+    z-index: 9;
+}
+.mat-form-field-infix {
+    margin-top: -7px !important;
+}

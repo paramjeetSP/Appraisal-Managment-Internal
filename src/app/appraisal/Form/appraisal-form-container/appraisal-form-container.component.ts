@@ -204,20 +204,16 @@ export class AppraisalFormContainerComponent implements OnInit {
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-    debugger   
+  //  debugger   
     
   var idval= this.router.snapshot.queryParamMap.get('id');  
 
   localStorage.setItem('empid', idval);
   if(idval!=null){
-    debugger
-   
+  //  debugger
    this.GetemployeeDetails(idval);
     //  this.Getgoalemployee(idval);
    this.GetemployeeformDetail(idval);
-  
- 
- 
   this.disablegoal();
   this.disableBehaviourratingandcomments();
   this.disablemanagerratingandcomments();
@@ -235,8 +231,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
   get goalsettingform() { return this.goalForm.controls; }
   personaldata(){
-    debugger
-    
+  //  debugger
     var data = this._sessionStorage.GetUserdetailInfo();
     this.FullName = data.fullName;
    this.doj = data.doj;
@@ -258,8 +253,7 @@ export class AppraisalFormContainerComponent implements OnInit {
 
 
   GetemployeeformDetail(id: any){
-    debugger
-   
+    //debugger
     const subs = this.appraisalFormService.GetEmployeeformDetailForEdit(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -267,9 +261,7 @@ export class AppraisalFormContainerComponent implements OnInit {
     }))
     .subscribe(
       (data:any) => {
-        debugger
-      
-        
+   //     debugger 
       this.goalone=data._EmployeeRatinglist[0].description;
       this.goaltwo=data._EmployeeRatinglist[1].description;
       this.goalthree=data._EmployeeRatinglist[2].description;
@@ -401,7 +393,7 @@ export class AppraisalFormContainerComponent implements OnInit {
       });
   }
   onSubmit() {
-    debugger
+  //  debugger
     this.submitted = true;
     if (this.goalForm.invalid) {
       return;
@@ -497,8 +489,6 @@ if(this.ambitionspid !=null ){
   });
    }
 else{
-
-
 var rating1 = this.goalForm.controls.ratingone.value;
 var rating2 = this.goalForm.controls.ratingtwo.value;
 var rating3 = this.goalForm.controls.ratingthree.value;
