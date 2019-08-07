@@ -7,3 +7,7 @@ export interface FilterTypes {
     value: string;
     shouldFilter: boolean;
 }
+
+export interface DialogDataForCycleSelect {
+    cyclealert: string;
+}

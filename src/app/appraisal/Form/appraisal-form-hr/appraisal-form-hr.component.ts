@@ -257,16 +257,19 @@ export class AppraisalFormHrComponent implements OnInit {
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-   // debugger    
+  //  debugger     
   var hrnotification = localStorage.getItem('hrnotification');
   var idval= this.router.snapshot.queryParamMap.get('id');  
-  debugger   
+  var year= this.router.snapshot.queryParamMap.get('year');  
+  var cycle= this.router.snapshot.queryParamMap.get('cycle');  
+
+  //debugger   
   if(idval!=null && hrnotification=="hrnotification"){
    // debugger   
     this.showsubmitbutton=false;
     this.GetemployeeDetails(idval);
    this.Getgoalemployee(idval);
-   this.GetManagerRCDetails(idval);
+   this.GetManagerRCDetails(idval,year,cycle);
    // disable goal for hr view
      this.disablegoalall();
      this.ratingitselfandcomments();
@@ -280,7 +283,19 @@ export class AppraisalFormHrComponent implements OnInit {
  else if(idval!=null){
  this.GetemployeeDetails(idval);
 this.Getgoalemployee(idval);
-this.GetManagerRCDetails(idval);
+this.GetManagerRCDetails(idval,year,cycle);
+var date = new Date();         
+    var currentyear =date.getFullYear().toString();
+//debugger
+  if(currentyear>year){
+    this.showsubmitbutton=false;
+    this.disableclosure();
+  }
+  else{
+   // debugger
+    this.showsubmitbutton=true;
+    this.disableclosureall();
+  }
 // disable goal for hr view
   this.disablegoalall();
   this.ratingitselfandcomments();
@@ -289,7 +304,7 @@ this.GetManagerRCDetails(idval);
   this.disableambitionsinfo();
   this.disableBehaviourratingandcomments();
   this.disablemanagerSummaryall();
-  this.disableclosureall();
+//  this.disableclosureall();
   }
   
   else{
@@ -299,7 +314,7 @@ this.GetManagerRCDetails(idval);
   }
   get goalsettingform() { return this.goalForm.controls; }
   personaldata(){
-    debugger
+   // debugger
    var data = this._sessionStorage.GetUserdetailInfo();
     this.FullName = data.fullName;
    this.doj = data.doj;
@@ -319,8 +334,7 @@ this.GetManagerRCDetails(idval);
   }
 
   Getgoalemployee(id: any){
-    debugger
-   
+   // debugger
     const subs = this.appraisalFormService.GetEmployeeGolaById(id)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -328,8 +342,7 @@ this.GetManagerRCDetails(idval);
     }))
     .subscribe(
       (data:AppraisalEmpGoalRes[]) => {
-        debugger
-      
+      //  debugger 
       var dataval=data;
       this.goalone=data[0].description;
       if( this.goalone !=null)
@@ -429,9 +442,14 @@ this.GetManagerRCDetails(idval);
       });
   }
 
-  GetManagerRCDetails(id: any){
+  GetManagerRCDetails(id: any,year:any ,cycle:string){
     //debugger
-    const subs = this.appraisalFormService.GetmanagerRCDetailsById(id)
+    const body = {
+      'id': id,
+      'year': year,
+      'cycle': cycle 
+    };
+    const subs = this.appraisalFormService.GetmanagerRCDetailsById(body)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
@@ -439,6 +457,7 @@ this.GetManagerRCDetails(idval);
     .subscribe(
       (data:any) => {  
     // this.dataval=data;
+   // debugger
     this.goalone=data._ManagerRatinglist[0].description;
     this.goaltwo=data._ManagerRatinglist[1].description;
     this.goalthree=data._ManagerRatinglist[2].description;
@@ -587,6 +606,8 @@ onSubmit(){
   if (this.goalForm.invalid) {
     return;
 }
+var year= this.router.snapshot.queryParamMap.get('year'); 
+    var cycle= this.router.snapshot.queryParamMap.get('cycle');
   var UserInfo = this._sessionStorage.GetUserdetailInfo();
   var empid =UserInfo.id;
   var summarypid1= localStorage.getItem('summarypid1');
@@ -601,6 +622,8 @@ onSubmit(){
     'Managmentrating':closuremanagementcommentone,
     'Managmentcomment':closuremanagementcommenttwo,
     'pid':summarypid1,
+    'year': year,
+    'cycle': cycle 
   };
   // first time save api 
     this.appraisalFormService.PosthrFinalSubmitData(body_data).subscribe((body_data: any) => {

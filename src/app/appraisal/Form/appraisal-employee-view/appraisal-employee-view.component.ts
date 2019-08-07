@@ -55,11 +55,10 @@ export class AppraisalEmployeeViewComponent implements OnInit {
    }
   }
   employeeview(){
-  //  debugger
+   // debugger
        var data= this._sessionStorage.GetLoggedInUserInfo();
-   
      const id=data.id;
-    this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id } });
+    this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id ,year:data.year, cycle:data.cycle } });
   }
 
   employeeEdit(){

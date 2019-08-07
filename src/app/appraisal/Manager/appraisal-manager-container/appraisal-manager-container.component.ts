@@ -10,6 +10,7 @@ import { Global } from '../../../global';
 import { AppraisalEmpRes } from '../../Model/Response/appraisal-employee-list-res';
 import { SessionStorageService } from '../../Service/session-storage.service';
 import { AppraisalFormContainerComponent } from '../../Form/appraisal-form-container/appraisal-form-container.component';
+import { isNgTemplate } from '@angular/compiler';
 
 declare var $: any;
 @Component({
@@ -63,7 +64,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   DepartmentSelectedGetData(value: number){
-    //debugger
+   // debugger
     this.showUiControls.departmentEmployeeList = true;
     this._spinner.show();
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
@@ -73,6 +74,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
     }))
     .subscribe(
       (data:AppraisalEmpRes[]) =>{
+        debugger
         this.employeeByDepartment = data;
         this._spinner.hide();
       }, 
@@ -83,7 +85,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
   }
 
   ViewFormOfEmployee(employee: AppraisalEmpRes){
-    //debugger
+    debugger
    // localStorage.setItem(this._global.SESSION_USER_details, JSON.stringify(employee));
     this._sessionStorage.StoreUserdetailInfo(employee);
     this.showUiControls.departmentEmployeeList = false;
@@ -91,7 +93,7 @@ export class AppraisalManagerContainerComponent implements OnInit {
     this.showUiControls.employeeForm = true;
     this.showUiControls.backButtonToSelect = true;
    // this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM]);     
-    this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM ], { queryParams: { id: employee.id } });
+    this._router.navigate([this._global.ROUTE_APPRAISAL_Manager_FORM ], { queryParams: { id: employee.id,year:employee.year ,cycle:employee.cycle} });
     console.log(employee);
   }
 

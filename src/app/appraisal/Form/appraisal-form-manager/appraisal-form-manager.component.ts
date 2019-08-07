@@ -157,6 +157,7 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
   evaluationStartDate: any;
   cycle: string;
   evaluationEndDate: any;
+  
  constructor(private _sessionStorage: SessionStorageService,
     private formBuilder: FormBuilder,
     private appraisalFormService:AppraisalFormService,
@@ -265,8 +266,10 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-    //debugger   
-    var idval= this.router.snapshot.queryParamMap.get('id');  
+   // debugger   
+    var idval= this.router.snapshot.queryParamMap.get('id'); 
+    var year= this.router.snapshot.queryParamMap.get('year'); 
+    var cycle= this.router.snapshot.queryParamMap.get('cycle');  
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
     if(UserInfo!=null){
       var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
@@ -278,8 +281,8 @@ EditBehaviourRatingComment: Array<{ id:number,Behaviouralgoals:string,ManagerRat
 //debugger
  this.GetemployeeDetails(idval);
  
-this.Getgoalemployee(idval);
-this.GetEmployeeRCDetails(idval);
+this.Getgoalemployee(idval,year,cycle);
+this.GetEmployeeRCDetails(idval,year,cycle);
 
   this.disableratingitself();
   this.disablemanagerratingComments();
@@ -292,7 +295,7 @@ this.GetEmployeeRCDetails(idval);
   else if(idval!=null && userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3" ){
     this.GetemployeeDetails(idval);
   //  this.GetEmployeeRCDetails(idval);
-  this.GetManagerRCDetails(idval);
+  this.GetManagerRCDetails(idval,year,cycle);
     this.disablegoaldescription();
     this.disableratingitself();
     this.disableAmbitionsformanager();
@@ -324,20 +327,27 @@ this.GetEmployeeRCDetails(idval);
    this.designation = data.designation;
    this.department = data.department;
    this.reportingTo = data.managerName;    
+   var year= this.router.snapshot.queryParamMap.get('year'); 
+    var cycle= this.router.snapshot.queryParamMap.get('cycle');  
    if(data.id !=null) 
    {
-    this.Getgoalemployee(data.id);
+    this.Getgoalemployee(data.id,year,cycle);
    }
    else
    {
     var dataval= this._sessionStorage.GetLoggedInUserInfo();
-    this.Getgoalemployee(dataval.id);
+    this.Getgoalemployee(dataval.id,year,cycle);
    }
   }
 
-  Getgoalemployee(id: any){
+  Getgoalemployee(id: any,year:any ,cycle:string){
    // debugger
-    const subs = this.appraisalFormService.GetEmployeeGolaById(id)
+   const body = {
+    'id': id,
+    'year': year,
+    'cycle': cycle 
+  };
+    const subs = this.appraisalFormService.GetEmployeeGolaById(body)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
@@ -423,9 +433,14 @@ this.GetEmployeeRCDetails(idval);
      
       });
   }
-  GetEmployeeRCDetails(id: any){
-    debugger
-    const subs = this.appraisalFormService.GetEmployeeRCDetailsById(id)
+  GetEmployeeRCDetails(id: any,year:any ,cycle:string){
+   // debugger
+    const body = {
+      'id': id,
+      'year': year,
+      'cycle': cycle 
+    };
+    const subs = this.appraisalFormService.GetEmployeeRCDetailsById(body)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
@@ -510,9 +525,14 @@ this.GetEmployeeRCDetails(idval);
       });
   }
 
-  GetManagerRCDetails(id: any){
-    debugger
-    const subs = this.appraisalFormService.GetmanagerRCDetailsById(id)
+  GetManagerRCDetails(id: any,year:any ,cycle:string){
+   // debugger
+    const body = {
+      'id': id,
+      'year': year,
+      'cycle': cycle 
+    };
+    const subs = this.appraisalFormService.GetmanagerRCDetailsById(body)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
@@ -520,7 +540,7 @@ this.GetEmployeeRCDetails(idval);
     .subscribe(
       (data:any) => {  
     // this.dataval=data;
-    debugger
+   // debugger
     this.goalone=data._ManagerRatinglist[0].description;
     this.goaltwo=data._ManagerRatinglist[1].description;
     this.goalthree=data._ManagerRatinglist[2].description;
@@ -691,6 +711,8 @@ this.GetEmployeeRCDetails(idval);
       return;
   }
     var UserInfo = this._sessionStorage.GetUserdetailInfo();
+    var year= this.router.snapshot.queryParamMap.get('year'); 
+    var cycle= this.router.snapshot.queryParamMap.get('cycle');  
     if(UserInfo!=null){
    var userleadAssesmentStatus =UserInfo.leadAssesmentStatus;
     var userselfAssesmentStatus =UserInfo.selfAssesmentStatus;
@@ -714,6 +736,7 @@ this.GetEmployeeRCDetails(idval);
 
 if(this.pid1!=null){
  if(userleadAssesmentStatus=="1" &&  userselfAssesmentStatus=="1"){
+   //debugger
   var goal1 = this.goalForm.controls.goalone.value;
   var goal2 = this.goalForm.controls.goaltwo.value;
   var goal3 = this.goalForm.controls.goalthree.value;
@@ -746,11 +769,13 @@ this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:manager
     this.editemployeegoal.push({ description: goal12 ,id: empid,departmentHead:managerid,pid:this.pid12});
     console.log('goal setting array',this.editemployeegoal);
   const body_data = {
-    'editemployeegoal': this.editemployeegoal
+    'editemployeegoal': this.editemployeegoal,
+    'year': year,
+    'cycle': cycle 
   };
-  this.appraisalFormService.PostgoaleditformData(body_data).subscribe((editemployeegoal: any) => {
-    if (editemployeegoal) {
-     // alert('edit sucesss')
+  this.appraisalFormService.PostgoaleditformData(body_data).subscribe((body_data: any) => {
+    if (body_data) {
+     // debugger
      this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_edit} `);
       this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);
     }
@@ -759,9 +784,8 @@ this.editemployeegoal.push({ description: goal1,id: empid,departmentHead:manager
 else if(userleadAssesmentStatus=="2" ||userleadAssesmentStatus=="3" &&  userselfAssesmentStatus=="3"){
 // manager rating
 if( this.behaviourpid1!=null){
-  
-//  debugger
-  // For EDIT
+   // For EDIT
+  //  debugger
     var managerrating1 = this.goalForm.controls.managerratingone.value;
     var managerrating2 = this.goalForm.controls.managerratingtwo.value;
     var managerrating3 = this.goalForm.controls.managerratingthree.value;
@@ -846,16 +870,18 @@ this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoal
   console.log('EditBehaviourRatingComment',this.EditBehaviourRatingComment);
   this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
   console.log('Summary',this.Summary);
-  debugger
+  //debugger
   const body_data = {
     'ManagerRatingComment': this.ManagerRatingComment,
     'EditBehaviourRatingComment': this.EditBehaviourRatingComment,
-    'Summary': this.Summary
+    'Summary': this.Summary,
+    'year': year,
+    'cycle': cycle 
   };
   // first time save api 
-    this.appraisalFormService.EditManagerFinalSubmitData(body_data).subscribe((ManagerRatingComment: any) => {
-      if (ManagerRatingComment) {
-        debugger
+    this.appraisalFormService.EditManagerFinalSubmitData(body_data).subscribe((body_data: any) => {
+      if (body_data) {
+     //   debugger
       this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
       this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
     }
@@ -865,6 +891,7 @@ this.EditBehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoal
   
 }
 else{
+  //debugger
   var managerrating1 = this.goalForm.controls.managerratingone.value;
   var managerrating2 = this.goalForm.controls.managerratingtwo.value;
   var managerrating3 = this.goalForm.controls.managerratingthree.value;
@@ -944,15 +971,18 @@ this.BehaviourRatingComment.push({ id:empid,Behaviouralgoals:Behaviouralgoals5,M
 console.log('BehaviourRatingComment',this.BehaviourRatingComment);
 this.Summary.push({ SummarizeOverallPerformanceManager :summarizemanagercomment1,AreasImprovementManager :summarizemanagercomment2,ActionPlanImprovementManager :summarizemanagercomment3 ,OverallRatingManager:closuremanagercomment1,OverallRatingManagercomment:closuremanagercomment2,pid: this.summarypid1,});
 console.log('Summary',this.Summary);
-debugger
+//debugger
 const body_data = {
   'ManagerRatingComment': this.ManagerRatingComment,
   'BehaviourRatingComment': this.BehaviourRatingComment,
-  'Summary': this.Summary
+  'Summary': this.Summary,
+  'year': year,
+  'cycle': cycle 
 };
 // first time save api 
-  this.appraisalFormService.PostManagerFinalSubmitData(body_data).subscribe((ManagerRatingComment: any) => {
-    if (ManagerRatingComment) {
+  this.appraisalFormService.PostManagerFinalSubmitData(body_data).subscribe((body_data: any) => {
+    if (body_data) {
+     // debugger
     this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
   }
@@ -965,7 +995,7 @@ const body_data = {
  }
 else{
   // first goal save by manager
- 
+ //debugger
   var goal1 = this.goalForm.controls.goalone.value;
   var goal2 = this.goalForm.controls.goaltwo.value;
   var goal3 = this.goalForm.controls.goalthree.value;
@@ -1004,11 +1034,13 @@ else{
 
 
 const body_data = {
-  'employeegoal': this.employeegoal
+  'employeegoal': this.employeegoal,
+  'year': year,
+  'cycle': cycle 
 };
 // first time save api 
-  this.appraisalFormService.PostgoalformData(body_data).subscribe((employeegoal: any) => {
-    if (employeegoal) {
+  this.appraisalFormService.PostgoalformData(body_data).subscribe((body_data: any) => {
+    if (body_data) {
     this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_goal_set} `);
     this._router.navigate([this._global.ROUTE_APPRAISAL_MANAGER_PAGE]);    
   }

@@ -6,10 +6,13 @@ export interface AppraisalLoginResponse {
   id: number;
   fullName:string;
   goalSettingByLeadStatus:string;
-hrAssesmentStatus: string;
-hrInitiateFormStatus: string;
-leadAssesmentStatus:  string;
-selfAssesmentStatus:  string;
+  hrAssesmentStatus: string;
+  hrInitiateFormStatus: string;
+  leadAssesmentStatus:  string;
+  selfAssesmentStatus:  string;
+  year:number;
+  cycle:string;
+  isLogin:number
 }
 
 export interface Roles{

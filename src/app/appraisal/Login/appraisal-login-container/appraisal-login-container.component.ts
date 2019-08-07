@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Global } from '../../../global';
 import { SessionStorageService } from '../../Service/session-storage.service';
 import { AuthService } from 'src/app/auth.service';
+import { MatSnackBar } from '@angular/material';
+import { ToasterServiceCustom } from '../../Service/toaster.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -32,6 +34,7 @@ export class AppraisalLoginContainerComponent implements OnInit {
       Validators.required,
     ])
   });
+  islogin: boolean;
 
   get userName(): any { return this.form.get('uName'); }
   get password(): any { return this.form.get('pass'); }
@@ -46,14 +49,18 @@ export class AppraisalLoginContainerComponent implements OnInit {
     private _router: Router,
     private _global: Global,
     private _sessionStorage: SessionStorageService,
-    private _authService:AuthService
+    private _authService:AuthService,
+    private _snackBar: MatSnackBar,
+    private _toasterService: ToasterServiceCustom,
   ) { }
 
   ngOnInit() {
   }
 
   SubmitLoginDetails() {
+    debugger
     this.submitClicked = true;
+  //  this.islogin=false;
     if (!this.userName.valid && !this.password.valid) {// Inputs are not valid
       return;
     }
@@ -68,7 +75,9 @@ export class AppraisalLoginContainerComponent implements OnInit {
         return throwError(x);
       }))
       .subscribe((data: AppraisalLoginResponse) => {
-        //debugger
+        debugger
+       if(data.isLogin==1){
+       //  this.islogin=false;
         this._authService.login(loginBody);
         // localStorage.setItem('deptID', data.deptID);
         this.showSpinner = false;
@@ -88,6 +97,13 @@ export class AppraisalLoginContainerComponent implements OnInit {
      //debugger
     // this._router.navigate([this._global.ROUTE_APPRAISAL_FORM ], { queryParams: { id: data.id } });
         localStorage.setItem(this._global.login_by, "employee");
+      }
+      else{
+       // this.islogin =true;
+        this.showSpinner = false; 
+        this._toasterService.ErrorSnackBarRightBottom(`${this._global.TOAST_Login_Fail_Alert} `);
+        return;
+      }
       },
         (error: any) => {
           this._errorService.LogError(error);

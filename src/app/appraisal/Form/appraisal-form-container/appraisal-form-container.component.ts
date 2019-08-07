@@ -204,16 +204,16 @@ export class AppraisalFormContainerComponent implements OnInit {
           closuremanagementcommentone: ['', Validators.required],
           closuremanagementcommenttwo: ['', Validators.required],
     });
-  //  debugger   
-    
+  //  debugger       
   var idval= this.router.snapshot.queryParamMap.get('id');  
-
+  var year= this.router.snapshot.queryParamMap.get('year'); 
+  var cycle= this.router.snapshot.queryParamMap.get('cycle');  
   localStorage.setItem('empid', idval);
   if(idval!=null){
   //  debugger
    this.GetemployeeDetails(idval);
     //  this.Getgoalemployee(idval);
-   this.GetemployeeformDetail(idval);
+   this.GetemployeeformDetail(idval,year,cycle);
   this.disablegoal();
   this.disableBehaviourratingandcomments();
   this.disablemanagerratingandcomments();
@@ -252,16 +252,21 @@ export class AppraisalFormContainerComponent implements OnInit {
 
 
 
-  GetemployeeformDetail(id: any){
-    //debugger
-    const subs = this.appraisalFormService.GetEmployeeformDetailForEdit(id)
+  GetemployeeformDetail(id: any,year:any ,cycle:string){
+   // debugger
+    const body = {
+      'id': id,
+      'year': year,
+      'cycle': cycle 
+    };
+    const subs = this.appraisalFormService.GetEmployeeformDetailForEdit(body)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
       return throwError(x);
     }))
     .subscribe(
       (data:any) => {
-   //     debugger 
+      // debugger 
       this.goalone=data._EmployeeRatinglist[0].description;
       this.goaltwo=data._EmployeeRatinglist[1].description;
       this.goalthree=data._EmployeeRatinglist[2].description;
@@ -375,8 +380,7 @@ export class AppraisalFormContainerComponent implements OnInit {
   }
 
   DepartmentSelectedGetData(value: number){
-    debugger
-   
+    //debugger 
     const subs = this._commonTasksservice.GetEmployeesByDepartmentId(value)
     .pipe(catchError(x => {
       this._errorService.LogError(x);
@@ -414,6 +418,8 @@ export class AppraisalFormContainerComponent implements OnInit {
     this.pid12=  localStorage.getItem('pid12');
     var isedit= localStorage.getItem('isedit');
     this.ambitionspid =localStorage.getItem('ambitionspid')
+    var year= this.router.snapshot.queryParamMap.get('year'); 
+    var cycle= this.router.snapshot.queryParamMap.get('cycle');  
     if( this.pid1 != null)
   {
 // employee Rating and comments saving Code
@@ -477,11 +483,13 @@ if(this.ambitionspid !=null ){
   
   const body_data = {
   'Goaldataupdate': this.Goaldataupdate,
-  'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary
+  'EditGoalemployeeambitionsummary': this.EditGoalemployeeambitionsummary,
+  'year': year,
+  'cycle': cycle 
   };
   
-  this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((Goaldataupdate: any) => {
-  if (Goaldataupdate) {
+  this.appraisalFormService.EditEmployeegoalformData(body_data).subscribe((body_data: any) => {
+  if (body_data) {
   this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
   this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
   //this.ButtonToogle=true;
@@ -544,11 +552,13 @@ this.Goalemployeeambitionsummary.push({id:empid,AmbitionsJobExpectations :ambiti
 
 const body_data = {
 'Goaldataupdate': this.Goaldataupdate,
-'Goalemployeeambitionsummary': this.Goalemployeeambitionsummary
+'Goalemployeeambitionsummary': this.Goalemployeeambitionsummary,
+'year': year,
+'cycle': cycle 
 };
 
-this.appraisalFormService.UpdateEmployeegoalformData(body_data).subscribe((Goaldataupdate: any) => {
-if (Goaldataupdate) {
+this.appraisalFormService.UpdateEmployeegoalformData(body_data).subscribe((body_data: any) => {
+if (body_data) {
 this._toasterService.SuccessSnackBarRightBottom(`${this._global.TOAST_Appraisal_Update_goal_set} `);
 this._router.navigate([this._global.ROUTE_APPRAISAL_EmployeeviewForm]);
 //this.ButtonToogle=true;

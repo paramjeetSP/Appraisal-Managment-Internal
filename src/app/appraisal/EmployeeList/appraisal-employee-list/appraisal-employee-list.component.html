@@ -15,11 +15,9 @@
       </div>
       <div class="periodstatus-wrapper">
             <mat-form-field >
-                <mat-select (selectionChange)="periodSelected($event)" [value]="periodselectedOption" placeholder="Select period">
-                   
-                  <mat-option [value]='1'>Period1</mat-option>
-                    <mat-option [value]='2'>Period2</mat-option>
-                  
+                <mat-select (selectionChange)="periodSelected($event)"  [value]="periodselectedOption" >
+                  <mat-option [value]='1'>May-October</mat-option>
+                    <mat-option [value]='2'>November-April</mat-option>
                   </mat-select>
           </mat-form-field>
       </div>

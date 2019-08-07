@@ -19,6 +19,8 @@ export class Global {
   public TOAST_Appraisal_goal_set = 'goal set successfully';
   public TOAST_Appraisal_Update_goal_set = 'Employee rating and comments save successfully';
   public TOAST_Appraisal_Update_goal_edit = 'Goal save successfully';
+  public TOAST_Appraisal_Cycle_Select_Alert = 'Select the Cycle Dropdown';
+  public TOAST_Login_Fail_Alert = 'invalid credentials';
   /** TOASTER MESSAGE AND TITLES END */
 
   /** ROLES FOR MANAGER LEVEL START */

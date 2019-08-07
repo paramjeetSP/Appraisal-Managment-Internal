@@ -26,6 +26,8 @@ export interface AppraisalEmpRes{
     leadAssesmentStatus: string;
     managerName: string;
     departmentHead:string;
+    year:number;
+    cycle:string;
 }
 
 export interface EmpDetailRes{

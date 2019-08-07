@@ -19,30 +19,28 @@ export class AppraisalFormService {
     private _global: Global) { }
 
 
-  PostgoalformData(employeegoal:any) {
-    debugger
-  //  var bodyData = JSON.stringify(employeegoal);
-  
+  PostgoalformData(body_data:any) {
+   // debugger
     const url = `${this._global.API_FULL_URL}EmployeeGoalForm`;
    // return this._http.post<AppraisalLoginResponse>(url, body, this._global.HTTP_OPTIONS);
-    return this._http.post(url,employeegoal,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
-  UpdateEmployeegoalformData(Goaldataupdate:any) {
+  UpdateEmployeegoalformData(body_data:any) {
   //  debugger
     const url = `${this._global.API_FULL_URL}SaveEmployeeGoalFormRating`;
-    return this._http.post(url,Goaldataupdate,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
   
-  GetEmployeeGolaById(id: number): Observable<AppraisalEmpGoalRes[]> {
+  GetEmployeeGolaById(body:any): Observable<AppraisalEmpGoalRes[]> {
   //  debugger
     const url = `${this._global.API_FULL_URL}GetGoalByEmpId`;
-    return this._http.post<AppraisalEmpGoalRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+    return this._http.post<AppraisalEmpGoalRes[]>(url, body, this._global.HTTP_OPTIONS);
   }
-  PostgoaleditformData(editemployeegoal:any){
+  PostgoaleditformData(body_data:any){
     const url = `${this._global.API_FULL_URL}EditEmployeeGoalForm`;
-    return this._http.post(url,editemployeegoal,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
   GetEmployeeDetailsById(id: number): Observable<EmpDetailRes[]> {
@@ -51,44 +49,44 @@ export class AppraisalFormService {
     return this._http.post<EmpDetailRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
   }
 
-  GetEmployeeformDetailForEdit(id: number): Observable<AppraisalEmpformdetailRes[]> {
+  GetEmployeeformDetailForEdit(body: any): Observable<AppraisalEmpformdetailRes[]> {
    // debugger
     const url = `${this._global.API_FULL_URL}GetEmployeeRcInfoById`;
-    return this._http.post<AppraisalEmpformdetailRes[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+    return this._http.post<AppraisalEmpformdetailRes[]>(url, body, this._global.HTTP_OPTIONS);
   }
 
-  EditEmployeegoalformData(Goaldataupdate:any) {
-   // debugger
+  EditEmployeegoalformData(body_data:any) {
+  //  debugger
     const url = `${this._global.API_FULL_URL}UpdateEmployeeRatingComment`;
-    return this._http.post(url,Goaldataupdate,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
-  GetEmployeeRCDetailsById(id: number): Observable<AppraisalEmpGoalRatingComments[]> {
-   // debugger
+  GetEmployeeRCDetailsById(body:any): Observable<AppraisalEmpGoalRatingComments[]> {
+  //  debugger
     const url = `${this._global.API_FULL_URL}GetEmployeeRcInfoById`;
-    return this._http.post<AppraisalEmpGoalRatingComments[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+    return this._http.post<AppraisalEmpGoalRatingComments[]>(url, body, this._global.HTTP_OPTIONS);
   }
 
-  PostManagerFinalSubmitData(ManagerRatingComment:any) {
+  PostManagerFinalSubmitData(body_data:any) {
    // debugger
     const url = `${this._global.API_FULL_URL}SaveManagerAllRatingComment`;
-    return this._http.post(url,ManagerRatingComment,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
-  GetmanagerRCDetailsById(id: number): Observable<AppraisalmanagerGoalRatingComments[]> {
-  //  debugger
+  GetmanagerRCDetailsById(body:any): Observable<AppraisalmanagerGoalRatingComments[]> {
+   //debugger
     const url = `${this._global.API_FULL_URL}GetManagerRcInfoById`;
-    return this._http.post<AppraisalmanagerGoalRatingComments[]>(url, { id: id }, this._global.HTTP_OPTIONS);
+    return this._http.post<AppraisalmanagerGoalRatingComments[]>(url, body, this._global.HTTP_OPTIONS);
   }
 
-  EditManagerFinalSubmitData(ManagerRatingComment:any) {
-   // debugger
+  EditManagerFinalSubmitData(body_data:any) {
+  //  debugger
     const url = `${this._global.API_FULL_URL}EditManagerAllRatingComment`;
-    return this._http.post(url,ManagerRatingComment,httpOptions)
+    return this._http.post(url,body_data,httpOptions)
   }
 
   PosthrFinalSubmitData(body_data:any) {
-  //  debugger
+    //debugger
     const url = `${this._global.API_FULL_URL}SaveHrFeedbackAndComment`;
     return this._http.post(url,body_data,httpOptions)
   }
